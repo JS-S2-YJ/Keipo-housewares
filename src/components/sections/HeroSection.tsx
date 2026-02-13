@@ -79,10 +79,11 @@ export const HeroSection = () => {
                 src={`${BASE_PATH}/images/main_logo.png`} 
                 alt="KEIPO Housewares" 
                 style={{ 
-                  height: 'clamp(80px, 15vh, 160px)', 
+                  height: 'clamp(140px, 25vh, 280px)', 
                   width: 'auto',
                   objectFit: 'contain',
-                  filter: 'drop-shadow(0 15px 35px rgba(0, 102, 204, 0.12))'
+                  borderRadius: '24px',
+                  filter: 'drop-shadow(0 20px 45px rgba(0, 102, 204, 0.15))'
                 }} 
               />
             </div>
