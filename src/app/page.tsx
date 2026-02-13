@@ -5,11 +5,16 @@ import { SectionReveal } from '@/components/SectionReveal';
 import { useLanguage } from '@/hooks/useLanguage';
 import { Language } from '@/translations';
 import { useEffect, useState } from 'react';
+import { ESTABLISHED_YEAR } from '@/lib/constants';
 
 export default function Home() {
   const { t, lang, setLang } = useLanguage();
   const [mounted, setMounted] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  // 업력 자동 계산
+  const currentYear = new Date().getFullYear();
+  const yearsActiveCount = currentYear - ESTABLISHED_YEAR;
 
   useEffect(() => {
     setMounted(true);
@@ -28,6 +33,21 @@ export default function Home() {
   if (!mounted) return <div style={{ background: 'white', minHeight: '100vh' }} />;
 
   const toggleDrawer = () => setIsDrawerOpen(!isDrawerOpen);
+
+  // 언어별 업력 텍스트 조립
+  const getHistoryText = () => {
+    if (lang === 'ko') return `${yearsActiveCount}${t('history')}`;
+    if (lang === 'cn') return `${yearsActiveCount}${t('history')}`;
+    if (lang === 'jp') return `${yearsActiveCount}${t('history')}`;
+    return `${yearsActiveCount} ${t('history')}`;
+  };
+
+  const getSinceText = () => {
+    if (lang === 'ko') return `${ESTABLISHED_YEAR}${t('since')}`;
+    if (lang === 'jp') return `${ESTABLISHED_YEAR}${t('since')}`;
+    if (lang === 'cn') return `${t('since')}${ESTABLISHED_YEAR} 年`;
+    return `${t('since')} ${ESTABLISHED_YEAR}`;
+  };
 
   return (
     <main style={{ opacity: 1, transition: 'opacity 0.5s ease' }}>
@@ -77,9 +97,8 @@ export default function Home() {
 
       {/* Navigation */}
       <nav className="nav-glass">
-        <div className="max-container" style={{ justifyContent: 'space-between', alignItems: 'center' }}>
+        <div className="max-container" style={{ justifyContent: 'space-between', alignItems: 'center', gap: '10px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-            {/* 3D Menu Button */}
             <div className="menu-button-3d" onClick={toggleDrawer}>
               <div className="menu-bar" />
               <div className="menu-bar" style={{ width: '14px' }} />
@@ -125,8 +144,8 @@ export default function Home() {
         <div className="max-container" style={{ display: 'flex', flexDirection: 'column', gap: '60px' }}>
           <div className="grid-stack" style={{ alignItems: 'center' }}>
             <SectionReveal>
-              <span style={{ color: '#0066cc', fontWeight: '700', fontSize: '12px', letterSpacing: '0.12em', display: 'block', marginBottom: '16px' }}>{t('since').toUpperCase()}</span>
-              <h2 className="section-title" style={{ marginBottom: '24px' }}>{t('history')}</h2>
+              <span style={{ color: '#0066cc', fontWeight: '700', fontSize: '12px', letterSpacing: '0.12em', display: 'block', marginBottom: '16px' }}>{getSinceText().toUpperCase()}</span>
+              <h2 className="section-title" style={{ marginBottom: '24px' }}>{getHistoryText()}</h2>
               <p style={{ fontSize: '19px', lineHeight: '1.5', color: '#86868b', marginBottom: '32px', fontWeight: '500' }}>
                 {t('historyDesc')}
               </p>
@@ -136,7 +155,7 @@ export default function Home() {
                   <div style={{ fontSize: '10px', color: '#86868b', fontWeight: '800', marginTop: '4px', letterSpacing: '0.05em' }}>{t('verifiedShipments')}</div>
                 </div>
                 <div>
-                  <div style={{ fontSize: '40px', fontWeight: 'bold' }}>38+</div>
+                  <div style={{ fontSize: '40px', fontWeight: 'bold' }}>{yearsActiveCount}+</div>
                   <div style={{ fontSize: '10px', color: '#86868b', fontWeight: '800', marginTop: '4px', letterSpacing: '0.05em' }}>{t('yearsActive')}</div>
                 </div>
               </div>
@@ -189,7 +208,7 @@ export default function Home() {
                         <div key={i} style={{ flex: 1, backgroundColor: i === 6 ? '#0066cc' : '#f2f2f2', height: `${h}%`, borderRadius: '4px' }} />
                       ))}
                     </div>
-                    <p style={{ fontSize: '11px', color: '#86868b', marginTop: '20px', fontWeight: '700', letterSpacing: '0.05em' }}>{t('verifiedBy')} // 1986-2026</p>
+                    <p style={{ fontSize: '11px', color: '#86868b', marginTop: '20px', fontWeight: '700', letterSpacing: '0.05em' }}>{t('verifiedBy')} // {ESTABLISHED_YEAR}-{currentYear}</p>
                   </div>
                 </div>
               </SectionReveal>
@@ -267,7 +286,7 @@ export default function Home() {
 
       <footer style={{ padding: '48px 20px', borderTop: '1px solid #f2f2f2' }}>
         <div className="max-container" style={{ fontSize: '11px', color: '#86868b', fontWeight: '700', flexDirection: 'column', gap: '16px', textAlign: 'center' }}>
-          <div>© 2026 KEIPO HOUSEWARES. {t('allRights')}</div>
+          <div>© {currentYear} KEIPO HOUSEWARES. {t('allRights')}</div>
         </div>
       </footer>
     </main>
