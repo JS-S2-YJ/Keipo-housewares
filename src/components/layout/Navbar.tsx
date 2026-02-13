@@ -26,7 +26,7 @@ export const Navbar = ({ lang, onMenuClick, t }: NavbarProps) => {
         padding: '0 clamp(16px, 5vw, 40px)'
       }}>
         <div style={{ display: 'flex', alignItems: 'center', flexShrink: 1, minWidth: 0 }}>
-          <span className="logo-3d" style={{ fontSize: 'clamp(15px, 4vw, 22px)', letterSpacing: '-0.04em', whiteSpace: 'nowrap', overflow: 'visible' }}>KEIPO</span>
+          <span className="logo-3d" style={{ fontSize: 'clamp(15px, 4vw, 22px)', whiteSpace: 'nowrap' }}>KEIPO</span>
         </div>
         
         <div style={{ display: 'flex', gap: '6px', alignItems: 'center', flexShrink: 0 }}>
