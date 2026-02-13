@@ -90,12 +90,10 @@ export default function Home() {
 
       <nav className="nav-glass">
         <div className="max-container" style={{ justifyContent: 'space-between', width: '100%' }}>
-          {/* Logo Group - Minimal width on mobile */}
           <div style={{ display: 'flex', alignItems: 'center', flexShrink: 1, minWidth: 0 }}>
             <span className="logo-3d" style={{ fontSize: 'clamp(15px, 4vw, 22px)', letterSpacing: '-0.04em', whiteSpace: 'nowrap', overflow: 'visible' }}>KEIPO</span>
           </div>
           
-          {/* Action Group - Tightened spacing */}
           <div style={{ display: 'flex', gap: '6px', alignItems: 'center', flexShrink: 0 }}>
             <div className="nav-menu-desktop" style={{ gap: '20px', fontSize: '13px', fontWeight: '600', color: '#86868b', marginRight: '12px' }}>
               <a href="#history" style={{ textDecoration: 'none', color: 'inherit' }}>{t('navHistory')}</a>
@@ -152,8 +150,8 @@ export default function Home() {
 
       {/* History Section */}
       <section id="history" className="section-padding" style={{ backgroundColor: '#f5f5f7' }}>
-        <div className="max-container" style={{ flexDirection: 'column', gap: '48px' }}>
-          <div className="grid-stack" style={{ gap: '48px', alignItems: 'stretch' }}>
+        <div className="max-container" style={{ flexDirection: 'column' }}>
+          <div className="grid-3">
             <SectionReveal style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <div>
                 <span style={{ color: '#0066cc', fontWeight: '800', fontSize: '11px', letterSpacing: '0.15em', display: 'block', marginBottom: '12px' }}>{getSinceText().toUpperCase()}</span>
@@ -175,7 +173,7 @@ export default function Home() {
             </SectionReveal>
             
             <SectionReveal delay={0.2} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <div style={{ backgroundColor: 'white', borderRadius: '32px', width: '100%', padding: '15% 10%', textAlign: 'center', boxShadow: '0 15px 45px rgba(0,0,0,0.03)' }}>
+              <div style={{ backgroundColor: 'white', borderRadius: '32px', width: '100%', padding: '40px', textAlign: 'center', boxShadow: '0 15px 45px rgba(0,0,0,0.03)' }}>
                 <Globe2 size={80} color="#f5f5f7" style={{ margin: '0 auto' }} />
               </div>
             </SectionReveal>
@@ -192,9 +190,9 @@ export default function Home() {
           </SectionReveal>
 
           <div className="perspective-container">
-            <div className="grid-3" style={{ gap: '24px' }}>
+            <div className="grid-3">
               <SectionReveal delay={0.1} style={{ display: 'flex' }}>
-                <div className="three-d-card" style={{ padding: '32px', width: '100%', minHeight: '300px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                <div className="three-d-card" style={{ padding: '32px', width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                   <div>
                     <Anchor size={24} color="#0066cc" style={{ marginBottom: '16px' }} />
                     <h3 style={{ fontSize: '20px', fontWeight: 'bold', marginBottom: '16px' }}>{t('primaryHubs')}</h3>
@@ -213,7 +211,7 @@ export default function Home() {
               </SectionReveal>
 
               <SectionReveal delay={0.2} style={{ display: 'flex' }}>
-                <div className="three-d-card" style={{ padding: '32px', width: '100%', minHeight: '300px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                <div className="three-d-card" style={{ padding: '32px', width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                   <div>
                     <TrendingUp size={24} color="#0066cc" style={{ marginBottom: '16px' }} />
                     <h3 style={{ fontSize: '20px', fontWeight: 'bold', marginBottom: '16px' }}>{t('tradeVelocity')}</h3>
@@ -228,7 +226,7 @@ export default function Home() {
               </SectionReveal>
 
               <SectionReveal delay={0.3} style={{ display: 'flex' }}>
-                <div className="three-d-card" style={{ padding: '32px', width: '100%', minHeight: '300px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                <div className="three-d-card" style={{ padding: '32px', width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                   <div>
                     <BarChart3 size={24} color="#0066cc" style={{ marginBottom: '16px' }} />
                     <h3 style={{ fontSize: '20px', fontWeight: 'bold', marginBottom: '12px' }}>{t('topPartners')}</h3>
@@ -246,7 +244,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Categories Section */}
+      {/* Categories Section - Improved Mobile Spacing */}
       <section id="categories" className="section-padding">
         <div className="max-container" style={{ flexDirection: 'column', alignItems: 'center' }}>
           <SectionReveal style={{ textAlign: 'center', marginBottom: '40px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -254,14 +252,14 @@ export default function Home() {
             <p style={{ fontSize: '15px', color: '#86868b', fontWeight: '500' }}>{t('highVolume')}</p>
           </SectionReveal>
           
-          <div className="grid-3" style={{ gap: '24px', width: '100%' }}>
+          <div className="grid-3">
             {[
               { title: t('brewingTitle'), desc: t('brewingDesc') },
               { title: t('smokingTitle'), desc: t('smokingDesc') },
               { title: t('culinaryTitle'), desc: t('culinaryDesc') }
             ].map((cat, idx) => (
-              <SectionReveal key={cat.title} delay={idx * 0.1} style={{ display: 'flex' }}>
-                <div className="apple-card" style={{ backgroundColor: '#f5f5f7', width: '100%', minHeight: '280px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+              <SectionReveal key={cat.title} delay={idx * 0.1} style={{ display: 'flex', flexDirection: 'column' }}>
+                <div className="apple-card">
                   <div>
                     <Package size={24} style={{ marginBottom: '16px' }} />
                     <h3 style={{ fontSize: '22px', fontWeight: 'bold', marginBottom: '10px', letterSpacing: '-0.02em' }}>{cat.title}</h3>
