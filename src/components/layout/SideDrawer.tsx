@@ -16,8 +16,17 @@ export const SideDrawer = ({ isOpen, onClose }: SideDrawerProps) => {
     e.preventDefault();
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      onClose();
+      const headerOffset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+      
+      // Close drawer after starting scroll
+      setTimeout(onClose, 300);
     }
   };
 
@@ -39,16 +48,37 @@ export const SideDrawer = ({ isOpen, onClose }: SideDrawerProps) => {
         backdropFilter: 'blur(80px)',
         WebkitBackdropFilter: 'blur(80px)',
       }}>
-        <button onClick={onClose} style={{ position: 'absolute', top: '16px', right: '16px', border: 'none', background: 'none', cursor: 'pointer', color: '#86868b' }}>
+        <button onClick={onClose} style={{ position: 'absolute', top: '16px', right: '16px', border: 'none', background: 'none', cursor: 'pointer', color: '#86868b', padding: '8px' }}>
           <X size={28} />
         </button>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
           <span style={{ fontSize: '11px', fontWeight: '800', color: '#0066cc', letterSpacing: '0.15em' }}>NAVIGATE</span>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', fontSize: '22px', fontWeight: '700' }}>
-            <a href="#history" onClick={(e) => scrollToSection(e, 'history')} style={{ textDecoration: 'none', color: '#1d1d1f' }}>{t('navHistory')}</a>
-            <a href="#logistics" onClick={(e) => scrollToSection(e, 'logistics')} style={{ textDecoration: 'none', color: '#1d1d1f' }}>{t('navLogistics')}</a>
-            <a href="#categories" onClick={(e) => scrollToSection(e, 'categories')} style={{ textDecoration: 'none', color: '#1d1d1f' }}>{t('navProducts')}</a>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '22px', fontWeight: '700', position: 'relative', zIndex: 5 }}>
+            <a 
+              href="#history" 
+              onClick={(e) => { e.stopPropagation(); scrollToSection(e, 'history'); }} 
+              className="side-drawer-link"
+              style={{ textDecoration: 'none', color: '#1d1d1f', padding: '12px 0', cursor: 'pointer', display: 'block', transition: 'all 0.2s', position: 'relative', zIndex: 10 }}
+            >
+              {t('navHistory')}
+            </a>
+            <a 
+              href="#logistics" 
+              onClick={(e) => { e.stopPropagation(); scrollToSection(e, 'logistics'); }} 
+              className="side-drawer-link"
+              style={{ textDecoration: 'none', color: '#1d1d1f', padding: '12px 0', cursor: 'pointer', display: 'block', transition: 'all 0.2s', position: 'relative', zIndex: 10 }}
+            >
+              {t('navLogistics')}
+            </a>
+            <a 
+              href="#categories" 
+              onClick={(e) => { e.stopPropagation(); scrollToSection(e, 'categories'); }} 
+              className="side-drawer-link"
+              style={{ textDecoration: 'none', color: '#1d1d1f', padding: '12px 0', cursor: 'pointer', display: 'block', transition: 'all 0.2s', position: 'relative', zIndex: 10 }}
+            >
+              {t('navProducts')}
+            </a>
           </div>
         </div>
 
