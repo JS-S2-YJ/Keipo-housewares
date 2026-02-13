@@ -1,15 +1,15 @@
 'use client';
 
 import { Globe2 } from 'lucide-react';
-import { Language, TranslationKey } from '@/translations';
+import { useLanguage } from '@/hooks/useLanguage';
 
 interface NavbarProps {
-  lang: Language;
   onMenuClick: () => void;
-  t: (key: TranslationKey) => string;
 }
 
-export const Navbar = ({ lang, onMenuClick, t }: NavbarProps) => {
+export const Navbar = ({ onMenuClick }: NavbarProps) => {
+  const { lang, t } = useLanguage();
+
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     const element = document.getElementById(id);

@@ -2,14 +2,10 @@
 
 import { Package, ArrowRight } from 'lucide-react';
 import { SectionReveal } from '@/components/common/SectionReveal';
+import { useLanguage } from '@/hooks/useLanguage';
 
-import { TranslationKey } from '@/translations';
-
-interface CategorySectionProps {
-  t: (key: TranslationKey) => string;
-}
-
-export const CategorySection = ({ t }: CategorySectionProps) => {
+export const CategorySection = () => {
+  const { t } = useLanguage();
   const categories = [
     { title: t('brewingTitle'), desc: t('brewingDesc') },
     { title: t('smokingTitle'), desc: t('smokingDesc') },

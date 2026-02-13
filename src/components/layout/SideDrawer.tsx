@@ -1,17 +1,17 @@
 'use client';
 
-import { X, Globe2 } from 'lucide-react';
-import { Language, TranslationKey } from '@/translations';
+import { X } from 'lucide-react';
+import { useLanguage } from '@/hooks/useLanguage';
+import { Language } from '@/translations';
 
 interface SideDrawerProps {
   isOpen: boolean;
   onClose: () => void;
-  lang: Language;
-  setLang: (lang: Language) => void;
-  t: (key: TranslationKey) => string;
 }
 
-export const SideDrawer = ({ isOpen, onClose, lang, setLang, t }: SideDrawerProps) => {
+export const SideDrawer = ({ isOpen, onClose }: SideDrawerProps) => {
+  const { lang, setLang, t } = useLanguage();
+
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     const element = document.getElementById(id);
