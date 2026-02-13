@@ -105,13 +105,17 @@ button:focus {
   text-align: center;
   padding: 0;
   
-  /* Solid Black */
-  color: #000000 !important;
+  /* Solid Black with subtle gradient */
+  color: #1d1d1f !important;
   
-  /* Strong 3D Emboss */
+  /* Advanced Multi-layered 3D Emboss */
   text-shadow: 
-    1px 1px 0px rgba(255, 255, 255, 0.7),
-    0 4px 8px rgba(0, 0, 0, 0.1);
+    0px 1px 0px #ffffff,
+    0px 2px 0px #e1e1e1,
+    0px 3px 0px #d1d1d1,
+    0px 4px 0px #c1c1c1,
+    0px 8px 15px rgba(0, 0, 0, 0.1),
+    0px 15px 30px rgba(0, 0, 0, 0.05);
     
   background: none !important;
   -webkit-text-fill-color: initial !important;
@@ -121,10 +125,14 @@ button:focus {
 }
 
 .hero-title-3d-glow:hover {
-  transform: scale(1.01);
+  transform: scale(1.02) translateY(-2px);
   text-shadow: 
-    1.5px 1.5px 0px #ffffff,
-    0 12px 24px rgba(0, 0, 0, 0.2);
+    0px 1px 0px #ffffff,
+    0px 2px 0px #e1e1e1,
+    0px 4px 0px #d1d1d1,
+    0px 6px 0px #c1c1c1,
+    0px 20px 40px rgba(0, 0, 0, 0.15),
+    0px 30px 60px rgba(0, 0, 0, 0.1);
 }
 
 /* --- Buttons (Apple System Blue) --- */
