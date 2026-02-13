@@ -20,7 +20,11 @@ export const Navbar = ({ lang, onMenuClick, t }: NavbarProps) => {
 
   return (
     <nav className="nav-glass">
-      <div className="max-container" style={{ justifyContent: 'space-between', width: '100%' }}>
+      <div className="max-container" style={{ 
+        justifyContent: 'space-between', 
+        width: '100%',
+        padding: '0 clamp(16px, 5vw, 40px)'
+      }}>
         <div style={{ display: 'flex', alignItems: 'center', flexShrink: 1, minWidth: 0 }}>
           <span className="logo-3d" style={{ fontSize: 'clamp(15px, 4vw, 22px)', letterSpacing: '-0.04em', whiteSpace: 'nowrap', overflow: 'visible' }}>KEIPO</span>
         </div>
