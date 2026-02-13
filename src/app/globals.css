@@ -55,13 +55,13 @@ button:focus {
   cursor: pointer;
   position: relative;
   
-  /* Solid Deep Black base with light sweep */
+  /* Deep Solid Black with a very narrow light sweep */
   color: #000000 !important;
   background: linear-gradient(90deg, 
     #000000 0%, 
-    #000000 42%, 
-    rgba(255, 255, 255, 0.6) 50%, 
-    #000000 58%, 
+    #000000 48%, 
+    rgba(255, 255, 255, 0.8) 50%, 
+    #000000 52%, 
     #000000 100%
   );
   background-size: 200% auto;
@@ -69,14 +69,14 @@ button:focus {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   
-  animation: sparkle-sweep 4s linear infinite;
+  animation: sparkle-sweep 5s cubic-bezier(0.32, 0, 0.67, 0) infinite;
   letter-spacing: -0.05em;
   
-  /* Sharp Apple-style Embossed 3D */
+  /* Sharp Apple-style Embossed 3D: Darker contrast */
   text-shadow: 
-    0.5px 0.5px 0px rgba(255, 255, 255, 0.8),
+    0.5px 0.5px 0px rgba(255, 255, 255, 1),
     -0.5px -0.5px 0px rgba(0, 0, 0, 0.1),
-    0 1px 2px rgba(0, 0, 0, 0.2);
+    0 2px 4px rgba(0, 0, 0, 0.1);
   
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
