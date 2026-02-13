@@ -13,7 +13,7 @@ interface LogisticsSectionProps {
 
 export const LogisticsSection = ({ t, currentYear }: LogisticsSectionProps) => {
   return (
-    <section id="logistics" className="section-padding" style={{ backgroundColor: '#fbfbfd' }}>
+    <section id="logistics" className="section-padding" style={{ backgroundColor: '#f5f5f7' }}>
       <div className="max-container" style={{ flexDirection: 'column' }}>
         <SectionReveal style={{ marginBottom: '40px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <span style={{ color: '#0066cc', fontWeight: '800', fontSize: '11px', letterSpacing: '0.15em', display: 'block', marginBottom: '12px' }}>{t('tradeInsights')}</span>

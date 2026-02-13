@@ -251,20 +251,26 @@ button:focus {
 .perspective-container { perspective: 2000px; width: 100%; }
 .three-d-card {
   transform-style: preserve-3d;
-  transition: transform 0.8s cubic-bezier(0.2, 1, 0.2, 1), box-shadow 0.8s ease;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  transition: transform 0.8s cubic-bezier(0.2, 1, 0.2, 1), box-shadow 0.8s ease, background 0.4s ease;
+  background: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-radius: 32px;
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.8);
   position: relative;
   z-index: 1;
+  /* Premium Soft Shadow */
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.02),
+    0 40px 80px rgba(0, 0, 0, 0.03);
 }
 
 .three-d-card:hover {
-  transform: translateZ(30px) translateY(-10px) rotateX(4deg) rotateY(-2deg);
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  transform: translateZ(40px) translateY(-12px) rotateX(4deg) rotateY(-2deg);
+  background: rgba(255, 255, 255, 1) !important;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.04),
+    0 60px 120px rgba(0, 0, 0, 0.06);
 }
 
 /* Typography Utilities */
