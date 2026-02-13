@@ -18,13 +18,15 @@ export const HeroSection = ({ t }: HeroSectionProps) => {
       position: 'relative', 
       width: '100%', 
       overflow: 'hidden',
-      backgroundColor: '#f5f5f7'
+      backgroundColor: '#f5f5f7',
+      userSelect: 'none',
+      WebkitUserSelect: 'none'
     }}>
       {/* Background Atmosphere */}
       <div style={{ position: 'absolute', top: '10%', left: '20%', width: '50%', height: '500px', background: 'radial-gradient(circle, rgba(0, 102, 204, 0.06) 0%, transparent 70%)', filter: 'blur(100px)', zIndex: 0, pointerEvents: 'none' }} />
       
-      <div className="max-container" style={{ position: 'relative', zIndex: 1, justifyContent: 'center', padding: '0 12px' }}>
-        <SectionReveal style={{ width: '100%', maxWidth: '1000px' }}>
+      <div className="max-container" style={{ position: 'relative', zIndex: 1, justifyContent: 'center', padding: '0 12px', maxWidth: '1400px' }}>
+        <SectionReveal style={{ width: '100%', maxWidth: '1240px' }}>
           {/* Refined Mobile-First Glass Card */}
           <div style={{ 
             background: 'rgba(255, 255, 255, 0.4)', 
@@ -32,7 +34,7 @@ export const HeroSection = ({ t }: HeroSectionProps) => {
             WebkitBackdropFilter: 'blur(40px) saturate(180%)',
             borderRadius: 'clamp(24px, 5vw, 40px)',
             border: '1px solid rgba(255, 255, 255, 0.7)',
-            padding: 'clamp(40px, 8vw, 80px) clamp(16px, 5vw, 40px)', /* Responsive Padding */
+            padding: 'clamp(40px, 8vw, 80px) clamp(20px, 8vw, 120px)', /* Increased horizontal padding for wider feel */
             boxShadow: '0 20px 80px rgba(0, 0, 0, 0.03)',
             display: 'flex',
             flexDirection: 'column',
