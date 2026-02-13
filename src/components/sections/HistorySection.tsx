@@ -49,7 +49,7 @@ export const HistorySection = ({ t, yearsActiveCount, historyText, sinceText }: 
             }}>
               <img 
                 src={`${BASE_PATH}/images/knife.jpeg`} 
-                alt="KEIPO Premium Hardware" 
+                alt={t('title')} 
                 className="hover-zoom-image"
                 style={{ 
                   width: '100%', 
@@ -69,7 +69,7 @@ export const HistorySection = ({ t, yearsActiveCount, historyText, sinceText }: 
                 color: 'white',
                 pointerEvents: 'none'
               }}>
-                <span style={{ fontSize: '12px', fontWeight: '700', letterSpacing: '0.1em' }}>PREMIUM QUALITY</span>
+                <span style={{ fontSize: '12px', fontWeight: '700', letterSpacing: '0.1em' }}>{t('premiumQuality')}</span>
               </div>
             </div>
           </SectionReveal>
