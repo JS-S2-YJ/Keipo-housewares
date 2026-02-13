@@ -36,28 +36,26 @@ export default function Home() {
             <span className="font-bold tracking-tighter text-lg neon-text-cyan">KEIPO</span>
           </div>
           
-          <div className="flex items-center gap-4 md:gap-8">
-            <div className="flex items-center space-x-2">
+          <div className="flex items-center gap-6">
+            <div className="flex items-center">
               {languages.map((l) => (
                 <button
                   key={l.code}
                   onClick={() => setLang(l.code)}
-                  className="cursor-pointer text-[10px] md:text-[11px] px-2.5 py-1.5 transition-all duration-200 border uppercase tracking-tighter"
+                  className={`cursor-pointer mx-1 px-3 py-1.5 text-[10px] font-bold tracking-widest transition-all duration-300 border uppercase`}
                   style={{ 
-                    minWidth: '36px',
-                    appearance: 'none',
-                    backgroundColor: lang === l.code ? '#00f3ff' : 'transparent',
+                    minWidth: '40px',
+                    backgroundColor: lang === l.code ? 'var(--cyber-cyan)' : 'transparent',
                     color: lang === l.code ? '#000000' : 'rgba(255, 255, 255, 0.4)',
-                    borderColor: lang === l.code ? '#00f3ff' : 'rgba(255, 255, 255, 0.1)',
-                    fontWeight: lang === l.code ? '800' : '400',
-                    boxShadow: lang === l.code ? '0 0 12px rgba(0, 243, 255, 0.4)' : 'none'
+                    borderColor: lang === l.code ? 'var(--cyber-cyan)' : 'rgba(255, 255, 255, 0.1)',
+                    boxShadow: lang === l.code ? '0 0 15px rgba(0, 243, 255, 0.3)' : 'none'
                   }}
                 >
                   {l.label}
                 </button>
               ))}
             </div>
-            <div className="hidden sm:block">
+            <div className="hidden sm:block border-l border-white/10 pl-6">
               <CyberClock />
             </div>
           </div>
