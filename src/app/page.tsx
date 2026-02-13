@@ -19,6 +19,17 @@ export default function Home() {
     setMounted(true);
   }, []);
 
+  useEffect(() => {
+    if (isDrawerOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isDrawerOpen]);
+
   const languages: { code: Language; label: string }[] = [
     { code: 'en', label: 'English' },
     { code: 'ko', label: '한국어' },
