@@ -44,20 +44,13 @@ button:focus {
 
 /* --- Animations --- */
 @keyframes sparkle-sweep {
-  0% { background-position: 200% center; }
-  100% { background-position: -200% center; }
+  0% { background-position: 150% center; }
+  100% { background-position: -50% center; }
 }
 
 /* --- Components --- */
 
 /* Logo */
-@keyframes logo-idle-bounce {
-  0%, 85%, 100% { transform: translateY(0) scale(1); }
-  90% { transform: translateY(-5px) scale(1.05); }
-  93% { transform: translateY(0) scale(0.98); }
-  96% { transform: translateY(-2px) scale(1.02); }
-}
-
 .logo-3d {
   display: inline-block;
   font-weight: 800;
@@ -65,21 +58,22 @@ button:focus {
   position: relative;
   user-select: none;
   
-  /* Solid Black base with subtle shimmer */
+  /* Solid Black base with a sharp, narrow shimmer */
   color: #000000;
   background: linear-gradient(110deg, 
+    #000000 0%, 
     #000000 45%, 
-    #444444 49%,
     #ffffff 50%, 
-    #444444 51%,
-    #000000 55%
+    #000000 55%, 
+    #000000 100%
   );
-  background-size: 300% 100%;
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   
-  /* Only shimmer animation, no movement/bounce */
+  /* Constant linear motion */
   animation: sparkle-sweep 6s linear infinite;
   letter-spacing: -0.05em;
   padding-right: 4px;
