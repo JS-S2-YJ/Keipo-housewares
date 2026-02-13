@@ -2,7 +2,7 @@
 
 import { Globe2, Monitor, Package, History, Mail, ExternalLink, ChevronRight, Languages } from 'lucide-react';
 import { SectionReveal } from '@/components/SectionReveal';
-import CyberClock from '@/components/CyberClock';
+import { CyberClock } from '@/components/CyberClock';
 import { useLanguage } from '@/hooks/useLanguage';
 import { Language } from '@/translations';
 
