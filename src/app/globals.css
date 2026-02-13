@@ -41,7 +41,10 @@ button:focus {
 }
 
 /* --- Animations --- */
-/* Transitions are handled via cubic-bezier for a premium feel */
+@keyframes sparkle-sweep {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
 
 /* --- Components --- */
 
@@ -52,8 +55,21 @@ button:focus {
   cursor: pointer;
   position: relative;
   
-  /* Solid Deep Black */
+  /* Solid Deep Black base with light sweep */
   color: #000000 !important;
+  background: linear-gradient(90deg, 
+    #000000 0%, 
+    #000000 42%, 
+    rgba(255, 255, 255, 0.6) 50%, 
+    #000000 58%, 
+    #000000 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  animation: sparkle-sweep 4s linear infinite;
   letter-spacing: -0.05em;
   
   /* Sharp Apple-style Embossed 3D */
