@@ -63,6 +63,7 @@ button:focus {
   font-weight: 800;
   cursor: pointer;
   position: relative;
+  user-select: none;
   
   /* Initial color for fallback */
   color: #000000;
@@ -106,22 +107,6 @@ button:focus {
     0px 1px 0px #d1d1d1,
     0px 2px 0px #c1c1c1,
     0px 8px 15px rgba(0, 0, 0, 0.1);
-}
-
-.logo-3d:active {
-  transform: none !important;
-  opacity: 1 !important;
-  background: linear-gradient(105deg, 
-    #000000 35%, 
-    #333333 45%,
-    #ffffff 50%, 
-    #333333 55%,
-    #000000 65%
-  ) !important;
-  background-size: 400% 100% !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
 }
 
 /* Hero Title - Deep Black 3D */
