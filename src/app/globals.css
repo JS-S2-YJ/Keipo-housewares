@@ -23,6 +23,48 @@ body {
   width: 100%;
 }
 
+/* 로고 살아있는 효과 애니메이션 */
+@keyframes logo-breathing {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+@keyframes logo-glow-pulse {
+  0%, 100% {
+    text-shadow: 
+      0 1px 0 #ddd, 
+      0 2px 1px rgba(0,0,0,0.1),
+      0 0 8px rgba(0, 102, 204, 0.1);
+  }
+  50% {
+    text-shadow: 
+      0 1px 0 #ddd, 
+      0 2px 1px rgba(0,0,0,0.1),
+      0 0 18px rgba(0, 102, 204, 0.4); /* 글로우 팽창 */
+  }
+}
+
+/* KEIPO 3D 살아있는 로고 */
+.logo-3d {
+  color: var(--apple-black);
+  display: inline-block;
+  font-weight: 900;
+  cursor: pointer;
+  position: relative;
+  animation: logo-breathing 4s ease-in-out infinite, logo-glow-pulse 3s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+.logo-3d:hover {
+  animation-play-state: paused; /* 호버 시에는 직접 컨트롤을 위해 멈춤 */
+  transform: scale(1.05) rotateX(10deg);
+  text-shadow: 
+    0 1px 0 #ddd, 
+    0 2px 0 #ccc, 
+    0 3px 0 #bbb,
+    0 10px 20px rgba(0, 102, 204, 0.3);
+}
+
 /* 3D Glow Hero Title */
 .hero-title-3d-glow {
   font-size: clamp(32px, 10vw, 120px) !important;
@@ -39,20 +81,6 @@ body {
   padding: 0 15px;
   text-shadow: 0 1px 0 #e0e0e0, 0 2px 0 #d0d0d0, 0 3px 1px rgba(0,0,0,0.1);
   filter: drop-shadow(0 8px 15px rgba(0,0,0,0.1));
-}
-
-@media (min-width: 768px) {
-  .hero-title-3d-glow {
-    text-shadow: 0 1px 0 #e0e0e0, 0 2px 0 #d0d0d0, 0 3px 0 #c0c0c0, 0 4px 0 #b0b0b0, 0 5px 0 #a0a0a0, 0 6px 1px rgba(0,0,0,0.1);
-  }
-}
-
-/* KEIPO 3D 로고 */
-.logo-3d {
-  color: var(--apple-black);
-  display: inline-block;
-  font-weight: 900;
-  text-shadow: 0 1px 0 #ddd, 0 2px 1px rgba(0,0,0,0.1);
 }
 
 /* 네비게이션 */
@@ -96,26 +124,10 @@ body {
 }
 .side-drawer.active { right: 0; visibility: visible; box-shadow: -10px 0 40px rgba(0,0,0,0.05); }
 
-/* Grid System - Fixed Overlapping */
-.grid-3 { 
-  display: flex !important; 
-  flex-direction: column !important; 
-  gap: 32px !important; 
-  width: 100% !important; 
-}
-
-@media (min-width: 768px) {
-  .grid-3 {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-}
-
-@media (min-width: 1024px) {
-  .grid-3 {
-    grid-template-columns: repeat(3, 1fr) !important;
-  }
-}
+/* Grid System */
+.grid-3 { display: flex !important; flex-direction: column !important; gap: 32px !important; width: 100% !important; }
+@media (min-width: 768px) { .grid-3 { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; } }
+@media (min-width: 1024px) { .grid-3 { grid-template-columns: repeat(3, 1fr) !important; } }
 
 /* 3D 카드 스타일 */
 .perspective-container { perspective: 2000px; width: 100%; }
