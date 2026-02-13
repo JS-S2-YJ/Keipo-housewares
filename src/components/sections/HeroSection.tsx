@@ -3,6 +3,7 @@
 import { ChevronRight } from 'lucide-react';
 import { SectionReveal } from '@/components/common/SectionReveal';
 import { useLanguage } from '@/hooks/useLanguage';
+import { BASE_PATH } from '@/lib/constants';
 
 export const HeroSection = () => {
   const { t } = useLanguage();
@@ -75,7 +76,7 @@ export const HeroSection = () => {
               position: 'relative'
             }}>
               <img 
-                src="/images/main_logo.png" 
+                src={`${BASE_PATH}/images/main_logo.png`} 
                 alt="KEIPO Housewares" 
                 style={{ 
                   height: 'clamp(80px, 15vh, 160px)', 
