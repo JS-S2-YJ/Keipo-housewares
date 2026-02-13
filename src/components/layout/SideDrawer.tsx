@@ -34,7 +34,11 @@ export const SideDrawer = ({ isOpen, onClose }: SideDrawerProps) => {
   return (
     <>
       <div className={`drawer-overlay ${isOpen ? 'active' : ''}`} onClick={onClose} />
-      <div className={`side-drawer ${isOpen ? 'active' : ''}`}>
+      <div className={`side-drawer ${isOpen ? 'active' : ''}`} style={{
+        backgroundColor: 'rgba(255, 255, 255, 0.3)',
+        backdropFilter: 'blur(80px)',
+        WebkitBackdropFilter: 'blur(80px)',
+      }}>
         <button onClick={onClose} style={{ position: 'absolute', top: '16px', right: '16px', border: 'none', background: 'none', cursor: 'pointer', color: '#86868b' }}>
           <X size={28} />
         </button>
