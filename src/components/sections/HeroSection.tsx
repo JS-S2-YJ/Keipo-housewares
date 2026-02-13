@@ -92,36 +92,38 @@ export const HeroSection = () => {
             
             {/* Main Hero Typography */}
             <h1 className="hero-title-3d-glow" style={{ 
-              marginBottom: '24px',
+              marginBottom: '32px',
               width: '100%',
-              maxWidth: '1200px',
+              maxWidth: '1400px',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              lineHeight: '0.9',
+              lineHeight: '0.85',
               whiteSpace: 'normal'
             }}>
               <span style={{ display: 'block' }}>KEIPO</span>
               <span style={{ 
                 display: 'block', 
-                fontSize: '0.55em', 
-                opacity: 0.9, 
-                marginTop: '8px',
-                letterSpacing: '0.05em'
+                fontSize: '0.45em', 
+                opacity: 0.8, 
+                marginTop: '12px',
+                letterSpacing: '0.1em',
+                fontWeight: 700
               }}>HOUSEWARES</span>
             </h1>
             
             {/* Refined Slogan */}
             <p style={{ 
-              fontSize: 'clamp(18px, 3.5vw, 26px)', 
+              fontSize: 'clamp(16px, 3vw, 22px)', 
               color: '#424245', 
               fontWeight: '500', 
-              marginTop: '8px', 
-              marginBottom: '56px', 
-              maxWidth: '800px', 
+              marginTop: '4px', 
+              marginBottom: '48px', 
+              maxWidth: '700px', 
               lineHeight: '1.4', 
-              letterSpacing: '-0.02em',
-              wordBreak: 'keep-all'
+              letterSpacing: '-0.01em',
+              wordBreak: 'keep-all',
+              opacity: 0.9
             }}>
               {t('slogan')}
             </p>
@@ -130,28 +132,28 @@ export const HeroSection = () => {
             <div style={{ 
               display: 'flex', 
               justifyContent: 'center', 
-              gap: '24px', 
+              gap: '16px', 
               flexWrap: 'wrap', 
               width: '100%' 
             }}>
               <button className="apple-button-primary" style={{ 
-                padding: '18px 40px', 
-                fontSize: '18px', 
-                borderRadius: '20px', 
-                minWidth: '180px' 
+                padding: '12px 28px', 
+                fontSize: '16px', 
+                borderRadius: '14px', 
+                minWidth: '140px' 
               }}>
                 {t('experience')}
               </button>
               <button className="apple-button-secondary" style={{ 
-                padding: '18px 40px', 
-                fontSize: '18px',
-                borderRadius: '20px',
-                minWidth: '180px',
+                padding: '12px 28px', 
+                fontSize: '16px',
+                borderRadius: '14px',
+                minWidth: '140px',
                 backgroundColor: 'rgba(0, 0, 0, 0.02)',
                 backdropFilter: 'blur(10px)',
                 WebkitBackdropFilter: 'blur(10px)'
               }}>
-                {t('explore')} <ChevronRight size={20} strokeWidth={2.5} style={{ marginLeft: '4px' }} />
+                {t('explore')} <ChevronRight size={18} strokeWidth={2.5} style={{ marginLeft: '2px' }} />
               </button>
             </div>
 
