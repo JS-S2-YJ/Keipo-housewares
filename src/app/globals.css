@@ -52,15 +52,15 @@ button:focus {
   cursor: pointer;
   position: relative;
   
-  /* Apple-style Premium Appearance: Deep black */
-  color: var(--apple-black) !important;
+  /* Solid Deep Black */
+  color: #000000 !important;
   letter-spacing: -0.05em;
   
-  /* Subtle 3D Depth */
+  /* Sharp Apple-style Embossed 3D */
   text-shadow: 
-    0.5px 0.5px 0px rgba(255, 255, 255, 0.5),
-    -0.5px -0.5px 0px rgba(0,0,0,0.05),
-    0 1px 2px rgba(0,0,0,0.1);
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.8),
+    -0.5px -0.5px 0px rgba(0, 0, 0, 0.1),
+    0 1px 2px rgba(0, 0, 0, 0.2);
   
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -68,9 +68,12 @@ button:focus {
 .logo-3d:hover {
   transform: translateY(-1px);
   color: #000000 !important;
+  text-shadow: 
+    0.5px 0.5px 0px #ffffff,
+    0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Hero Title - Realistic Apple-style 3D */
+/* Hero Title - Deep Black 3D */
 .hero-title-3d-glow {
   font-size: clamp(48px, 12vw, 140px) !important;
   font-weight: 900 !important;
@@ -84,18 +87,18 @@ button:focus {
   overflow-wrap: break-word;
   padding: 0 15px;
   
-  /* Solid fallback color */
-  color: #1d1d1f !important;
+  /* Solid Black - Removed all silver/gray gradients */
+  color: #000000 !important;
   
-  /* Realistic Embossed 3D */
+  /* Strong 3D Emboss: Clear white highlight for depth */
   text-shadow: 
-    1px 1px 0px rgba(255, 255, 255, 0.6),
-    0 2px 4px rgba(0,0,0,0.1);
+    1px 1px 0px rgba(255, 255, 255, 0.7),
+    2px 2px 0px rgba(0, 0, 0, 0.05),
+    0 4px 8px rgba(0, 0, 0, 0.15);
     
-  background: linear-gradient(180deg, #1d1d1f 0%, #434344 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  /* Removed -webkit-background-clip: text to ensure solid black color */
+  background: none !important;
+  -webkit-text-fill-color: initial !important;
   
   transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: default;
@@ -104,8 +107,8 @@ button:focus {
 .hero-title-3d-glow:hover {
   transform: scale(1.01);
   text-shadow: 
-    1px 1px 0px #ffffff,
-    0 8px 16px rgba(0,0,0,0.12);
+    1.5px 1.5px 0px #ffffff,
+    0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
 /* --- Buttons (Apple System Blue) --- */
@@ -153,12 +156,12 @@ button:focus {
 /* Navbar Glassmorphism */
 .nav-glass {
   position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; width: 100% !important; z-index: 100 !important;
-  background: rgba(255, 255, 255, 0.88) !important; 
-  backdrop-filter: saturate(180%) blur(32px) !important;
-  -webkit-backdrop-filter: saturate(180%) blur(32px) !important;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important; 
-  padding: 8px 12px !important; 
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03) !important;
+  background: rgba(255, 255, 255, 0.72) !important; 
+  backdrop-filter: saturate(180%) blur(20px) !important;
+  -webkit-backdrop-filter: saturate(180%) blur(20px) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important; 
+  padding: 12px 0 !important; 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02) !important;
 }
 
 .max-container {
@@ -286,6 +289,33 @@ button:focus {
   transform: translateY(-8px);
   border-color: rgba(0, 102, 204, 0.1) !important;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Logo */
+.logo-3d {
+  display: inline-block;
+  font-weight: 800;
+  cursor: pointer;
+  position: relative;
+  
+  /* Solid Deep Black */
+  color: #000000 !important;
+  letter-spacing: -0.05em;
+  
+  /* Sharp Apple-style Embossed 3D */
+  text-shadow: 
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.9),
+    -0.5px -0.5px 0px rgba(0, 0, 0, 0.05);
+  
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.logo-3d:hover {
+  transform: translateY(-1px);
+  color: #000000 !important;
+  text-shadow: 
+    0.5px 0.5px 0px #ffffff,
+    0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* Grid System */
