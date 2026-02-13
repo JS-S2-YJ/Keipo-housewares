@@ -23,7 +23,7 @@ body {
   width: 100%;
 }
 
-/* 3D Glow Hero Title - 모바일에서 그림자 깊이 조절 */
+/* 3D Glow Hero Title */
 .hero-title-3d-glow {
   font-size: clamp(32px, 10vw, 120px) !important;
   font-weight: 900 !important;
@@ -37,11 +37,7 @@ body {
   word-break: keep-all;
   overflow-wrap: break-word;
   padding: 0 15px;
-  /* 모바일에서는 그림자를 조금 더 얇게 해서 짤림 방지 */
-  text-shadow: 
-    0 1px 0 #e0e0e0,
-    0 2px 0 #d0d0d0,
-    0 3px 1px rgba(0,0,0,0.1);
+  text-shadow: 0 1px 0 #e0e0e0, 0 2px 0 #d0d0d0, 0 3px 1px rgba(0,0,0,0.1);
   filter: drop-shadow(0 8px 15px rgba(0,0,0,0.1));
 }
 
@@ -61,43 +57,22 @@ body {
 
 /* 네비게이션 */
 .nav-glass {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  width: 100% !important;
-  z-index: 100 !important;
-  background: rgba(255, 255, 255, 0.8) !important;
-  backdrop-filter: saturate(180%) blur(20px) !important;
+  position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; width: 100% !important; z-index: 100 !important;
+  background: rgba(255, 255, 255, 0.8) !important; backdrop-filter: saturate(180%) blur(20px) !important;
   -webkit-backdrop-filter: saturate(180%) blur(20px) !important;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
-  padding: 8px 12px !important;
-  overflow: visible !important; /* 그림자가 안 짤리게 */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important; padding: 8px 12px !important; overflow: visible !important;
 }
 
 .max-container {
-  max-width: 1200px !important;
-  margin: 0 auto !important;
-  display: flex !important;
-  width: 100% !important;
-  align-items: center !important;
+  max-width: 1200px !important; margin: 0 auto !important; display: flex !important; width: 100% !important; align-items: center !important;
 }
 
-/* 3D 메뉴 버튼 - 모바일 사이즈 최적화 */
+/* 3D 메뉴 버튼 */
 .menu-button-3d {
-  width: 36px;
-  height: 36px;
-  background: white;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 3.5px;
-  cursor: pointer;
-  border: 1px solid rgba(0,0,0,0.05);
-  box-shadow: 0 3px 5px rgba(0,0,0,0.03), inset 0 -1.5px 0 rgba(0,0,0,0.05);
-  flex-shrink: 0;
+  width: 36px; height: 36px; background: white; border-radius: 8px;
+  display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 3.5px;
+  cursor: pointer; border: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 3px 5px rgba(0,0,0,0.03), inset 0 -1.5px 0 rgba(0,0,0,0.05); flex-shrink: 0;
 }
 .menu-bar { width: 14px; height: 1.8px; background: var(--apple-black); border-radius: 2px; }
 
@@ -121,6 +96,27 @@ body {
 }
 .side-drawer.active { right: 0; visibility: visible; box-shadow: -10px 0 40px rgba(0,0,0,0.05); }
 
+/* Grid System - Fixed Overlapping */
+.grid-3 { 
+  display: flex !important; 
+  flex-direction: column !important; 
+  gap: 32px !important; 
+  width: 100% !important; 
+}
+
+@media (min-width: 768px) {
+  .grid-3 {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-3 {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
 /* 3D 카드 스타일 */
 .perspective-container { perspective: 2000px; width: 100%; }
 .three-d-card {
@@ -134,7 +130,8 @@ body {
 
 .apple-card {
   background-color: var(--apple-bg) !important; border-radius: 24px !important; padding: 28px !important;
-  display: flex !important; flex-direction: column !important; justify-content: space-between !important; height: 100% !important;
+  display: flex !important; flex-direction: column !important; justify-content: space-between !important;
+  height: 100% !important; min-height: 250px !important;
 }
 
 .apple-button-primary {
@@ -143,10 +140,6 @@ body {
   font-weight: 600 !important; cursor: pointer !important; transition: all 0.2s ease !important;
   display: inline-flex !important; align-items: center;
 }
-
-.grid-3 { display: grid !important; grid-template-columns: 1fr !important; gap: 32px !important; width: 100% !important; }
-@media (min-width: 768px) { .grid-3 { grid-template-columns: repeat(2, 1fr) !important; } }
-@media (min-width: 1024px) { .grid-3 { grid-template-columns: repeat(3, 1fr) !important; } }
 
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
