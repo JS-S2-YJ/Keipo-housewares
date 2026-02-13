@@ -20,9 +20,9 @@ export const Navbar = ({ onMenuClick }: NavbarProps) => {
 
   return (
     <nav className="nav-glass" style={{
-      backgroundColor: 'rgba(255, 255, 255, 0.3)',
-      backdropFilter: 'blur(80px)',
-      WebkitBackdropFilter: 'blur(80px)',
+      backgroundColor: 'rgba(255, 255, 255, 0.72)',
+      backdropFilter: 'blur(20px)',
+      WebkitBackdropFilter: 'blur(20px)',
     }}>
       <div className="max-container" style={{ 
         justifyContent: 'space-between', 
