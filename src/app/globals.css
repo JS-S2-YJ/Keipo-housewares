@@ -45,7 +45,7 @@ button:focus {
 /* --- Animations --- */
 @keyframes sparkle-sweep {
   0% { background-position: 100% center; }
-  30%, 100% { background-position: 0% center; }
+  100% { background-position: 0% center; }
 }
 
 /* --- Components --- */
@@ -58,13 +58,13 @@ button:focus {
   position: relative;
   user-select: none;
   
-  /* Solid Black base with a sharp, premium shimmer */
+  /* Solid Black base with a clean shimmer */
   color: #000000;
   background: linear-gradient(90deg, 
     #000000 0%, 
-    #000000 49%, 
+    #000000 45%, 
     #ffffff 50%, 
-    #000000 51%, 
+    #000000 55%, 
     #000000 100%
   );
   background-size: 200% 100%;
@@ -73,8 +73,8 @@ button:focus {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   
-  /* Precise linear motion with a pause */
-  animation: sparkle-sweep 5s ease-in-out infinite;
+  /* Constant 6-second sweep */
+  animation: sparkle-sweep 6s linear infinite;
   letter-spacing: -0.05em;
   padding-right: 4px;
   
@@ -83,8 +83,13 @@ button:focus {
     0.5px 0.5px 0px rgba(255, 255, 255, 0.5),
     0 1px 2px rgba(0, 0, 0, 0.1);
   
-  /* Remove all transitions to prevent interference */
+  /* Disable all transitions and states */
   transition: none !important;
+}
+
+.logo-3d:hover, .logo-3d:active {
+  transform: none !important;
+  opacity: 1 !important;
 }
 
 /* Hero Title - Deep Black 3D */
