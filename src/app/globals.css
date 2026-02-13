@@ -26,6 +26,8 @@ body {
 
 /* 프리미엄 클릭 피드백 */
 button:active, 
+a:active,
+.side-drawer-link:active,
 .menu-button-3d:active, 
 .apple-card:active,
 .apple-button-primary:active,
