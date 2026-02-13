@@ -119,7 +119,7 @@ export default function Home() {
               <div className="apple-card" style={{ height: 'auto', minHeight: '300px' }}>
                 <Anchor size={32} color="#0066cc" style={{ marginBottom: '24px' }} />
                 <h3 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '16px' }}>Primary Hubs</h3>
-                <div style={{ spaceY: '12px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #e5e5e7', paddingBottom: '12px', marginBottom: '12px' }}>
                     <span style={{ color: '#86868b' }}>Origin</span>
                     <span style={{ fontWeight: '600' }}>South Korea / China</span>
