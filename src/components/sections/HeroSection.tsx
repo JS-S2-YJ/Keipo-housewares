@@ -69,27 +69,22 @@ export const HeroSection = () => {
       }}>
         <SectionReveal>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            {/* Main Hero Typography */}
-            <h1 className="hero-title-3d-glow" style={{ 
+            {/* Main Hero Logo */}
+            <div style={{ 
               marginBottom: 'clamp(32px, 5vh, 60px)',
-              width: '100%',
-              maxWidth: '1600px',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              lineHeight: '0.8',
-              whiteSpace: 'normal'
+              position: 'relative'
             }}>
-              <span style={{ display: 'block' }}>KEIPO</span>
-              <span style={{ 
-                display: 'block', 
-                fontSize: 'clamp(0.35em, 5vw, 0.42em)', 
-                opacity: 0.85, 
-                marginTop: 'clamp(8px, 2vw, 20px)',
-                letterSpacing: '0.12em',
-                fontWeight: 700
-              }}>HOUSEWARES</span>
-            </h1>
+              <img 
+                src="/images/main_logo.png" 
+                alt="KEIPO Housewares" 
+                style={{ 
+                  height: 'clamp(80px, 15vh, 160px)', 
+                  width: 'auto',
+                  objectFit: 'contain',
+                  filter: 'drop-shadow(0 15px 35px rgba(0, 102, 204, 0.12))'
+                }} 
+              />
+            </div>
             
             {/* Refined Slogan */}
             <p style={{ 
