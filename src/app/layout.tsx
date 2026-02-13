@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import "./globals.css";
 import { LanguageProvider } from "@/hooks/useLanguage";
 import { ThemeProvider } from "next-themes";
+/* globals.css를 다른 컴포넌트보다 먼저 임포트하여 스타일 우선순위 확보 */
+import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "KEIPO Housewares | Global Trading Portfolio",
-  description: "Futuristic housewares global trading company with 20 years of expertise.",
+  title: "KEIPO Housewares | Global Trading",
+  description: "Experience the next generation of global trading with KEIPO Housewares.",
 };
 
 export default function RootLayout({
@@ -15,8 +16,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="antialiased scanline cyber-mesh min-h-screen">
-        <ThemeProvider attribute="class" defaultTheme="dark">
+      <body className="antialiased">
+        <ThemeProvider 
+          attribute="class" 
+          defaultTheme="light" 
+          enableSystem={false}
+          disableTransitionOnChange
+        >
           <LanguageProvider>
             {children}
           </LanguageProvider>
