@@ -69,45 +69,24 @@ export const HeroSection = () => {
       }}>
         <SectionReveal>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            {/* Minimal Badge */}
-            <div style={{ 
-              background: 'rgba(0, 102, 204, 0.05)', 
-              padding: '6px 16px', 
-              borderRadius: '100px', 
-              marginBottom: '32px',
-              border: '1px solid rgba(0, 102, 204, 0.1)',
-              backdropFilter: 'blur(10px)',
-              WebkitBackdropFilter: 'blur(10px)'
-            }}>
-              <span style={{ 
-                fontSize: '12px', 
-                fontWeight: '700', 
-                letterSpacing: '0.15em', 
-                color: '#0066cc', 
-                textTransform: 'uppercase' 
-              }}>
-                {t('premiumQuality')}
-              </span>
-            </div>
-            
             {/* Main Hero Typography */}
             <h1 className="hero-title-3d-glow" style={{ 
-              marginBottom: '32px',
+              marginBottom: 'clamp(32px, 5vh, 60px)',
               width: '100%',
-              maxWidth: '1400px',
+              maxWidth: '1600px',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              lineHeight: '0.85',
+              lineHeight: '0.8',
               whiteSpace: 'normal'
             }}>
               <span style={{ display: 'block' }}>KEIPO</span>
               <span style={{ 
                 display: 'block', 
-                fontSize: '0.45em', 
-                opacity: 0.8, 
-                marginTop: '12px',
-                letterSpacing: '0.1em',
+                fontSize: 'clamp(0.35em, 5vw, 0.42em)', 
+                opacity: 0.85, 
+                marginTop: 'clamp(8px, 2vw, 20px)',
+                letterSpacing: '0.12em',
                 fontWeight: 700
               }}>HOUSEWARES</span>
             </h1>
