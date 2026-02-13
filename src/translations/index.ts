@@ -10,7 +10,7 @@ export const translations = {
     location: "Seoul, South Korea",
     categories: "Product Categories",
     contact: "Contact HQ",
-    experience: "Excellence Excellence",
+    experience: "Experience Excellence",
     explore: "Explore Future",
     shipments: "Shipments Tracked",
     partners: "Trade Partners",
