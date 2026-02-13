@@ -1,0 +1,29 @@
+'use client';
+
+import { ChevronRight } from 'lucide-react';
+import { SectionReveal } from '@/components/common/SectionReveal';
+
+interface HeroSectionProps {
+  t: (key: string) => string;
+}
+
+export const HeroSection = ({ t }: HeroSectionProps) => {
+  return (
+    <section className="section-padding" style={{ textAlign: 'center', paddingTop: '150px', position: 'relative', width: '100%' }}>
+      <div style={{ position: 'absolute', top: '25%', left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: '600px', height: '300px', background: 'radial-gradient(circle, rgba(0, 102, 204, 0.04) 0%, transparent 70%)', filter: 'blur(60px)', zIndex: 0 }} />
+      
+      <SectionReveal style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', zIndex: 1, width: '100%' }}>
+        <h1 className="hero-title-3d-glow">
+          {t('title')}
+        </h1>
+        <p style={{ fontSize: 'clamp(16px, 4vw, 24px)', color: '#86868b', fontWeight: '500', marginTop: '32px', marginBottom: '32px', maxWidth: '800px', margin: '32px auto', lineHeight: '1.4', padding: '0 20px' }}>
+          {t('slogan')}
+        </p>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', flexWrap: 'wrap' }}>
+          <button className="apple-button-primary" style={{ padding: '12px 24px' }}>{t('experience')}</button>
+          <button className="apple-button-secondary" style={{ color: '#0066cc', fontWeight: '700', cursor: 'pointer', border: 'none', background: 'none' }}>{t('explore')} <ChevronRight size={18} /></button>
+        </div>
+      </SectionReveal>
+    </section>
+  );
+};
