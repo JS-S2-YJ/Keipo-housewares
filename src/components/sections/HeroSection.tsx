@@ -94,9 +94,21 @@ export const HeroSection = () => {
             <h1 className="hero-title-3d-glow" style={{ 
               marginBottom: '24px',
               width: '100%',
-              maxWidth: '1200px'
+              maxWidth: '1200px',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              lineHeight: '0.9',
+              whiteSpace: 'normal'
             }}>
-              {t('brandLabel')}
+              <span style={{ display: 'block' }}>KEIPO</span>
+              <span style={{ 
+                display: 'block', 
+                fontSize: '0.55em', 
+                opacity: 0.9, 
+                marginTop: '8px',
+                letterSpacing: '0.05em'
+              }}>HOUSEWARES</span>
             </h1>
             
             {/* Refined Slogan */}
@@ -166,4 +178,3 @@ export const HeroSection = () => {
     </section>
   );
 };
-
