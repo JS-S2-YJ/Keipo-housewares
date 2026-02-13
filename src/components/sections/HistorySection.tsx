@@ -25,12 +25,12 @@ export const HistorySection = ({ t, yearsActiveCount, historyText, sinceText }: 
               </p>
               <div style={{ display: 'flex', gap: '32px' }}>
                 <div>
-                  <div style={{ fontSize: '32px', fontWeight: 'bold' }}>24+</div>
-                  <div style={{ fontSize: '9px', color: '#86868b', fontWeight: '800', marginTop: '4px', letterSpacing: '0.05em' }}>{t('verifiedShipments')}</div>
+                  <div className="stat-value">24+</div>
+                  <div style={{ fontSize: '10px', color: '#86868b', fontWeight: '800', marginTop: '4px', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{t('verifiedShipments')}</div>
                 </div>
                 <div>
-                  <div style={{ fontSize: '32px', fontWeight: 'bold' }}>{yearsActiveCount}+</div>
-                  <div style={{ fontSize: '9px', color: '#86868b', fontWeight: '800', marginTop: '4px', letterSpacing: '0.05em' }}>{t('yearsActive')}</div>
+                  <div className="stat-value">{yearsActiveCount}+</div>
+                  <div style={{ fontSize: '10px', color: '#86868b', fontWeight: '800', marginTop: '4px', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{t('yearsActive')}</div>
                 </div>
               </div>
             </div>

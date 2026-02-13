@@ -33,8 +33,19 @@ export const CategorySection = ({ t }: CategorySectionProps) => {
                   <h3 style={{ fontSize: '22px', fontWeight: 'bold', marginBottom: '10px', letterSpacing: '-0.02em' }}>{cat.title}</h3>
                   <p style={{ fontSize: '15px', color: '#86868b', lineHeight: '1.5' }}>{cat.desc}</p>
                 </div>
-                <div style={{ width: '40px', height: '40px', backgroundColor: 'white', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '20px' }}>
-                  <ArrowRight size={16} />
+                <div style={{ 
+                  width: '44px', 
+                  height: '44px', 
+                  backgroundColor: '#f5f5f7', 
+                  borderRadius: '50%', 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  justify-content: 'center', 
+                  marginTop: '24px',
+                  border: '1px solid rgba(0,0,0,0.03)',
+                  transition: 'all 0.3s ease'
+                }}>
+                  <ArrowRight size={18} color="#0066cc" />
                 </div>
               </div>
             </SectionReveal>

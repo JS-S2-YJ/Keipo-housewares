@@ -27,21 +27,31 @@ export const Navbar = ({ lang, onMenuClick, t }: NavbarProps) => {
           <button 
             onClick={onMenuClick}
             style={{
-              backgroundColor: '#f5faff',
+              backgroundColor: 'rgba(0, 102, 204, 0.04)',
               color: '#0066cc',
-              border: '1px solid #0066cc15',
-              padding: '5px 8px',
-              borderRadius: '8px',
-              fontSize: '10px',
-              fontWeight: '800',
+              border: '1px solid rgba(0, 102, 204, 0.1)',
+              padding: '6px 12px',
+              borderRadius: '20px',
+              fontSize: '11px',
+              fontWeight: '700',
               display: 'flex',
               alignItems: 'center',
-              gap: '4px',
+              gap: '6px',
               cursor: 'pointer',
-              flexShrink: 0
+              flexShrink: 0,
+              transition: 'all 0.2s ease',
+              backdropFilter: 'blur(10px)'
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.backgroundColor = 'rgba(0, 102, 204, 0.08)';
+              e.currentTarget.style.borderColor = 'rgba(0, 102, 204, 0.2)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.backgroundColor = 'rgba(0, 102, 204, 0.04)';
+              e.currentTarget.style.borderColor = 'rgba(0, 102, 204, 0.1)';
             }}
           >
-            <Globe2 size={11} /> {lang.toUpperCase()}
+            <Globe2 size={13} strokeWidth={2.5} /> {lang.toUpperCase()}
           </button>
 
           <div className="menu-button-3d" onClick={onMenuClick}>
