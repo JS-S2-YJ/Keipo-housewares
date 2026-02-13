@@ -76,14 +76,14 @@ export const HeroSection = () => {
               position: 'relative'
             }}>
               <img 
-                src={`${BASE_PATH}/images/main_logo.png`} 
+                src={`${BASE_PATH}/images/main_logo.png?v=${Date.now()}`} 
                 alt="KEIPO Housewares" 
                 style={{ 
-                  height: 'clamp(140px, 25vh, 280px)', 
+                  height: 'clamp(140px, 30vh, 400px)', 
                   width: 'auto',
                   objectFit: 'contain',
-                  borderRadius: '24px',
-                  filter: 'drop-shadow(0 20px 45px rgba(0, 102, 204, 0.15))'
+                  borderRadius: '32px',
+                  filter: 'drop-shadow(0 25px 50px rgba(0, 102, 204, 0.18))'
                 }} 
               />
             </div>
