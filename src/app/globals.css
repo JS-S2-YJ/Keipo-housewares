@@ -55,28 +55,28 @@ button:focus {
   cursor: pointer;
   position: relative;
   
-  /* Deep Solid Black with a very narrow light sweep */
+  /* True Solid Black - No transparency, no gray base */
   color: #000000 !important;
   background: linear-gradient(90deg, 
     #000000 0%, 
-    #000000 48%, 
-    rgba(255, 255, 255, 0.8) 50%, 
-    #000000 52%, 
+    #000000 49.5%, 
+    rgba(255, 255, 255, 0.9) 50%, 
+    #000000 50.5%, 
     #000000 100%
   );
-  background-size: 200% auto;
+  background-size: 400% auto; /* Increased size to make the light sliver move faster/look smaller */
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   
-  animation: sparkle-sweep 5s cubic-bezier(0.32, 0, 0.67, 0) infinite;
+  animation: sparkle-sweep 6s cubic-bezier(0.32, 0, 0.67, 0) infinite;
   letter-spacing: -0.05em;
   
-  /* Sharp Apple-style Embossed 3D: Darker contrast */
+  /* Sharp Apple-style Embossed 3D: Dark shadows for light backgrounds */
   text-shadow: 
-    0.5px 0.5px 0px rgba(255, 255, 255, 1),
-    -0.5px -0.5px 0px rgba(0, 0, 0, 0.1),
-    0 2px 4px rgba(0, 0, 0, 0.1);
+    0.5px 0.5px 0px #ffffff,
+    -0.5px -0.5px 0px rgba(0, 0, 0, 0.05),
+    0 1px 3px rgba(0, 0, 0, 0.1);
   
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
