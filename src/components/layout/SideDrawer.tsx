@@ -34,7 +34,7 @@ export const SideDrawer = ({ isOpen, onClose, lang, setLang, t }: SideDrawerProp
           <span style={{ fontSize: '11px', fontWeight: '800', color: '#0066cc', letterSpacing: '0.15em' }}>NAVIGATE</span>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', fontSize: '22px', fontWeight: '700' }}>
             <a href="#history" onClick={onClose} style={{ textDecoration: 'none', color: '#1d1d1f' }}>{t('navHistory')}</a>
-            <a href="#logistics" onClick={onClose} style={{ textDecoration: 'none', color: '#1d1d1f' }}>Logistics</a>
+            <a href="#logistics" onClick={onClose} style={{ textDecoration: 'none', color: '#1d1d1f' }}>{t('navLogistics')}</a>
             <a href="#categories" onClick={onClose} style={{ textDecoration: 'none', color: '#1d1d1f' }}>{t('navProducts')}</a>
           </div>
         </div>
