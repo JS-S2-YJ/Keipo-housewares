@@ -28,12 +28,12 @@ export default function Home() {
     <main className="relative flex flex-col min-h-screen">
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 glass border-b border-white/5 px-6 py-4">
-        <div className="max-w-6xl mx-auto flex justify-between items-center">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-cyber-cyan/20 border border-cyber-cyan flex items-center justify-center">
+        <div className="max-w-6xl mx-auto flex justify-between items-center" style={{ display: 'flex', justifyContent: 'between', alignItems: 'center' }}>
+          <div className="flex items-center gap-2" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <div className="w-8 h-8 bg-cyber-cyan/20 border border-cyber-cyan flex items-center justify-center" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minWidth: '32px', minHeight: '32px' }}>
               <span className="font-black text-cyber-cyan text-xs">K</span>
             </div>
-            <span className="font-bold tracking-tighter text-lg neon-text-cyan">KEIPO</span>
+            <span className="font-bold tracking-tighter text-lg neon-text-cyan" style={{ whiteSpace: 'nowrap' }}>KEIPO</span>
           </div>
           
           <div className="flex items-center gap-8">
@@ -63,24 +63,24 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative h-screen flex flex-col items-center justify-center text-center px-6">
+      <section className="relative h-screen flex flex-col items-center justify-center text-center px-6" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyber-cyan/10 blur-[120px] rounded-full" />
           <div className="absolute top-1/4 left-1/3 w-[400px] h-[400px] bg-cyber-purple/10 blur-[100px] rounded-full" />
         </div>
         
-        <SectionReveal className="z-10 max-w-4xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-cyber-cyan/10 border border-cyber-cyan/30 text-cyber-cyan text-[10px] tracking-[0.2em] uppercase mb-8">
+        <SectionReveal className="z-10 max-w-4xl" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-cyber-cyan/10 border border-cyber-cyan/30 text-cyber-cyan text-[10px] tracking-[0.2em] uppercase mb-8" style={{ display: 'inline-flex', alignItems: 'center' }}>
             <Monitor size={12} />
             Transmission Established // 2006-2026
           </div>
-          <h1 className="text-6xl md:text-8xl font-black tracking-tighter mb-6 bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent break-keep">
+          <h1 className="text-6xl md:text-8xl font-black tracking-tighter mb-6 bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent break-keep text-center">
             {t('title').toUpperCase()}
           </h1>
-          <p className="text-xl md:text-2xl font-light text-white/60 tracking-widest mb-12 max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl font-light text-white/60 tracking-widest mb-12 max-w-2xl mx-auto text-center" style={{ margin: '0 auto 48px' }}>
             {t('slogan')}
           </p>
-          <div className="flex gap-4 justify-center">
+          <div className="flex gap-4 justify-center" style={{ display: 'flex', justifyContent: 'center', gap: '16px' }}>
             <button className="px-8 py-4 bg-cyber-cyan text-black font-bold tracking-tighter hover:bg-white transition-colors flex items-center gap-2 group">
               {t('explore').toUpperCase()}
               <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
