@@ -33,9 +33,9 @@ export default function Home() {
           <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
             <span style={{ fontSize: '20px', fontWeight: 'bold', letterSpacing: '-0.03em' }}>KEIPO</span>
             <div className="hidden md:flex" style={{ display: 'flex', gap: '24px', fontSize: '13px', fontWeight: '500', color: '#86868b' }}>
-              <a href="#history" style={{ textDecoration: 'none', color: 'inherit' }}>History</a>
+              <a href="#history" style={{ textDecoration: 'none', color: 'inherit' }}>{t('history').split(' ')[0]}</a>
               <a href="#logistics" style={{ textDecoration: 'none', color: 'inherit' }}>Logistics</a>
-              <a href="#categories" style={{ textDecoration: 'none', color: 'inherit' }}>Products</a>
+              <a href="#categories" style={{ textDecoration: 'none', color: 'inherit' }}>{t('categories').split(' ')[0]}</a>
             </div>
           </div>
           
@@ -76,11 +76,41 @@ export default function Home() {
         </SectionReveal>
       </section>
 
-      {/* Logistics Section - 3D Grid Implementation */}
+      {/* History Section */}
+      <section id="history" className="section-padding" style={{ backgroundColor: '#f5f5f7' }}>
+        <div className="max-container" style={{ display: 'flex', flexDirection: 'column', gap: '60px' }}>
+          <div className="grid-stack" style={{ alignItems: 'center' }}>
+            <SectionReveal>
+              <span style={{ color: '#0066cc', fontWeight: '700', fontSize: '12px', letterSpacing: '0.12em', display: 'block', marginBottom: '16px' }}>{t('since').toUpperCase()}</span>
+              <h2 className="section-title" style={{ marginBottom: '24px' }}>{t('history')}</h2>
+              <p style={{ fontSize: '19px', lineHeight: '1.5', color: '#86868b', marginBottom: '32px', fontWeight: '500' }}>
+                {t('historyDesc')}
+              </p>
+              <div style={{ display: 'flex', gap: '40px' }}>
+                <div>
+                  <div style={{ fontSize: '40px', fontWeight: 'bold' }}>24+</div>
+                  <div style={{ fontSize: '10px', color: '#86868b', fontWeight: '800', marginTop: '4px', letterSpacing: '0.05em' }}>{t('verifiedShipments')}</div>
+                </div>
+                <div>
+                  <div style={{ fontSize: '40px', fontWeight: 'bold' }}>17+</div>
+                  <div style={{ fontSize: '10px', color: '#86868b', fontWeight: '800', marginTop: '4px', letterSpacing: '0.05em' }}>{t('yearsActive')}</div>
+                </div>
+              </div>
+            </SectionReveal>
+            <SectionReveal delay={0.2}>
+              <div style={{ backgroundColor: 'white', borderRadius: '40px', padding: '15% 10%', textAlign: 'center', boxShadow: '0 20px 60px rgba(0,0,0,0.03)' }}>
+                <Globe2 size={120} color="#f5f5f7" />
+              </div>
+            </SectionReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Global Reach Section */}
       <section id="logistics" className="section-padding" style={{ backgroundColor: '#fbfbfd' }}>
         <div className="max-container" style={{ flexDirection: 'column' }}>
           <SectionReveal style={{ marginBottom: '64px', textAlign: 'center' }}>
-            <span style={{ color: '#0066cc', fontWeight: '700', fontSize: '12px', letterSpacing: '0.12em', display: 'block', marginBottom: '16px' }}>CORE TRADE ROUTES</span>
+            <span style={{ color: '#0066cc', fontWeight: '700', fontSize: '12px', letterSpacing: '0.12em', display: 'block', marginBottom: '16px' }}>{t('tradeInsights')}</span>
             <h2 style={{ fontSize: 'clamp(32px, 8vw, 56px)', fontWeight: '700', letterSpacing: '-0.02em' }}>{t('mainRoutes')}</h2>
           </SectionReveal>
 
@@ -90,14 +120,14 @@ export default function Home() {
                 <div className="three-d-card" style={{ padding: '48px', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                   <div>
                     <Anchor size={32} color="#0066cc" style={{ marginBottom: '24px' }} />
-                    <h3 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '24px' }}>Primary Hubs</h3>
+                    <h3 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '24px' }}>{t('primaryHubs')}</h3>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #f2f2f2', paddingBottom: '12px' }}>
-                        <span style={{ color: '#86868b', fontSize: '15px' }}>Origin</span>
-                        <span style={{ fontWeight: '600', fontSize: '15px' }}>South Korea / China</span>
+                        <span style={{ color: '#86868b', fontSize: '15px' }}>{t('origin')}</span>
+                        <span style={{ fontWeight: '600', fontSize: '15px' }}>KR / CN</span>
                       </div>
                       <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #f2f2f2', paddingBottom: '12px' }}>
-                        <span style={{ color: '#86868b', fontSize: '15px' }}>Destination</span>
+                        <span style={{ color: '#86868b', fontSize: '15px' }}>{t('destination')}</span>
                         <span style={{ fontWeight: '600', fontSize: '15px' }}>USA (CT, CA)</span>
                       </div>
                     </div>
@@ -109,13 +139,13 @@ export default function Home() {
                 <div className="three-d-card" style={{ padding: '48px', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                   <div>
                     <TrendingUp size={32} color="#0066cc" style={{ marginBottom: '24px' }} />
-                    <h3 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '16px' }}>Trade Velocity</h3>
+                    <h3 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '16px' }}>{t('tradeVelocity')}</h3>
                     <div style={{ display: 'flex', alignItems: 'flex-end', gap: '8px', height: '100px', marginTop: '24px' }}>
                       {[40, 70, 45, 90, 65, 80, 100].map((h, i) => (
                         <div key={i} style={{ flex: 1, backgroundColor: i === 6 ? '#0066cc' : '#f2f2f2', height: `${h}%`, borderRadius: '4px' }} />
                       ))}
                     </div>
-                    <p style={{ fontSize: '11px', color: '#86868b', marginTop: '20px', fontWeight: '700', letterSpacing: '0.05em' }}>VERIFIED BY IMPORTGENIUS</p>
+                    <p style={{ fontSize: '11px', color: '#86868b', marginTop: '20px', fontWeight: '700', letterSpacing: '0.05em' }}>{t('verifiedBy')}</p>
                   </div>
                 </div>
               </SectionReveal>
@@ -124,13 +154,13 @@ export default function Home() {
                 <div className="three-d-card" style={{ padding: '48px', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                   <div>
                     <BarChart3 size={32} color="#0066cc" style={{ marginBottom: '24px' }} />
-                    <h3 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '16px' }}>Top Partners</h3>
+                    <h3 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '16px' }}>{t('topPartners')}</h3>
                     <p style={{ fontSize: '17px', color: '#86868b', lineHeight: '1.6', fontWeight: '500' }}>
-                      Strategic integration with major US distributors: <strong>Camerons Products LLC</strong> and <strong>SCS Direct Inc.</strong>
+                      {t('partnerDesc')}
                     </p>
                   </div>
                   <div style={{ marginTop: '32px', display: 'flex', alignItems: 'center', gap: '8px', color: '#0066cc', fontSize: '14px', fontWeight: '600' }}>
-                    View Network <ArrowRight size={16} />
+                    {t('viewNetwork')} <ArrowRight size={16} />
                   </div>
                 </div>
               </SectionReveal>
@@ -144,14 +174,14 @@ export default function Home() {
         <div className="max-container" style={{ flexDirection: 'column', alignItems: 'center' }}>
           <SectionReveal style={{ textAlign: 'center', marginBottom: '64px' }}>
             <h2 style={{ fontSize: 'clamp(32px, 8vw, 56px)', fontWeight: '700', marginBottom: '12px' }}>{t('categories')}</h2>
-            <p style={{ fontSize: '18px', color: '#86868b', fontWeight: '500' }}>Proven High-Volume Commodities</p>
+            <p style={{ fontSize: '18px', color: '#86868b', fontWeight: '500' }}>{t('highVolume')}</p>
           </SectionReveal>
           
           <div className="grid-3" style={{ width: '100%' }}>
             {[
-              { title: 'Brewing Systems', desc: 'Double Coffee Brewers and professional extraction equipment.' },
-              { title: 'Smoking Gear', desc: 'Stovetop Smokers and patented wood chip systems.' },
-              { title: 'Culinary Hardware', desc: 'Stainless Steel Cookers and precision tools.' }
+              { title: t('brewingTitle'), desc: t('brewingDesc') },
+              { title: t('smokingTitle'), desc: t('smokingDesc') },
+              { title: t('culinaryTitle'), desc: t('culinaryDesc') }
             ].map((cat, idx) => (
               <SectionReveal key={cat.title} delay={idx * 0.1}>
                 <div className="apple-card" style={{ backgroundColor: '#f5f5f7', minHeight: '350px' }}>
@@ -174,7 +204,8 @@ export default function Home() {
       <section id="contact" className="section-padding" style={{ backgroundColor: '#1d1d1f', color: 'white', textAlign: 'center' }}>
         <div className="max-container" style={{ flexDirection: 'column', alignItems: 'center' }}>
           <SectionReveal>
-            <h2 style={{ fontSize: 'clamp(48px, 10vw, 80px)', fontWeight: 'bold', letterSpacing: '-0.04em', marginBottom: '32px', lineHeight: '1' }}>Let's connect.</h2>
+            <h2 style={{ fontSize: 'clamp(48px, 10vw, 80px)', fontWeight: 'bold', letterSpacing: '-0.04em', marginBottom: '32px', lineHeight: '1' }}>{t('letsConnect')}</h2>
+            <p style={{ fontSize: 'clamp(18px, 4vw, 24px)', color: '#86868b', marginBottom: '48px', fontWeight: '500' }}>{t('connectDesc')}</p>
             <button 
               className="apple-button-primary" 
               style={{ backgroundColor: 'white', color: 'black', padding: '20px 48px', fontSize: '20px' }}
@@ -192,7 +223,7 @@ export default function Home() {
 
       <footer style={{ padding: '48px 20px', borderTop: '1px solid #f2f2f2' }}>
         <div className="max-container" style={{ fontSize: '11px', color: '#86868b', fontWeight: '700', flexDirection: 'column', gap: '16px', textAlign: 'center' }}>
-          <div>© 2026 KEIPO HOUSEWARES. ALL RIGHTS RESERVED.</div>
+          <div>© 2026 KEIPO HOUSEWARES. {t('allRights')}</div>
         </div>
       </footer>
     </main>
