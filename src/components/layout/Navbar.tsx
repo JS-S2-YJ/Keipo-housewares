@@ -1,12 +1,12 @@
 'use client';
 
 import { Globe2 } from 'lucide-react';
-import { Language } from '@/translations';
+import { Language, TranslationKey } from '@/translations';
 
 interface NavbarProps {
   lang: Language;
   onMenuClick: () => void;
-  t: (key: string) => string;
+  t: (key: TranslationKey) => string;
 }
 
 export const Navbar = ({ lang, onMenuClick, t }: NavbarProps) => {

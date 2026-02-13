@@ -3,8 +3,10 @@
 import { Mail, Globe2 } from 'lucide-react';
 import { SectionReveal } from '@/components/common/SectionReveal';
 
+import { TranslationKey } from '@/translations';
+
 interface ContactSectionProps {
-  t: (key: string) => string;
+  t: (key: TranslationKey) => string;
 }
 
 export const ContactSection = ({ t }: ContactSectionProps) => {
