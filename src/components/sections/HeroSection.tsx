@@ -18,42 +18,31 @@ export const HeroSection = ({ t }: HeroSectionProps) => {
       position: 'relative', 
       width: '100%', 
       overflow: 'hidden',
-      backgroundColor: '#000000',
-      background: 'radial-gradient(circle at 50% 40%, #ffffff 0%, #1d1d1f 60%, #000000 100%)',
-      backgroundSize: '100% 100%'
+      backgroundColor: '#ffffff' /* Apple Standard White */
     }}>
-      {/* Premium Atmospheric Layers */}
+      {/* Subtle Light-themed Atmospheric Glows */}
       <div style={{ 
         position: 'absolute', 
-        top: '0', 
-        left: '0', 
-        width: '100%', 
-        height: '100%', 
-        background: 'radial-gradient(circle at 50% 40%, rgba(255, 255, 255, 0.8) 0%, transparent 40%)',
-        zIndex: 0,
-        pointerEvents: 'none'
-      }} />
-      
-      <div style={{ 
-        position: 'absolute', 
-        top: '20%', 
-        left: '10%', 
-        width: '40%', 
-        height: '400px', 
-        background: 'radial-gradient(circle, rgba(0, 102, 204, 0.12) 0%, transparent 70%)', 
-        filter: 'blur(100px)', 
+        top: '10%', 
+        left: '50%', 
+        transform: 'translateX(-50%)', 
+        width: '140%', 
+        height: '600px', 
+        background: 'radial-gradient(circle, rgba(0, 102, 204, 0.04) 0%, transparent 60%)', 
+        filter: 'blur(80px)', 
         zIndex: 0, 
         pointerEvents: 'none' 
       }} />
-      
       <div style={{ 
         position: 'absolute', 
-        bottom: '10%', 
-        right: '10%', 
-        width: '50%', 
-        height: '500px', 
-        background: 'radial-gradient(circle, rgba(0, 102, 204, 0.08) 0%, transparent 70%)', 
-        filter: 'blur(120px)', 
+        top: '30%', 
+        left: '50%', 
+        transform: 'translateX(-50%)', 
+        width: '100%', 
+        maxWidth: '600px', 
+        height: '300px', 
+        background: 'radial-gradient(circle, rgba(0, 102, 204, 0.06) 0%, transparent 70%)', 
+        filter: 'blur(60px)', 
         zIndex: 0, 
         pointerEvents: 'none' 
       }} />
@@ -69,16 +58,15 @@ export const HeroSection = ({ t }: HeroSectionProps) => {
         <span style={{ 
           fontSize: 'clamp(12px, 2vw, 14px)', 
           fontWeight: '700', 
-          letterSpacing: '0.3em', 
+          letterSpacing: '0.25em', 
           color: '#0066cc', 
-          marginBottom: '24px', 
-          textTransform: 'uppercase',
-          textShadow: '0 0 20px rgba(0, 102, 204, 0.3)'
+          marginBottom: '20px', 
+          textTransform: 'uppercase'
         }}>
           {t('premiumQuality')}
         </span>
         
-        {/* Brand Title: True Solid Black on a bright spotlight core */}
+        {/* Brand Title: Solid Black 3D remains, optimized for white bg */}
         <h1 className="hero-title-3d-glow" style={{ 
           marginBottom: '8px'
         }}>
@@ -87,8 +75,8 @@ export const HeroSection = ({ t }: HeroSectionProps) => {
         
         <p style={{ 
           fontSize: 'clamp(18px, 4vw, 24px)', 
-          color: 'rgba(29, 29, 31, 0.8)', /* Dark text on spotlight area */
-          fontWeight: '600', 
+          color: '#86868b', /* Standard Apple Gray */
+          fontWeight: '500', 
           marginTop: '32px', 
           marginBottom: '56px', 
           maxWidth: '750px', 
@@ -103,12 +91,7 @@ export const HeroSection = ({ t }: HeroSectionProps) => {
           <button className="apple-button-primary" style={{ padding: '16px 40px', fontSize: '18px' }}>
             {t('experience')}
           </button>
-          <button className="apple-button-secondary" style={{ 
-            color: '#1d1d1f', 
-            background: 'rgba(0, 0, 0, 0.05)', 
-            borderColor: 'rgba(0, 0, 0, 0.1)',
-            backdropFilter: 'blur(10px)'
-          }}>
+          <button className="apple-button-secondary">
             {t('explore')} <ChevronRight size={20} strokeWidth={2.5} />
           </button>
         </div>
