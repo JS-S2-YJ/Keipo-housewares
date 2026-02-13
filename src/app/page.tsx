@@ -184,8 +184,41 @@ export default function Home() {
             </SectionReveal>
             
             <SectionReveal delay={0.2} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <div style={{ backgroundColor: 'white', borderRadius: '32px', width: '100%', padding: '40px', textAlign: 'center', boxShadow: '0 15px 45px rgba(0,0,0,0.03)' }}>
-                <Globe2 size={80} color="#f5f5f7" style={{ margin: '0 auto' }} />
+              <div className="image-card-wrapper" style={{ 
+                backgroundColor: 'white', 
+                borderRadius: '32px', 
+                width: '100%', 
+                height: '100%', 
+                minHeight: '400px', 
+                overflow: 'hidden', 
+                boxShadow: '0 20px 40px rgba(0,0,0,0.06)', 
+                position: 'relative',
+                cursor: 'pointer'
+              }}>
+                <img 
+                  src="/images/knife.jpeg" 
+                  alt="KEIPO Premium Hardware" 
+                  className="hover-zoom-image"
+                  style={{ 
+                    width: '100%', 
+                    height: '100%', 
+                    objectFit: 'cover', 
+                    display: 'block',
+                    transition: 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)'
+                  }}
+                />
+                <div style={{
+                  position: 'absolute',
+                  bottom: '0',
+                  left: '0',
+                  right: '0',
+                  padding: '24px',
+                  background: 'linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 100%)',
+                  color: 'white',
+                  pointerEvents: 'none'
+                }}>
+                  <span style={{ fontSize: '12px', fontWeight: '700', letterSpacing: '0.1em' }}>PREMIUM QUALITY</span>
+                </div>
               </div>
             </SectionReveal>
           </div>
