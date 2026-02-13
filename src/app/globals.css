@@ -81,21 +81,35 @@ button:focus {
     0.5px 0.5px 0px rgba(255, 255, 255, 0.4),
     0 1px 2px rgba(0, 0, 0, 0.05);
   
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes logo-bounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  30% { transform: translateY(-6px) scale(1.05); }
+  50% { transform: translateY(0) scale(0.98); }
+  70% { transform: translateY(-2px) scale(1.02); }
 }
 
 .logo-3d:hover {
-  transform: translateY(-1px);
+  animation: sparkle-sweep 1s linear infinite, logo-bounce 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
   text-shadow: 
-    0.5px 0.5px 0px #ffffff,
-    0 4px 12px rgba(0, 0, 0, 0.15);
+    0px 1px 0px #d1d1d1,
+    0px 2px 0px #c1c1c1,
+    0px 8px 15px rgba(0, 0, 0, 0.1);
 }
 
 /* Hero Title - Deep Black 3D */
+
 .hero-title-3d-glow {
-  font-size: clamp(24px, 8.5vw, 130px) !important; /* Slightly smaller min size to ensure 1-line on small screens */
+
+  font-size: clamp(48px, 12vw, 180px) !important; /* Increased from 24px/8.5vw/130px */
+
   font-weight: 900 !important;
-  letter-spacing: -0.07em !important; /* Tighter tracking for premium look and space saving */
+
+  letter-spacing: -0.07em !important;
+
+ /* Tighter tracking for premium look and space saving */
   line-height: 1.0 !important;
   text-transform: uppercase;
   position: relative;
@@ -207,21 +221,23 @@ button:focus {
 /* Side Drawer */
 .drawer-overlay {
   position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0,0,0,0.2); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  z-index: 200; opacity: 0; visibility: hidden; transition: opacity 0.4s ease, visibility 0.4s ease;
+  background: rgba(0, 0, 0, 0.15); 
+  backdrop-filter: blur(20px); 
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 200; opacity: 0; visibility: hidden; transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.5s ease;
 }
 .drawer-overlay.active { opacity: 1; visibility: visible; }
 
 .side-drawer {
   position: fixed; top: 12px; right: -320px; width: 280px; max-height: calc(100% - 24px); height: auto;
-  background: rgba(255, 255, 255, 0.92); 
-  backdrop-filter: blur(50px) saturate(180%); 
-  -webkit-backdrop-filter: blur(50px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  border-radius: 24px;
-  z-index: 201; transition: right 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s ease;
+  background: rgba(255, 255, 255, 0.65); 
+  backdrop-filter: blur(80px) saturate(200%); 
+  -webkit-backdrop-filter: blur(80px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 28px;
+  z-index: 201; transition: right 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s ease;
   padding: 48px 24px 32px; display: flex; flex-direction: column; gap: 32px; visibility: hidden;
-  box-shadow: -20px 0 60px rgba(0,0,0,0.06);
+  box-shadow: -20px 40px 80px rgba(0, 0, 0, 0.08);
   overflow-y: auto;
 }
 .side-drawer.active { right: 12px; visibility: visible; }
