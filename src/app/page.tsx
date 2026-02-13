@@ -17,6 +17,7 @@ export default function Home() {
   const languages: { code: Language; label: string }[] = [
     { code: 'en', label: 'EN' },
     { code: 'ko', label: 'KR' },
+    { code: 'tr', label: 'TR' },
     { code: 'de', label: 'DE' },
     { code: 'cn', label: 'CN' },
     { code: 'jp', label: 'JP' },
