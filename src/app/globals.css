@@ -45,7 +45,15 @@ button:focus {
 /* --- Animations --- */
 @keyframes sparkle-sweep {
   0% { background-position: 100% center; }
+  33.33% { background-position: 0% center; } /* 2s sweep (33% of 6s) */
   100% { background-position: 0% center; }
+}
+
+@keyframes logo-bounce-sequence {
+  0%, 16.66%, 100% { transform: translateY(0); } /* Bounce for 2s (16% of 12s) */
+  4.16% { transform: translateY(-7px); }
+  8.33% { transform: translateY(0); }
+  12.5% { transform: translateY(-3px); }
 }
 
 /* --- Components --- */
@@ -73,8 +81,11 @@ button:focus {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   
-  /* Constant 6-second sweep */
-  animation: sparkle-sweep 6s linear infinite;
+  /* Dual Animations with specific timings */
+  animation: 
+    sparkle-sweep 6s linear infinite,
+    logo-bounce-sequence 12s ease-in-out infinite;
+    
   letter-spacing: -0.05em;
   padding-right: 4px;
   
@@ -83,12 +94,11 @@ button:focus {
     0.5px 0.5px 0px rgba(255, 255, 255, 0.5),
     0 1px 2px rgba(0, 0, 0, 0.1);
   
-  /* Disable all transitions and states */
   transition: none !important;
 }
 
 .logo-3d:hover, .logo-3d:active {
-  transform: none !important;
+  transform: none !important; /* No manual transform, keep animation only */
   opacity: 1 !important;
 }
 
