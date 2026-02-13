@@ -93,7 +93,7 @@ export default function Home() {
                   <div style={{ fontSize: '10px', color: '#86868b', fontWeight: '800', marginTop: '4px', letterSpacing: '0.05em' }}>{t('verifiedShipments')}</div>
                 </div>
                 <div>
-                  <div style={{ fontSize: '40px', fontWeight: 'bold' }}>17+</div>
+                  <div style={{ fontSize: '40px', fontWeight: 'bold' }}>38+</div>
                   <div style={{ fontSize: '10px', color: '#86868b', fontWeight: '800', marginTop: '4px', letterSpacing: '0.05em' }}>{t('yearsActive')}</div>
                 </div>
               </div>
@@ -146,7 +146,7 @@ export default function Home() {
                         <div key={i} style={{ flex: 1, backgroundColor: i === 6 ? '#0066cc' : '#f2f2f2', height: `${h}%`, borderRadius: '4px' }} />
                       ))}
                     </div>
-                    <p style={{ fontSize: '11px', color: '#86868b', marginTop: '20px', fontWeight: '700', letterSpacing: '0.05em' }}>{t('verifiedBy')}</p>
+                    <p style={{ fontSize: '11px', color: '#86868b', marginTop: '20px', fontWeight: '700', letterSpacing: '0.05em' }}>{t('verifiedBy')} // 1986-2026</p>
                   </div>
                 </div>
               </SectionReveal>
