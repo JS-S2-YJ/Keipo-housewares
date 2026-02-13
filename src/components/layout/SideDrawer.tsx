@@ -12,6 +12,15 @@ interface SideDrawerProps {
 }
 
 export const SideDrawer = ({ isOpen, onClose, lang, setLang, t }: SideDrawerProps) => {
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      onClose();
+    }
+  };
+
   const languages: { code: Language; label: string }[] = [
     { code: 'en', label: 'English' },
     { code: 'ko', label: '한국어' },
@@ -33,9 +42,9 @@ export const SideDrawer = ({ isOpen, onClose, lang, setLang, t }: SideDrawerProp
         <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
           <span style={{ fontSize: '11px', fontWeight: '800', color: '#0066cc', letterSpacing: '0.15em' }}>NAVIGATE</span>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', fontSize: '22px', fontWeight: '700' }}>
-            <a href="#history" onClick={onClose} style={{ textDecoration: 'none', color: '#1d1d1f' }}>{t('navHistory')}</a>
-            <a href="#logistics" onClick={onClose} style={{ textDecoration: 'none', color: '#1d1d1f' }}>{t('navLogistics')}</a>
-            <a href="#categories" onClick={onClose} style={{ textDecoration: 'none', color: '#1d1d1f' }}>{t('navProducts')}</a>
+            <a href="#history" onClick={(e) => scrollToSection(e, 'history')} style={{ textDecoration: 'none', color: '#1d1d1f' }}>{t('navHistory')}</a>
+            <a href="#logistics" onClick={(e) => scrollToSection(e, 'logistics')} style={{ textDecoration: 'none', color: '#1d1d1f' }}>{t('navLogistics')}</a>
+            <a href="#categories" onClick={(e) => scrollToSection(e, 'categories')} style={{ textDecoration: 'none', color: '#1d1d1f' }}>{t('navProducts')}</a>
           </div>
         </div>
 
