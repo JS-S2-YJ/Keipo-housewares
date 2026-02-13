@@ -46,10 +46,8 @@ export default function Home() {
 
   return (
     <main style={{ opacity: 1, transition: 'opacity 0.5s ease' }}>
-      {/* Side Drawer Overlay */}
       <div className={`drawer-overlay ${isDrawerOpen ? 'active' : ''}`} onClick={toggleDrawer} />
 
-      {/* Side Drawer */}
       <div className={`side-drawer ${isDrawerOpen ? 'active' : ''}`}>
         <button onClick={toggleDrawer} style={{ position: 'absolute', top: '16px', right: '16px', border: 'none', background: 'none', cursor: 'pointer', color: '#86868b' }}>
           <X size={28} />
@@ -59,7 +57,7 @@ export default function Home() {
           <span style={{ fontSize: '11px', fontWeight: '800', color: '#0066cc', letterSpacing: '0.15em' }}>NAVIGATE</span>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', fontSize: '22px', fontWeight: '700' }}>
             <a href="#history" onClick={toggleDrawer} style={{ textDecoration: 'none', color: '#1d1d1f' }}>{t('navHistory')}</a>
-            <a href="#logistics" onClick={toggleDrawer} style={{ textDecoration: 'none', color: '#1d1d1f' }}>Logistics</a>
+            <a href="#logistics" onClick={toggleDrawer} style={{ textDecoration: 'none', color: '#1d1d1f' }}>{t('navLogistics')}</a>
             <a href="#categories" onClick={toggleDrawer} style={{ textDecoration: 'none', color: '#1d1d1f' }}>{t('navProducts')}</a>
           </div>
         </div>
@@ -90,24 +88,19 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Navigation */}
       <nav className="nav-glass">
         <div className="max-container" style={{ justifyContent: 'space-between', alignItems: 'center' }}>
-          {/* Left: Logo */}
           <div style={{ display: 'flex', alignItems: 'center' }}>
-            <span style={{ fontSize: 'clamp(18px, 5vw, 22px)', fontWeight: '800', letterSpacing: '-0.04em', color: '#1d1d1f' }}>KEIPO</span>
+            <span style={{ fontSize: 'clamp(17px, 5vw, 22px)', fontWeight: '800', letterSpacing: '-0.04em', color: '#1d1d1f' }}>KEIPO</span>
           </div>
           
-          {/* Right Group */}
           <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-            {/* Desktop Only: History, Logistics, Products (Hidden on narrow screens) */}
             <div className="hidden md:flex" style={{ display: 'flex', gap: '28px', fontSize: '13px', fontWeight: '600', color: '#86868b', marginRight: '20px' }}>
               <a href="#history" style={{ textDecoration: 'none', color: 'inherit' }}>{t('navHistory')}</a>
-              <a href="#logistics" style={{ textDecoration: 'none', color: 'inherit' }}>Logistics</a>
+              <a href="#logistics" style={{ textDecoration: 'none', color: 'inherit' }}>{t('navLogistics')}</a>
               <a href="#categories" style={{ textDecoration: 'none', color: 'inherit' }}>{t('navProducts')}</a>
             </div>
 
-            {/* Single Styled Language Button (Pill Style) */}
             <button 
               onClick={toggleDrawer}
               style={{
@@ -127,7 +120,6 @@ export default function Home() {
               <Globe2 size={14} /> {lang.toUpperCase()}
             </button>
 
-            {/* 3D Menu Button (Unified for all devices, far right) */}
             <div className="menu-button-3d" onClick={toggleDrawer}>
               <div className="menu-bar" style={{ width: '18px' }} />
               <div className="menu-bar" style={{ width: '12px' }} />
@@ -137,7 +129,6 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Hero Section */}
       <section className="section-padding" style={{ textAlign: 'center', paddingTop: '150px' }}>
         <SectionReveal>
           <h1 className="hero-title">{t('title')}</h1>
@@ -151,7 +142,6 @@ export default function Home() {
         </SectionReveal>
       </section>
 
-      {/* History Section */}
       <section id="history" className="section-padding" style={{ backgroundColor: '#f5f5f7' }}>
         <div className="max-container" style={{ flexDirection: 'column', gap: '48px' }}>
           <div className="grid-stack" style={{ alignItems: 'center' }}>
@@ -181,7 +171,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Global Reach Section */}
+      {/* Global Reach Section - Fixed Overlapping */}
       <section id="logistics" className="section-padding" style={{ backgroundColor: '#fbfbfd' }}>
         <div className="max-container" style={{ flexDirection: 'column' }}>
           <SectionReveal style={{ marginBottom: '48px', textAlign: 'center' }}>
@@ -190,9 +180,9 @@ export default function Home() {
           </SectionReveal>
 
           <div className="perspective-container">
-            <div className="grid-3">
-              <SectionReveal delay={0.1}>
-                <div className="three-d-card" style={{ padding: '40px', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+            <div className="grid-3" style={{ gap: '32px' }}>
+              <SectionReveal delay={0.1} style={{ display: 'flex' }}>
+                <div className="three-d-card" style={{ padding: '40px', width: '100%', minHeight: '320px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                   <div>
                     <Anchor size={28} color="#0066cc" style={{ marginBottom: '20px' }} />
                     <h3 style={{ fontSize: '22px', fontWeight: 'bold', marginBottom: '20px' }}>{t('primaryHubs')}</h3>
@@ -210,8 +200,8 @@ export default function Home() {
                 </div>
               </SectionReveal>
 
-              <SectionReveal delay={0.2}>
-                <div className="three-d-card" style={{ padding: '40px', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+              <SectionReveal delay={0.2} style={{ display: 'flex' }}>
+                <div className="three-d-card" style={{ padding: '40px', width: '100%', minHeight: '320px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                   <div>
                     <TrendingUp size={28} color="#0066cc" style={{ marginBottom: '20px' }} />
                     <h3 style={{ fontSize: '22px', fontWeight: 'bold', marginBottom: '16px' }}>{t('tradeVelocity')}</h3>
@@ -225,8 +215,8 @@ export default function Home() {
                 </div>
               </SectionReveal>
 
-              <SectionReveal delay={0.3}>
-                <div className="three-d-card" style={{ padding: '40px', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+              <SectionReveal delay={0.3} style={{ display: 'flex' }}>
+                <div className="three-d-card" style={{ padding: '40px', width: '100%', minHeight: '320px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                   <div>
                     <BarChart3 size={28} color="#0066cc" style={{ marginBottom: '20px' }} />
                     <h3 style={{ fontSize: '22px', fontWeight: 'bold', marginBottom: '16px' }}>{t('topPartners')}</h3>
@@ -244,7 +234,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Categories Section */}
       <section id="categories" className="section-padding">
         <div className="max-container" style={{ flexDirection: 'column', alignItems: 'center' }}>
           <SectionReveal style={{ textAlign: 'center', marginBottom: '48px' }}>
@@ -252,14 +241,14 @@ export default function Home() {
             <p style={{ fontSize: '16px', color: '#86868b', fontWeight: '500' }}>{t('highVolume')}</p>
           </SectionReveal>
           
-          <div className="grid-3" style={{ width: '100%' }}>
+          <div className="grid-3" style={{ gap: '24px', width: '100%' }}>
             {[
               { title: t('brewingTitle'), desc: t('brewingDesc') },
               { title: t('smokingTitle'), desc: t('smokingDesc') },
               { title: t('culinaryTitle'), desc: t('culinaryDesc') }
             ].map((cat, idx) => (
-              <SectionReveal key={cat.title} delay={idx * 0.1}>
-                <div className="apple-card" style={{ backgroundColor: '#f5f5f7', minHeight: '320px' }}>
+              <SectionReveal key={cat.title} delay={idx * 0.1} style={{ display: 'flex' }}>
+                <div className="apple-card" style={{ backgroundColor: '#f5f5f7', width: '100%', minHeight: '320px' }}>
                   <div>
                     <Package size={28} style={{ marginBottom: '20px' }} />
                     <h3 style={{ fontSize: '26px', fontWeight: 'bold', marginBottom: '12px', letterSpacing: '-0.02em' }}>{cat.title}</h3>
@@ -275,7 +264,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact Section */}
       <section id="contact" className="section-padding" style={{ backgroundColor: '#1d1d1f', color: 'white', textAlign: 'center' }}>
         <div className="max-container" style={{ flexDirection: 'column', alignItems: 'center' }}>
           <SectionReveal>
