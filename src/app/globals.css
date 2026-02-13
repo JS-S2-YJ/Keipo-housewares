@@ -40,6 +40,7 @@ body {
   font-weight: 900;
   cursor: pointer;
   position: relative;
+  padding-right: 0.1em; /* 글자 잘림 방지 */
   
   /* 깨끗하고 반짝이는 그라데이션 효과 */
   background: linear-gradient(
@@ -64,7 +65,6 @@ body {
 }
 
 .logo-3d:hover {
-  animation-play-state: paused;
   transform: scale(1.05) rotateX(10deg);
   /* 호버 시에는 투명도를 조절하여 배경 그라데이션이 더 잘 보이게 하거나 필터 적용 */
   filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
