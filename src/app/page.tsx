@@ -27,31 +27,35 @@ export default function Home() {
   return (
     <main className="relative flex flex-col min-h-screen">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 glass border-b border-white/5 px-6 py-4 flex justify-between items-center">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-cyber-cyan/20 border border-cyber-cyan flex items-center justify-center">
-            <span className="font-black text-cyber-cyan text-xs">K</span>
+      <nav className="fixed top-0 w-full z-50 glass border-b border-white/5 px-6 py-4">
+        <div className="max-w-6xl mx-auto flex justify-between items-center">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-cyber-cyan/20 border border-cyber-cyan flex items-center justify-center">
+              <span className="font-black text-cyber-cyan text-xs">K</span>
+            </div>
+            <span className="font-bold tracking-tighter text-lg neon-text-cyan">KEIPO</span>
           </div>
-          <span className="font-bold tracking-tighter text-lg neon-text-cyan">KEIPO</span>
-        </div>
-        
-        <div className="flex items-center gap-8">
-          <div className="hidden md:flex gap-2">
-            {languages.map((l) => (
-              <button
-                key={l.code}
-                onClick={() => setLang(l.code)}
-                className={`text-[10px] px-2 py-1 transition-all ${
-                  lang === l.code 
-                    ? 'bg-cyber-cyan text-black font-bold' 
-                    : 'text-white/40 hover:text-white hover:bg-white/5'
-                }`}
-              >
-                {l.label}
-              </button>
-            ))}
+          
+          <div className="flex items-center gap-4 md:gap-8">
+            <div className="flex gap-1 md:gap-2">
+              {languages.map((l) => (
+                <button
+                  key={l.code}
+                  onClick={() => setLang(l.code)}
+                  className={`text-[9px] md:text-[10px] px-1.5 md:px-2 py-1 transition-all border ${
+                    lang === l.code 
+                      ? 'bg-cyber-cyan border-cyber-cyan text-black font-bold' 
+                      : 'text-white/40 border-transparent hover:text-white hover:bg-white/5'
+                  }`}
+                >
+                  {l.label}
+                </button>
+              ))}
+            </div>
+            <div className="hidden sm:block">
+              <CyberClock />
+            </div>
           </div>
-          <CyberClock />
         </div>
       </nav>
 
@@ -67,7 +71,7 @@ export default function Home() {
             <Monitor size={12} />
             Transmission Established // 2006-2026
           </div>
-          <h1 className="text-6xl md:text-8xl font-black tracking-tighter mb-6 bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent">
+          <h1 className="text-6xl md:text-8xl font-black tracking-tighter mb-6 bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent break-keep">
             {t('title').toUpperCase()}
           </h1>
           <p className="text-xl md:text-2xl font-light text-white/60 tracking-widest mb-12 max-w-2xl mx-auto">

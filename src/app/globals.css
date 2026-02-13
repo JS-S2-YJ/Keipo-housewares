@@ -6,6 +6,8 @@
   --color-cyber-gold: #ffd700;
   --color-cyber-black: #050505;
   --color-cyber-gray: #1a1a1a;
+  
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 :root {
