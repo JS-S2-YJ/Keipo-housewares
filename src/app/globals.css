@@ -26,43 +26,48 @@ body {
 /* 로고 살아있는 효과 애니메이션 */
 @keyframes logo-breathing {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-3px); }
+  50% { transform: translateY(-2px); }
 }
 
-@keyframes logo-glow-pulse {
-  0%, 100% {
-    text-shadow: 
-      0 1px 0 #ddd, 
-      0 2px 1px rgba(0,0,0,0.1),
-      0 0 8px rgba(0, 102, 204, 0.1);
-  }
-  50% {
-    text-shadow: 
-      0 1px 0 #ddd, 
-      0 2px 1px rgba(0,0,0,0.1),
-      0 0 18px rgba(0, 102, 204, 0.4); /* 글로우 팽창 */
-  }
+@keyframes sparkle-sweep {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
 }
 
 /* KEIPO 3D 살아있는 로고 */
 .logo-3d {
-  color: var(--apple-black);
   display: inline-block;
   font-weight: 900;
   cursor: pointer;
   position: relative;
-  animation: logo-breathing 4s ease-in-out infinite, logo-glow-pulse 3s ease-in-out infinite;
+  
+  /* 깨끗하고 반짝이는 그라데이션 효과 */
+  background: linear-gradient(
+    90deg, 
+    #1d1d1f 0%, 
+    #1d1d1f 40%, 
+    #ffffff 50%, 
+    #1d1d1f 60%, 
+    #1d1d1f 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  
+  /* 애니메이션 결합: 숨쉬기 + 반짝임 */
+  animation: 
+    logo-breathing 4s ease-in-out infinite, 
+    sparkle-sweep 3s linear infinite;
+  
   transition: all 0.3s ease;
 }
 
 .logo-3d:hover {
-  animation-play-state: paused; /* 호버 시에는 직접 컨트롤을 위해 멈춤 */
+  animation-play-state: paused;
   transform: scale(1.05) rotateX(10deg);
-  text-shadow: 
-    0 1px 0 #ddd, 
-    0 2px 0 #ccc, 
-    0 3px 0 #bbb,
-    0 10px 20px rgba(0, 102, 204, 0.3);
+  /* 호버 시에는 투명도를 조절하여 배경 그라데이션이 더 잘 보이게 하거나 필터 적용 */
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
 }
 
 /* 3D Glow Hero Title */
