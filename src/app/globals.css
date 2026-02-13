@@ -55,29 +55,29 @@ button:focus {
   cursor: pointer;
   position: relative;
   
-  /* Solid Black for visibility */
-  color: #000000 !important;
+  /* Initial color for fallback */
+  color: #000000;
   
-  /* Refined 3D Glow - Subtle movement without making it look white */
-  background: linear-gradient(135deg, 
-    #000000 0%, 
-    #1a1a1a 45%, 
-    #4a4a4a 50%, 
-    #1a1a1a 55%, 
-    #000000 100%
+  /* High-Contrast Sparkle Gradient: Pure white sliver for the 'flash' */
+  background: linear-gradient(105deg, 
+    #000000 35%, 
+    #1a1a1a 42%,
+    #ffffff 50%, 
+    #1a1a1a 58%,
+    #000000 65%
   );
-  background-size: 200% auto;
+  background-size: 300% auto;
   -webkit-background-clip: text;
   background-clip: text;
-  -webkit-text-fill-color: initial !important; /* Ensure solid color */
+  -webkit-text-fill-color: transparent; /* Enable the gradient text */
   
-  animation: sparkle-sweep 8s linear infinite;
+  animation: sparkle-sweep 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   letter-spacing: -0.05em;
   
-  /* Sharp Apple-style Embossed 3D */
+  /* Sharp Apple-style Embossed 3D - Keeps depth even when transparent */
   text-shadow: 
-    0.5px 0.5px 0px rgba(255, 255, 255, 0.8),
-    0 1px 2px rgba(0, 0, 0, 0.1);
+    0.5px 0.5px 0px rgba(255, 255, 255, 0.4),
+    0 1px 2px rgba(0, 0, 0, 0.05);
   
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
