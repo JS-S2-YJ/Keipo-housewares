@@ -42,8 +42,8 @@ button:focus {
 
 /* --- Animations --- */
 @keyframes sparkle-sweep {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
 }
 
 /* --- Components --- */
@@ -60,22 +60,23 @@ button:focus {
   
   /* High-Contrast Sparkle Gradient: More balanced for linear motion */
   background: linear-gradient(105deg, 
-    #000000 40%, 
+    #000000 35%, 
     #333333 45%,
     #ffffff 50%, 
     #333333 55%,
-    #000000 60%
+    #000000 65%
   );
-  background-size: 300% auto;
+  background-size: 400% 100%; /* Increased width for smoother flow */
   -webkit-background-clip: text;
   background-clip: text;
-  -webkit-text-fill-color: transparent; /* Enable the gradient text */
+  -webkit-text-fill-color: transparent;
   
-  /* Use linear timing to prevent pausing/stopping in center */
+  /* Constant linear motion */
   animation: sparkle-sweep 4s linear infinite;
   letter-spacing: -0.05em;
+  padding-right: 4px;
   
-  /* Sharp Apple-style Embossed 3D - Keeps depth even when transparent */
+  /* Sharp Apple-style Embossed 3D */
   text-shadow: 
     0.5px 0.5px 0px rgba(255, 255, 255, 0.4),
     0 1px 2px rgba(0, 0, 0, 0.05);
@@ -92,17 +93,17 @@ button:focus {
 
 /* Hero Title - Deep Black 3D */
 .hero-title-3d-glow {
-  font-size: clamp(32px, 10vw, 120px) !important;
+  font-size: clamp(24px, 8.5vw, 130px) !important; /* Slightly smaller min size to ensure 1-line on small screens */
   font-weight: 900 !important;
-  letter-spacing: -0.06em !important;
-  line-height: 0.9 !important;
+  letter-spacing: -0.07em !important; /* Tighter tracking for premium look and space saving */
+  line-height: 1.0 !important;
   text-transform: uppercase;
   position: relative;
   display: block;
   width: 100%;
-  word-break: keep-all;
-  overflow-wrap: break-word;
-  padding: 0 10px;
+  white-space: nowrap; /* Force one line */
+  text-align: center;
+  padding: 0;
   
   /* Solid Black */
   color: #000000 !important;
