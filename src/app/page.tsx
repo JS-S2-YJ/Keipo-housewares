@@ -36,26 +36,26 @@ export default function Home() {
             <span className="font-bold tracking-tighter text-lg neon-text-cyan">KEIPO</span>
           </div>
           
-          <div className="flex items-center gap-6">
-            <div className="flex items-center">
+          <div className="flex items-center gap-8">
+            <div className="flex items-center bg-white/5 p-1 border border-white/10 backdrop-blur-sm">
               {languages.map((l) => (
                 <button
                   key={l.code}
                   onClick={() => setLang(l.code)}
-                  className={`cursor-pointer mx-1 px-3 py-1.5 text-[10px] font-bold tracking-widest transition-all duration-300 border uppercase`}
+                  className={`cursor-pointer px-3 py-1 text-[10px] font-black transition-all duration-300 uppercase tracking-widest`}
                   style={{ 
-                    minWidth: '40px',
-                    backgroundColor: lang === l.code ? 'var(--cyber-cyan)' : 'transparent',
-                    color: lang === l.code ? '#000000' : 'rgba(255, 255, 255, 0.4)',
-                    borderColor: lang === l.code ? 'var(--cyber-cyan)' : 'rgba(255, 255, 255, 0.1)',
-                    boxShadow: lang === l.code ? '0 0 15px rgba(0, 243, 255, 0.3)' : 'none'
+                    minWidth: '45px',
+                    backgroundColor: lang === l.code ? '#00f3ff' : 'transparent',
+                    color: lang === l.code ? '#000000' : 'rgba(255, 255, 255, 0.3)',
+                    margin: '0 2px',
+                    clipPath: 'polygon(10% 0, 100% 0, 90% 100%, 0 100%)' // Slightly slanted for cyber look
                   }}
                 >
                   {l.label}
                 </button>
               ))}
             </div>
-            <div className="hidden sm:block border-l border-white/10 pl-6">
+            <div className="hidden sm:block border-l border-white/10 pl-8">
               <CyberClock />
             </div>
           </div>
@@ -96,29 +96,30 @@ export default function Home() {
       {/* Trust & History */}
       <section className="py-32 px-6 bg-white/[0.01]">
         <div className="max-w-6xl mx-auto">
-          <SectionReveal className="grid md:grid-cols-2 gap-20 items-center">
-            <div>
-              <div className="text-cyber-cyan font-mono text-xs mb-4 flex items-center gap-2">
-                <History size={14} /> 01 // LEGACY
+          <SectionReveal className="flex flex-col items-center text-center mb-20">
+            <div className="text-cyber-cyan font-mono text-xs mb-4 flex items-center gap-2 justify-center">
+              <History size={14} /> 01 // LEGACY
+            </div>
+            <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tight max-w-3xl">
+              {t('history')}
+            </h2>
+            <p className="text-white/60 text-lg leading-relaxed max-w-2xl">
+              Since 2006, KEIPO Housewares has been the bridge between global manufacturers and wholesale markets. Two decades of expertise in international logistics and high-volume trade.
+            </p>
+          </SectionReveal>
+
+          <div className="grid md:grid-cols-2 gap-20 items-center">
+            <div className="grid grid-cols-2 gap-8">
+              <div className="glass p-8 text-center border-cyber-cyan/20">
+                <div className="text-4xl font-bold text-cyber-cyan mb-2">20+</div>
+                <div className="text-white/40 text-xs uppercase tracking-widest">Years Experience</div>
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-8 tracking-tight">
-                {t('history')}
-              </h2>
-              <p className="text-white/60 text-lg leading-relaxed mb-8">
-                Since 2006, KEIPO Housewares has been the bridge between global manufacturers and wholesale markets. Two decades of expertise in international logistics and high-volume trade.
-              </p>
-              <div className="grid grid-cols-2 gap-8">
-                <div>
-                  <div className="text-3xl font-bold text-cyber-cyan mb-1">20+</div>
-                  <div className="text-white/40 text-xs uppercase tracking-widest">Years Experience</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-cyber-cyan mb-1">500+</div>
-                  <div className="text-white/40 text-xs uppercase tracking-widest">Global Partners</div>
-                </div>
+              <div className="glass p-8 text-center border-cyber-purple/20">
+                <div className="text-4xl font-bold text-cyber-purple mb-2">500+</div>
+                <div className="text-white/40 text-xs uppercase tracking-widest">Global Partners</div>
               </div>
             </div>
-            <div className="relative aspect-square">
+            <div className="relative aspect-video md:aspect-square">
               <div className="absolute inset-0 border border-cyber-cyan/20 rotate-3 translate-x-4 translate-y-4" />
               <div className="absolute inset-0 border border-cyber-purple/20 -rotate-3 -translate-x-4 -translate-y-4" />
               <div className="absolute inset-0 glass flex items-center justify-center">
