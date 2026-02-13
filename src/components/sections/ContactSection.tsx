@@ -11,13 +11,12 @@ interface ContactSectionProps {
 
 export const ContactSection = ({ t }: ContactSectionProps) => {
   return (
-    <section id="contact" className="section-padding" style={{ backgroundColor: '#1d1d1f', color: 'white', textAlign: 'center' }}>
+    <section id="contact" className="section-padding" style={{ backgroundColor: '#ffffff', color: '#1d1d1f', textAlign: 'center' }}>
       <div className="max-container" style={{ flexDirection: 'column', alignItems: 'center' }}>
         <SectionReveal style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <h2 style={{ fontSize: 'clamp(36px, 10vw, 80px)', fontWeight: 'bold', letterSpacing: '-0.04em', marginBottom: '24px', lineHeight: '1' }}>{t('letsConnect')}</h2>
+          <h2 style={{ fontSize: 'clamp(36px, 10vw, 80px)', fontWeight: 'bold', letterSpacing: '-0.04em', marginBottom: '24px', lineHeight: '1', color: '#1d1d1f' }}>{t('letsConnect')}</h2>
           <button 
             className="apple-button-primary" 
-            style={{ backgroundColor: 'white', color: 'black', padding: '16px 32px', fontSize: '17px' }}
             onClick={() => window.location.href = 'mailto:contact@keipo.com'}
           >
             {t('contact')}
