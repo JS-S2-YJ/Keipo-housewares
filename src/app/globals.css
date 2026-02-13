@@ -58,20 +58,21 @@ button:focus {
   /* Initial color for fallback */
   color: #000000;
   
-  /* High-Contrast Sparkle Gradient: Pure white sliver for the 'flash' */
+  /* High-Contrast Sparkle Gradient: More balanced for linear motion */
   background: linear-gradient(105deg, 
-    #000000 35%, 
-    #1a1a1a 42%,
+    #000000 40%, 
+    #333333 45%,
     #ffffff 50%, 
-    #1a1a1a 58%,
-    #000000 65%
+    #333333 55%,
+    #000000 60%
   );
   background-size: 300% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent; /* Enable the gradient text */
   
-  animation: sparkle-sweep 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  /* Use linear timing to prevent pausing/stopping in center */
+  animation: sparkle-sweep 4s linear infinite;
   letter-spacing: -0.05em;
   
   /* Sharp Apple-style Embossed 3D - Keeps depth even when transparent */
@@ -84,7 +85,6 @@ button:focus {
 
 .logo-3d:hover {
   transform: translateY(-1px);
-  color: #000000 !important;
   text-shadow: 
     0.5px 0.5px 0px #ffffff,
     0 4px 12px rgba(0, 0, 0, 0.15);
@@ -92,28 +92,26 @@ button:focus {
 
 /* Hero Title - Deep Black 3D */
 .hero-title-3d-glow {
-  font-size: clamp(48px, 12vw, 140px) !important;
+  font-size: clamp(32px, 10vw, 120px) !important;
   font-weight: 900 !important;
   letter-spacing: -0.06em !important;
-  line-height: 0.95 !important;
+  line-height: 0.9 !important;
   text-transform: uppercase;
   position: relative;
   display: block;
   width: 100%;
   word-break: keep-all;
   overflow-wrap: break-word;
-  padding: 0 15px;
+  padding: 0 10px;
   
-  /* Solid Black - Removed all silver/gray gradients */
+  /* Solid Black */
   color: #000000 !important;
   
-  /* Strong 3D Emboss: Clear white highlight for depth */
+  /* Strong 3D Emboss */
   text-shadow: 
     1px 1px 0px rgba(255, 255, 255, 0.7),
-    2px 2px 0px rgba(0, 0, 0, 0.05),
-    0 4px 8px rgba(0, 0, 0, 0.15);
+    0 4px 8px rgba(0, 0, 0, 0.1);
     
-  /* Removed -webkit-background-clip: text to ensure solid black color */
   background: none !important;
   -webkit-text-fill-color: initial !important;
   
@@ -207,15 +205,16 @@ button:focus {
 .drawer-overlay.active { opacity: 1; visibility: visible; }
 
 .side-drawer {
-  position: fixed; top: 12px; right: -320px; width: 280px; height: calc(100% - 24px);
+  position: fixed; top: 12px; right: -320px; width: 280px; max-height: calc(100% - 24px); height: auto;
   background: rgba(255, 255, 255, 0.92); 
   backdrop-filter: blur(50px) saturate(180%); 
   -webkit-backdrop-filter: blur(50px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: 24px;
   z-index: 201; transition: right 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s ease;
-  padding: 60px 24px; display: flex; flex-direction: column; gap: 32px; visibility: hidden;
-  box-shadow: -20px 0 60px rgba(0,0,0,0.1);
+  padding: 48px 24px 32px; display: flex; flex-direction: column; gap: 32px; visibility: hidden;
+  box-shadow: -20px 0 60px rgba(0,0,0,0.06);
+  overflow-y: auto;
 }
 .side-drawer.active { right: 12px; visibility: visible; }
 
