@@ -18,14 +18,38 @@ body {
   overflow-x: hidden;
 }
 
-/* 네비게이션 메뉴 반응형 제어 (인라인 스타일 간섭 방지용) */
+/* KEIPO 3D 로고 스타일 */
+.logo-3d {
+  color: var(--apple-black);
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-shadow: 
+    0 1px 0 #ddd,
+    0 2px 0 #ccc,
+    0 3px 0 #bbb,
+    0 4px 1px rgba(0,0,0,0.1),
+    0 0 5px rgba(0,0,0,0.05);
+  cursor: pointer;
+}
+
+.logo-3d:hover {
+  transform: translateY(-2px) rotateX(10deg) rotateY(-5deg);
+  text-shadow: 
+    0 1px 0 #ddd,
+    0 2px 0 #ccc,
+    0 3px 0 #bbb,
+    0 4px 0 #aaa,
+    0 10px 10px rgba(0,0,0,0.15);
+}
+
+/* 네비게이션 메뉴 반응형 제어 */
 .nav-menu-desktop {
-  display: none !important; /* 기본적으로 숨김 (모바일) */
+  display: none !important;
 }
 
 @media (min-width: 768px) {
   .nav-menu-desktop {
-    display: flex !important; /* 태블릿 이상에서만 표시 */
+    display: flex !important;
   }
 }
 
@@ -44,7 +68,7 @@ body {
   border: 1px solid rgba(0,0,0,0.05);
   box-shadow: 0 4px 6px rgba(0,0,0,0.03), inset 0 -2px 0 rgba(0,0,0,0.05);
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  flex-shrink: 0; /* 짤림 방지 */
+  flex-shrink: 0;
 }
 
 .menu-bar { width: 18px; height: 2px; background: var(--apple-black); border-radius: 2px; }

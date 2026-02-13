@@ -90,21 +90,20 @@ export default function Home() {
 
       <nav className="nav-glass">
         <div className="max-container" style={{ justifyContent: 'space-between', alignItems: 'center' }}>
-          {/* Left Group */}
-          <div style={{ display: 'flex', alignItems: 'center', flexShrink: 0 }}>
-            <span style={{ fontSize: 'clamp(17px, 5vw, 22px)', fontWeight: '800', letterSpacing: '-0.04em', color: '#1d1d1f' }}>KEIPO</span>
+          {/* Left: 3D Logo */}
+          <div style={{ display: 'flex', alignItems: 'center', perspective: '500px' }}>
+            <span className="logo-3d" style={{ fontSize: 'clamp(18px, 5vw, 24px)', fontWeight: '900', letterSpacing: '-0.05em' }}>
+              KEIPO
+            </span>
           </div>
           
-          {/* Right Group - No shrinking to prevent clipping */}
           <div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexShrink: 0 }}>
-            {/* Desktop Only Menu - No inline display:flex to avoid overriding CSS class */}
             <div className="nav-menu-desktop" style={{ gap: '28px', fontSize: '13px', fontWeight: '600', color: '#86868b', marginRight: '20px' }}>
               <a href="#history" style={{ textDecoration: 'none', color: 'inherit' }}>{t('navHistory')}</a>
               <a href="#logistics" style={{ textDecoration: 'none', color: 'inherit' }}>Logistics</a>
               <a href="#categories" style={{ textDecoration: 'none', color: 'inherit' }}>{t('navProducts')}</a>
             </div>
 
-            {/* Language Button */}
             <button 
               onClick={toggleDrawer}
               style={{
@@ -125,7 +124,6 @@ export default function Home() {
               <Globe2 size={14} /> {lang.toUpperCase()}
             </button>
 
-            {/* 3D Menu Button */}
             <div className="menu-button-3d" onClick={toggleDrawer}>
               <div className="menu-bar" style={{ width: '18px' }} />
               <div className="menu-bar" style={{ width: '12px' }} />
@@ -135,7 +133,6 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Hero Section */}
       <section className="section-padding" style={{ textAlign: 'center', paddingTop: '150px' }}>
         <SectionReveal style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <h1 className="hero-title">{t('title')}</h1>
@@ -149,7 +146,6 @@ export default function Home() {
         </SectionReveal>
       </section>
 
-      {/* History Section */}
       <section id="history" className="section-padding" style={{ backgroundColor: '#f5f5f7' }}>
         <div className="max-container" style={{ flexDirection: 'column', gap: '48px' }}>
           <div className="grid-stack" style={{ gap: '48px', alignItems: 'stretch' }}>
@@ -182,7 +178,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Global Reach Section */}
       <section id="logistics" className="section-padding" style={{ backgroundColor: '#fbfbfd' }}>
         <div className="max-container" style={{ flexDirection: 'column' }}>
           <SectionReveal style={{ marginBottom: '48px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -245,7 +240,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Categories Section */}
       <section id="categories" className="section-padding">
         <div className="max-container" style={{ flexDirection: 'column', alignItems: 'center' }}>
           <SectionReveal style={{ textAlign: 'center', marginBottom: '48px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -253,7 +247,7 @@ export default function Home() {
             <p style={{ fontSize: '16px', color: '#86868b', fontWeight: '500' }}>{t('highVolume')}</p>
           </SectionReveal>
           
-          <div className="grid-3" style={{ gap: '32px', width: '100%' }}>
+          <div className="grid-3" style={{ gap: '24px', width: '100%' }}>
             {[
               { title: t('brewingTitle'), desc: t('brewingDesc') },
               { title: t('smokingTitle'), desc: t('smokingDesc') },
@@ -276,7 +270,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact Section */}
       <section id="contact" className="section-padding" style={{ backgroundColor: '#1d1d1f', color: 'white', textAlign: 'center' }}>
         <div className="max-container" style={{ flexDirection: 'column', alignItems: 'center' }}>
           <SectionReveal style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
