@@ -90,7 +90,6 @@ export default function Home() {
 
       <nav className="nav-glass">
         <div className="max-container" style={{ justifyContent: 'space-between', alignItems: 'center' }}>
-          {/* Left: 3D Logo */}
           <div style={{ display: 'flex', alignItems: 'center', perspective: '500px' }}>
             <span className="logo-3d" style={{ fontSize: 'clamp(18px, 5vw, 24px)', fontWeight: '900', letterSpacing: '-0.05em' }}>
               KEIPO
@@ -133,10 +132,14 @@ export default function Home() {
         </div>
       </nav>
 
-      <section className="section-padding" style={{ textAlign: 'center', paddingTop: '150px' }}>
-        <SectionReveal style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <h1 className="hero-title">{t('title')}</h1>
-          <p style={{ fontSize: 'clamp(18px, 4.5vw, 26px)', color: '#86868b', fontWeight: '500', marginBottom: '40px', maxWidth: '800px', margin: '0 auto 40px', lineHeight: '1.3', padding: '0 10px' }}>
+      {/* Hero Section with 3D Glow Title */}
+      <section className="section-padding" style={{ textAlign: 'center', paddingTop: '180px', position: 'relative', overflow: 'hidden' }}>
+        {/* Background Glow */}
+        <div style={{ position: 'absolute', top: '25%', left: '50%', transform: 'translateX(-50%)', width: '600px', height: '300px', background: 'radial-gradient(circle, rgba(0, 102, 204, 0.08) 0%, transparent 70%)', filter: 'blur(60px)', zIndex: 0 }} />
+        
+        <SectionReveal style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', zIndex: 1 }}>
+          <h1 className="hero-title-3d-glow">{t('title')}</h1>
+          <p style={{ fontSize: 'clamp(18px, 4.5vw, 26px)', color: '#86868b', fontWeight: '500', marginTop: '40px', marginBottom: '40px', maxWidth: '800px', margin: '40px auto', lineHeight: '1.3', padding: '0 10px' }}>
             {t('slogan')}
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', flexWrap: 'wrap' }}>
@@ -146,6 +149,7 @@ export default function Home() {
         </SectionReveal>
       </section>
 
+      {/* History Section */}
       <section id="history" className="section-padding" style={{ backgroundColor: '#f5f5f7' }}>
         <div className="max-container" style={{ flexDirection: 'column', gap: '48px' }}>
           <div className="grid-stack" style={{ gap: '48px', alignItems: 'stretch' }}>
@@ -178,6 +182,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Global Reach Section */}
       <section id="logistics" className="section-padding" style={{ backgroundColor: '#fbfbfd' }}>
         <div className="max-container" style={{ flexDirection: 'column' }}>
           <SectionReveal style={{ marginBottom: '48px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -247,7 +252,7 @@ export default function Home() {
             <p style={{ fontSize: '16px', color: '#86868b', fontWeight: '500' }}>{t('highVolume')}</p>
           </SectionReveal>
           
-          <div className="grid-3" style={{ gap: '24px', width: '100%' }}>
+          <div className="grid-3" style={{ gap: '32px', width: '100%' }}>
             {[
               { title: t('brewingTitle'), desc: t('brewingDesc') },
               { title: t('smokingTitle'), desc: t('smokingDesc') },
@@ -270,6 +275,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Contact Section */}
       <section id="contact" className="section-padding" style={{ backgroundColor: '#1d1d1f', color: 'white', textAlign: 'center' }}>
         <div className="max-container" style={{ flexDirection: 'column', alignItems: 'center' }}>
           <SectionReveal style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
