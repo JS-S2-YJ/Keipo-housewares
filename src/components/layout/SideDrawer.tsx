@@ -16,17 +16,20 @@ export const SideDrawer = ({ isOpen, onClose }: SideDrawerProps) => {
     e.preventDefault();
     const element = document.getElementById(id);
     if (element) {
-      const headerOffset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+      // 1. Close drawer immediately to stabilize layout
+      onClose();
       
-      // Close drawer after starting scroll
-      setTimeout(onClose, 300);
+      // 2. Wait for drawer animation to finish (approx 300-400ms) before scrolling
+      setTimeout(() => {
+        const headerOffset = 80;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }, 350);
     }
   };
 

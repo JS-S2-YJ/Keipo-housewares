@@ -111,6 +111,17 @@ button:focus {
 .logo-3d:active {
   transform: none !important;
   opacity: 1 !important;
+  background: linear-gradient(105deg, 
+    #000000 35%, 
+    #333333 45%,
+    #ffffff 50%, 
+    #333333 55%,
+    #000000 65%
+  ) !important;
+  background-size: 400% 100% !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
 }
 
 /* Hero Title - Deep Black 3D */
