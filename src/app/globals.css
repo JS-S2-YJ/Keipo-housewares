@@ -70,6 +70,10 @@ body {
   filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
 }
 
+.image-card-wrapper:hover .hover-zoom-image {
+  transform: scale(1.08);
+}
+
 /* 3D Glow Hero Title */
 .hero-title-3d-glow {
   font-size: clamp(32px, 10vw, 120px) !important;
