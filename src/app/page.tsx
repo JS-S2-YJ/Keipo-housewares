@@ -127,7 +127,7 @@ export default function Home() {
                 <Globe2 size={120} className="text-cyber-cyan/20 animate-pulse" />
               </div>
             </div>
-          </SectionReveal>
+          </div>
         </div>
       </section>
 
