@@ -55,12 +55,11 @@ export const HeroSection = ({ t }: HeroSectionProps) => {
             
             <h1 className="hero-title-3d-glow" style={{ 
               marginBottom: '16px',
-              fontSize: 'clamp(28px, 9vw, 100px)',
-              lineHeight: '1.1',
-              whiteSpace: 'nowrap',
-              display: 'inline-block',
+              fontSize: 'clamp(32px, 10vw, 110px)',
+              lineHeight: '1.0',
+              textAlign: 'center',
               width: '100%',
-              textAlign: 'center'
+              wordBreak: 'keep-all'
             }}>
               {t('brandLabel')}
             </h1>
