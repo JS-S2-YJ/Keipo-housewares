@@ -73,17 +73,20 @@ export const HeroSection = () => {
             {/* Main Hero Logo */}
             <div style={{ 
               marginBottom: 'clamp(32px, 5vh, 60px)',
-              position: 'relative'
+              position: 'relative',
+              width: '100%',
+              display: 'flex',
+              justifyContent: 'center'
             }}>
               <img 
-                src={`${BASE_PATH}/images/main_logo.png?v=${Date.now()}`} 
+                src={`${BASE_PATH}/images/main_logo_v2.png`} 
                 alt="KEIPO Housewares" 
                 style={{ 
-                  height: 'clamp(140px, 30vh, 400px)', 
-                  width: 'auto',
+                  width: 'clamp(280px, 75vw, 1000px)', 
+                  height: 'auto',
                   objectFit: 'contain',
                   borderRadius: '32px',
-                  filter: 'drop-shadow(0 25px 50px rgba(0, 102, 204, 0.18))'
+                  filter: 'drop-shadow(0 30px 60px rgba(0, 102, 204, 0.2))'
                 }} 
               />
             </div>
