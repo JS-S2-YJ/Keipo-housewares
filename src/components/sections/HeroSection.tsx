@@ -2,14 +2,11 @@
 
 import { ChevronRight } from 'lucide-react';
 import { SectionReveal } from '@/components/common/SectionReveal';
+import { useLanguage } from '@/hooks/useLanguage';
 
-import { TranslationKey } from '@/translations';
+export const HeroSection = () => {
+  const { t } = useLanguage();
 
-interface HeroSectionProps {
-  t: (key: TranslationKey) => string;
-}
-
-export const HeroSection = ({ t }: HeroSectionProps) => {
   return (
     <section className="section-padding" style={{ 
       textAlign: 'center', 

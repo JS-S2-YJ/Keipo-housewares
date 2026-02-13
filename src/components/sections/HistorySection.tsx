@@ -1,17 +1,12 @@
 'use client';
 
 import { SectionReveal } from '@/components/common/SectionReveal';
-import { TranslationKey } from '@/translations';
 import { BASE_PATH } from '@/lib/constants';
+import { useLanguage } from '@/hooks/useLanguage';
 
-interface HistorySectionProps {
-  t: (key: TranslationKey) => string;
-  yearsActiveCount: number;
-  historyText: string;
-  sinceText: string;
-}
+export const HistorySection = () => {
+  const { t, yearsActiveCount, historyText, sinceText } = useLanguage();
 
-export const HistorySection = ({ t, yearsActiveCount, historyText, sinceText }: HistorySectionProps) => {
   return (
     <section id="history" className="section-padding" style={{ backgroundColor: '#f5f5f7' }}>
       <div className="max-container" style={{ flexDirection: 'column' }}>
