@@ -41,39 +41,40 @@ button:focus {
 }
 
 /* --- Animations --- */
-@keyframes logo-breathing {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-2px); }
-}
-
-@keyframes sparkle-sweep {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
-}
+/* Transitions are handled via cubic-bezier for a premium feel */
 
 /* --- Components --- */
 
 /* Logo */
 .logo-3d {
   display: inline-block;
-  font-weight: 900;
+  font-weight: 800;
   cursor: pointer;
   position: relative;
-  background: linear-gradient(90deg, #1d1d1f 0%, #1d1d1f 40%, #ffffff 50%, #1d1d1f 60%, #1d1d1f 100%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent !important;
-  animation: logo-breathing 4s ease-in-out infinite, sparkle-sweep 3s linear infinite;
-  transition: all 0.3s ease;
+  
+  /* Apple-style Premium Appearance: Deep black with subtle depth */
+  color: var(--apple-black) !important;
+  letter-spacing: -0.05em;
+  
+  /* Realistic 3D Depth using layers */
+  text-shadow: 
+    0.5px 0.5px 0px #ffffff,
+    -0.5px -0.5px 0px rgba(0,0,0,0.05),
+    0 1px 0 rgba(0,0,0,0.1),
+    0 2px 4px rgba(0,0,0,0.05);
+  
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .logo-3d:hover {
-  transform: scale(1.05) rotateX(10deg);
-  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+  transform: translateY(-1.5px) scale(1.03);
+  text-shadow: 
+    0.5px 0.5px 0px #ffffff,
+    0 2px 0 rgba(0,0,0,0.1),
+    0 6px 12px rgba(0,0,0,0.1);
 }
 
-/* Hero Title - 더 선명하고 입체적으로 개선 */
+/* Hero Title - Realistic Apple-style 3D */
 .hero-title-3d-glow {
   font-size: clamp(48px, 12vw, 140px) !important;
   font-weight: 900 !important;
@@ -87,29 +88,31 @@ button:focus {
   overflow-wrap: break-word;
   padding: 0 15px;
   
-  /* 다층 3D 그림자: 실버/메탈릭 느낌 추가 */
+  /* Deep Charcoal/Black with subtle internal depth */
+  color: #1d1d1f !important;
+  
+  /* Realistic Embossed 3D: Uses highlight and shadow for depth instead of flat gray stacks */
   text-shadow: 
-    0 1px 0 #d1d1d1, 
-    0 2px 0 #c8c8c8, 
-    0 3px 0 #b0b0b0, 
-    0 8px 15px rgba(0,0,0,0.1);
+    1px 1px 0px #ffffff,
+    -1px -1px 0px rgba(0,0,0,0.05),
+    0 4px 8px rgba(0,0,0,0.1),
+    0 12px 24px rgba(0,0,0,0.05);
     
-  /* 그라데이션: 회색빛을 줄이고 더 깊은 블랙/실버 조화 */
-  background: linear-gradient(180deg, #000000 0%, #1d1d1f 40%, #434344 100%);
+  background: linear-gradient(180deg, #000000 0%, #1d1d1f 60%, #434344 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent !important;
   
-  transition: all 0.6s cubic-bezier(0.2, 1, 0.2, 1);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: default;
 }
 
 .hero-title-3d-glow:hover {
-  transform: translateY(-5px) scale(1.02);
+  transform: translateY(-5px) scale(1.01);
   text-shadow: 
-    0 1px 0 #d1d1d1, 
-    0 3px 0 #b0b0b0, 
-    0 15px 30px rgba(0,0,0,0.15);
+    1px 1px 0px #ffffff,
+    0 10px 20px rgba(0,0,0,0.12),
+    0 20px 40px rgba(0,0,0,0.08);
 }
 
 /* --- Buttons (Missing Styles Restored) --- */
