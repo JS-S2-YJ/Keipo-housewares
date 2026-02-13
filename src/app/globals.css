@@ -18,6 +18,17 @@ body {
   overflow-x: hidden;
 }
 
+/* 네비게이션 메뉴 반응형 제어 (인라인 스타일 간섭 방지용) */
+.nav-menu-desktop {
+  display: none !important; /* 기본적으로 숨김 (모바일) */
+}
+
+@media (min-width: 768px) {
+  .nav-menu-desktop {
+    display: flex !important; /* 태블릿 이상에서만 표시 */
+  }
+}
+
 /* 3D 메뉴 버튼 */
 .menu-button-3d {
   width: 40px;
@@ -33,12 +44,12 @@ body {
   border: 1px solid rgba(0,0,0,0.05);
   box-shadow: 0 4px 6px rgba(0,0,0,0.03), inset 0 -2px 0 rgba(0,0,0,0.05);
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  flex-shrink: 0;
+  flex-shrink: 0; /* 짤림 방지 */
 }
 
 .menu-bar { width: 18px; height: 2px; background: var(--apple-black); border-radius: 2px; }
 
-/* 드로어 오버레이 */
+/* 드로어 관련 스타일 유지 */
 .drawer-overlay {
   position: fixed; top: 0; left: 0; width: 100%; height: 100%;
   background: rgba(0,0,0,0.15); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
@@ -59,37 +70,20 @@ body {
   position: fixed !important; top: 0 !important; width: 100% !important; z-index: 100 !important;
   background: rgba(255, 255, 255, 0.8) !important; backdrop-filter: saturate(180%) blur(20px) !important;
   -webkit-backdrop-filter: saturate(180%) blur(20px) !important;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important; padding: 6px 12px !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important; padding: 8px 16px !important;
 }
-
-@media (min-width: 768px) { .nav-glass { padding: 12px 24px !important; } }
 
 .max-container { max-width: 1200px !important; margin: 0 auto !important; display: flex !important; width: 100% !important; }
 
-/* 3D 카드 - 겹침 방지를 위해 margin 및 transform 최적화 */
-.perspective-container {
-  perspective: 2000px;
-  width: 100%;
-}
-
+/* 3D 카드 스타일 */
+.perspective-container { perspective: 2000px; width: 100%; }
 .three-d-card {
-  transform-style: preserve-3d;
-  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s ease;
-  background: white;
-  border-radius: 28px;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  position: relative;
-  z-index: 1;
+  transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s ease;
+  background: white; border-radius: 28px; border: 1px solid rgba(0, 0, 0, 0.05); position: relative; z-index: 1;
 }
-
-.three-d-card:hover {
-  transform: translateZ(20px) translateY(-5px) rotateX(2deg);
-  box-shadow: 0 25px 50px rgba(0,0,0,0.08);
-  z-index: 10;
-}
+.three-d-card:hover { transform: translateZ(20px) translateY(-5px) rotateX(2deg); box-shadow: 0 25px 50px rgba(0,0,0,0.08); z-index: 10; }
 
 .hero-title { font-size: clamp(42px, 12vw, 100px) !important; font-weight: 700 !important; letter-spacing: -0.04em !important; line-height: 1.05 !important; margin-bottom: 24px !important; }
-
 .section-padding { padding: 60px 16px !important; }
 @media (min-width: 768px) { .section-padding { padding: 140px 40px !important; } }
 
@@ -105,26 +99,9 @@ body {
   display: inline-flex !important; align-items: center;
 }
 
-.grid-3 {
-  display: grid !important;
-  grid-template-columns: 1fr !important;
-  gap: 32px !important; /* 모바일 간격 확대 */
-  width: 100% !important;
-}
-
-@media (min-width: 768px) {
-  .grid-3 {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 32px !important;
-  }
-}
-
-@media (min-width: 1024px) {
-  .grid-3 {
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 32px !important;
-  }
-}
+.grid-3 { display: grid !important; grid-template-columns: 1fr !important; gap: 32px !important; width: 100% !important; }
+@media (min-width: 768px) { .grid-3 { grid-template-columns: repeat(2, 1fr) !important; } }
+@media (min-width: 1024px) { .grid-3 { grid-template-columns: repeat(3, 1fr) !important; } }
 
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
