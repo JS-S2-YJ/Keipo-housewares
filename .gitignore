@@ -33,6 +33,5 @@ yarn-error.log*
 next-env.d.ts
 
 # gemini & skills
-*.skill
-.gemini/tmp/
+.gemini/*
 GEMINI.md
