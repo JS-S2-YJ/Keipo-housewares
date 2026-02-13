@@ -49,6 +49,13 @@ button:focus {
 /* --- Components --- */
 
 /* Logo */
+@keyframes logo-idle-bounce {
+  0%, 85%, 100% { transform: translateY(0) scale(1); }
+  90% { transform: translateY(-5px) scale(1.05); }
+  93% { transform: translateY(0) scale(0.98); }
+  96% { transform: translateY(-2px) scale(1.02); }
+}
+
 .logo-3d {
   display: inline-block;
   font-weight: 800;
@@ -71,8 +78,8 @@ button:focus {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   
-  /* Constant linear motion */
-  animation: sparkle-sweep 4s linear infinite;
+  /* Constant linear motion + Occasional idle bounce */
+  animation: sparkle-sweep 8s linear infinite, logo-idle-bounce 8s ease-in-out infinite;
   letter-spacing: -0.05em;
   padding-right: 4px;
   
@@ -97,6 +104,11 @@ button:focus {
     0px 1px 0px #d1d1d1,
     0px 2px 0px #c1c1c1,
     0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.logo-3d:active {
+  transform: none !important;
+  opacity: 1 !important;
 }
 
 /* Hero Title - Deep Black 3D */
@@ -220,9 +232,9 @@ button:focus {
 /* Side Drawer */
 .drawer-overlay {
   position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.15); 
-  backdrop-filter: blur(20px); 
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(0, 0, 0, 0.45); 
+  backdrop-filter: blur(40px); 
+  -webkit-backdrop-filter: blur(40px);
   z-index: 200; opacity: 0; visibility: hidden; transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.5s ease;
 }
 .drawer-overlay.active { opacity: 1; visibility: visible; }
