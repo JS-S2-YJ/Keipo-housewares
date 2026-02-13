@@ -47,15 +47,18 @@ export const SideDrawer = ({ isOpen, onClose, lang, setLang, t }: SideDrawerProp
                 key={l.code}
                 onClick={() => { setLang(l.code); onClose(); }}
                 style={{
-                  border: lang === l.code ? '2px solid #0066cc' : '1px solid #f2f2f2',
+                  border: lang === l.code ? '2px solid #0066cc' : '1px solid rgba(0,0,0,0.05)',
                   padding: '10px',
-                  borderRadius: '10px',
+                  borderRadius: '12px',
                   fontSize: '13px',
                   fontWeight: '600',
                   cursor: 'pointer',
-                  backgroundColor: lang === l.code ? '#f5faff' : 'white',
+                  backgroundColor: lang === l.code ? 'rgba(0, 102, 204, 0.08)' : 'rgba(255, 255, 255, 0.4)',
+                  backdropFilter: 'blur(10px)',
+                  WebkitBackdropFilter: 'blur(10px)',
                   color: lang === l.code ? '#0066cc' : '#1d1d1f',
-                  textAlign: 'left'
+                  textAlign: 'left',
+                  transition: 'all 0.2s ease'
                 }}
               >
                 {l.label}

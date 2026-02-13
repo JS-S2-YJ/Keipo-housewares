@@ -45,7 +45,8 @@ export const HistorySection = ({ t, yearsActiveCount, historyText, sinceText }: 
               overflow: 'hidden', 
               boxShadow: '0 20px 40px rgba(0,0,0,0.06)', 
               position: 'relative',
-              cursor: 'pointer'
+              cursor: 'pointer',
+              border: '1px solid rgba(0,0,0,0.03)'
             }}>
               <img 
                 src={`${BASE_PATH}/images/knife.jpeg`} 
@@ -61,15 +62,20 @@ export const HistorySection = ({ t, yearsActiveCount, historyText, sinceText }: 
               />
               <div style={{
                 position: 'absolute',
-                bottom: '0',
-                left: '0',
-                right: '0',
-                padding: '24px',
-                background: 'linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 100%)',
+                bottom: '16px',
+                left: '16px',
+                right: '16px',
+                padding: '16px 24px',
+                background: 'rgba(255, 255, 255, 0.2)',
+                backdropFilter: 'blur(20px) saturate(160%)',
+                WebkitBackdropFilter: 'blur(20px) saturate(160%)',
+                borderRadius: '20px',
+                border: '1px solid rgba(255, 255, 255, 0.3)',
                 color: 'white',
-                pointerEvents: 'none'
+                pointerEvents: 'none',
+                boxShadow: '0 8px 32px rgba(0,0,0,0.1)'
               }}>
-                <span style={{ fontSize: '12px', fontWeight: '700', letterSpacing: '0.1em' }}>{t('premiumQuality')}</span>
+                <span style={{ fontSize: '11px', fontWeight: '800', letterSpacing: '0.15em', textShadow: '0 2px 4px rgba(0,0,0,0.2)' }}>{t('premiumQuality').toUpperCase()}</span>
               </div>
             </div>
           </SectionReveal>
