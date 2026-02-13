@@ -2,14 +2,11 @@
 
 import { Mail, Globe2 } from 'lucide-react';
 import { SectionReveal } from '@/components/common/SectionReveal';
+import { useLanguage } from '@/hooks/useLanguage';
 
-import { TranslationKey } from '@/translations';
+export const ContactSection = () => {
+  const { t } = useLanguage();
 
-interface ContactSectionProps {
-  t: (key: TranslationKey) => string;
-}
-
-export const ContactSection = ({ t }: ContactSectionProps) => {
   return (
     <section id="contact" className="section-padding" style={{ 
       backgroundColor: 'rgba(29, 29, 31, 0.98)', 
