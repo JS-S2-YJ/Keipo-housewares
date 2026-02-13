@@ -52,7 +52,7 @@ export const LogisticsSection = ({ t, currentYear }: LogisticsSectionProps) => {
                         key={i} 
                         initial={{ height: 0 }}
                         whileInView={{ height: `${h}%` }}
-                        viewport={{ once: true }}
+                        viewport={{ once: true, margin: "-50px" }}
                         transition={{ duration: 1, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
                         style={{ flex: 1, backgroundColor: i === 6 ? '#0066cc' : '#e5e5ea', borderRadius: '3px 3px 0 0' }} 
                       />
