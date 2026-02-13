@@ -22,18 +22,36 @@ export default function Home() {
 
   useEffect(() => {
     document.body.style.overflow = isDrawerOpen ? 'hidden' : 'auto';
-    return () => { document.body.style.overflow = 'auto'; };
+    
+    // 메뉴가 열릴 때 history state 추가
+    if (isDrawerOpen) {
+      window.history.pushState({ drawerOpen: true }, '');
+    }
+
+    const handlePopState = () => {
+      if (isDrawerOpen) {
+        setIsDrawerOpen(false);
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    
+    return () => { 
+      document.body.style.overflow = 'auto';
+      window.removeEventListener('popstate', handlePopState);
+    };
   }, [isDrawerOpen]);
 
   if (!mounted) return <div style={{ background: 'white', minHeight: '100vh' }} />;
 
   const toggleDrawer = () => setIsDrawerOpen(!isDrawerOpen);
+  const closeDrawer = () => setIsDrawerOpen(false);
 
   return (
     <main style={{ opacity: 1, transition: 'opacity 0.5s ease', width: '100%', overflowX: 'hidden' }}>
       <SideDrawer 
         isOpen={isDrawerOpen} 
-        onClose={toggleDrawer} 
+        onClose={closeDrawer} 
       />
       
       <Navbar 
