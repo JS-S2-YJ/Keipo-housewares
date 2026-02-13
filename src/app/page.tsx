@@ -49,7 +49,7 @@ export default function Home() {
       {/* Side Drawer Overlay */}
       <div className={`drawer-overlay ${isDrawerOpen ? 'active' : ''}`} onClick={toggleDrawer} />
 
-      {/* Side Drawer (Responsive: always accessible via button) */}
+      {/* Side Drawer */}
       <div className={`side-drawer ${isDrawerOpen ? 'active' : ''}`}>
         <button onClick={toggleDrawer} style={{ position: 'absolute', top: '16px', right: '16px', border: 'none', background: 'none', cursor: 'pointer', color: '#86868b' }}>
           <X size={28} />
@@ -98,23 +98,35 @@ export default function Home() {
             <span style={{ fontSize: 'clamp(18px, 5vw, 22px)', fontWeight: '800', letterSpacing: '-0.04em', color: '#1d1d1f' }}>KEIPO</span>
           </div>
           
-          {/* Desktop Right: Full Menu + Language */}
-          <div className="hidden md:flex" style={{ display: 'flex', gap: '32px', fontSize: '13px', fontWeight: '600', color: '#86868b', alignItems: 'center' }}>
-            <a href="#history" style={{ textDecoration: 'none', color: 'inherit' }}>{t('navHistory')}</a>
-            <a href="#logistics" style={{ textDecoration: 'none', color: 'inherit' }}>{t('navLogistics')}</a>
-            <a href="#categories" style={{ textDecoration: 'none', color: 'inherit' }}>{t('navProducts')}</a>
-            <div style={{ width: '1px', height: '14px', backgroundColor: '#e5e5e7' }} />
-            <button onClick={toggleDrawer} style={{ border: 'none', background: 'none', color: '#0066cc', fontWeight: '800', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <Globe2 size={14} /> {lang.toUpperCase()}
-            </button>
-          </div>
+          {/* Right: Menu List (Desktop) & Menu Button (All) */}
+          <div style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
+            {/* Desktop Only Menu */}
+            <div className="hidden md:flex" style={{ display: 'flex', gap: '28px', fontSize: '13px', fontWeight: '600', color: '#86868b' }}>
+              <a href="#history" style={{ textDecoration: 'none', color: 'inherit' }}>{t('navHistory')}</a>
+              <a href="#logistics" style={{ textDecoration: 'none', color: 'inherit' }}>{t('navLogistics')}</a>
+              <a href="#categories" style={{ textDecoration: 'none', color: 'inherit' }}>{t('navProducts')}</a>
+            </div>
 
-          {/* Mobile Right: Single Menu Button */}
-          <div className="md:hidden" style={{ display: 'flex', alignItems: 'center' }}>
-            <div className="menu-button-3d" onClick={toggleDrawer}>
-              <div className="menu-bar" style={{ width: '18px' }} />
-              <div className="menu-bar" style={{ width: '12px' }} />
-              <div className="menu-bar" style={{ width: '18px' }} />
+            {/* Styled Language/Menu Trigger Button (Unified) */}
+            <div 
+              className="menu-button-3d" 
+              onClick={toggleDrawer}
+              style={{ 
+                backgroundColor: '#f5faff', 
+                borderColor: '#0066cc20',
+                display: 'flex',
+                flexDirection: 'row',
+                gap: '8px',
+                width: 'auto',
+                padding: '0 12px'
+              }}
+            >
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
+                <div className="menu-bar" style={{ width: '12px', height: '1.5px' }} />
+                <div className="menu-bar" style={{ width: '8px', height: '1.5px' }} />
+                <div className="menu-bar" style={{ width: '12px', height: '1.5px' }} />
+              </div>
+              <span style={{ fontSize: '11px', fontWeight: '800', color: '#0066cc' }}>{lang.toUpperCase()}</span>
             </div>
           </div>
         </div>
