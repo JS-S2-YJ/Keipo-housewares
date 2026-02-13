@@ -109,6 +109,12 @@ button:focus {
     0px 8px 15px rgba(0, 0, 0, 0.1);
 }
 
+.logo-3d:active {
+  opacity: 1 !important;
+  transform: none !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
 /* Hero Title - Deep Black 3D */
 
 .hero-title-3d-glow {
