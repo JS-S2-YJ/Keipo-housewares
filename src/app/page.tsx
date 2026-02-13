@@ -27,7 +27,7 @@ export default function Home() {
       window.history.pushState({ drawer: 'open' }, '');
     }
 
-    const handlePopState = () => {
+    const handlePopState = (event: PopStateEvent) => {
       if (isDrawerOpen) {
         setIsDrawerOpen(false);
       }
@@ -42,7 +42,14 @@ export default function Home() {
   if (!mounted) return <div style={{ background: 'white', minHeight: '100vh' }} />;
 
   const toggleDrawer = () => setIsDrawerOpen(!isDrawerOpen);
-  const closeDrawer = () => setIsDrawerOpen(false);
+  const closeDrawer = () => {
+    if (isDrawerOpen) {
+      if (typeof window !== 'undefined' && window.history.state?.drawer === 'open') {
+        window.history.back();
+      }
+      setIsDrawerOpen(false);
+    }
+  };
 
   return (
     <main style={{ opacity: 1, transition: 'opacity 0.5s ease', width: '100%', overflowX: 'hidden' }}>
