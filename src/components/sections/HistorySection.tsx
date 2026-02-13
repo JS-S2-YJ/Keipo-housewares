@@ -2,6 +2,7 @@
 
 import { SectionReveal } from '@/components/common/SectionReveal';
 import { TranslationKey } from '@/translations';
+import { BASE_PATH } from '@/lib/constants';
 
 interface HistorySectionProps {
   t: (key: TranslationKey) => string;
@@ -47,7 +48,7 @@ export const HistorySection = ({ t, yearsActiveCount, historyText, sinceText }: 
               cursor: 'pointer'
             }}>
               <img 
-                src="/images/knife.jpeg" 
+                src={`${BASE_PATH}/images/knife.jpeg`} 
                 alt="KEIPO Premium Hardware" 
                 className="hover-zoom-image"
                 style={{ 
