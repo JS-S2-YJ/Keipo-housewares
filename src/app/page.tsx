@@ -46,10 +46,8 @@ export default function Home() {
 
   return (
     <main style={{ opacity: 1, transition: 'opacity 0.5s ease' }}>
-      {/* Side Drawer Overlay */}
       <div className={`drawer-overlay ${isDrawerOpen ? 'active' : ''}`} onClick={toggleDrawer} />
 
-      {/* Side Drawer */}
       <div className={`side-drawer ${isDrawerOpen ? 'active' : ''}`}>
         <button onClick={toggleDrawer} style={{ position: 'absolute', top: '16px', right: '16px', border: 'none', background: 'none', cursor: 'pointer', color: '#86868b' }}>
           <X size={28} />
@@ -90,20 +88,23 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Navigation */}
       <nav className="nav-glass">
         <div className="max-container" style={{ justifyContent: 'space-between', alignItems: 'center' }}>
-          <div style={{ display: 'flex', alignItems: 'center' }}>
+          {/* Left Group */}
+          <div style={{ display: 'flex', alignItems: 'center', flexShrink: 0 }}>
             <span style={{ fontSize: 'clamp(17px, 5vw, 22px)', fontWeight: '800', letterSpacing: '-0.04em', color: '#1d1d1f' }}>KEIPO</span>
           </div>
           
-          <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-            <div className="hidden md:flex" style={{ display: 'flex', gap: '28px', fontSize: '13px', fontWeight: '600', color: '#86868b', marginRight: '20px' }}>
+          {/* Right Group - No shrinking to prevent clipping */}
+          <div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexShrink: 0 }}>
+            {/* Desktop Only Menu - No inline display:flex to avoid overriding CSS class */}
+            <div className="nav-menu-desktop" style={{ gap: '28px', fontSize: '13px', fontWeight: '600', color: '#86868b', marginRight: '20px' }}>
               <a href="#history" style={{ textDecoration: 'none', color: 'inherit' }}>{t('navHistory')}</a>
               <a href="#logistics" style={{ textDecoration: 'none', color: 'inherit' }}>Logistics</a>
               <a href="#categories" style={{ textDecoration: 'none', color: 'inherit' }}>{t('navProducts')}</a>
             </div>
 
+            {/* Language Button */}
             <button 
               onClick={toggleDrawer}
               style={{
@@ -117,12 +118,14 @@ export default function Home() {
                 display: 'flex',
                 alignItems: 'center',
                 gap: '6px',
-                cursor: 'pointer'
+                cursor: 'pointer',
+                flexShrink: 0
               }}
             >
               <Globe2 size={14} /> {lang.toUpperCase()}
             </button>
 
+            {/* 3D Menu Button */}
             <div className="menu-button-3d" onClick={toggleDrawer}>
               <div className="menu-bar" style={{ width: '18px' }} />
               <div className="menu-bar" style={{ width: '12px' }} />
@@ -146,7 +149,7 @@ export default function Home() {
         </SectionReveal>
       </section>
 
-      {/* History Section - Fixed Overlapping */}
+      {/* History Section */}
       <section id="history" className="section-padding" style={{ backgroundColor: '#f5f5f7' }}>
         <div className="max-container" style={{ flexDirection: 'column', gap: '48px' }}>
           <div className="grid-stack" style={{ gap: '48px', alignItems: 'stretch' }}>
@@ -179,7 +182,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Global Reach Section - Fixed Overlapping */}
+      {/* Global Reach Section */}
       <section id="logistics" className="section-padding" style={{ backgroundColor: '#fbfbfd' }}>
         <div className="max-container" style={{ flexDirection: 'column' }}>
           <SectionReveal style={{ marginBottom: '48px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -242,7 +245,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Categories Section - Fixed Overlapping */}
+      {/* Categories Section */}
       <section id="categories" className="section-padding">
         <div className="max-container" style={{ flexDirection: 'column', alignItems: 'center' }}>
           <SectionReveal style={{ textAlign: 'center', marginBottom: '48px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
