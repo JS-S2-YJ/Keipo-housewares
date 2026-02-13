@@ -23,9 +23,8 @@ export default function Home() {
   useEffect(() => {
     document.body.style.overflow = isDrawerOpen ? 'hidden' : 'auto';
     
-    // 메뉴가 열릴 때 history state 추가
     if (isDrawerOpen) {
-      window.history.pushState({ drawerOpen: true }, '');
+      window.history.pushState({ drawer: 'open' }, '');
     }
 
     const handlePopState = () => {
@@ -35,9 +34,7 @@ export default function Home() {
     };
 
     window.addEventListener('popstate', handlePopState);
-    
     return () => { 
-      document.body.style.overflow = 'auto';
       window.removeEventListener('popstate', handlePopState);
     };
   }, [isDrawerOpen]);
