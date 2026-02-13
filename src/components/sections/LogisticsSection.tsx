@@ -3,15 +3,13 @@
 import { Anchor, TrendingUp, BarChart3, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { SectionReveal } from '@/components/common/SectionReveal';
-import { TranslationKey } from '@/translations';
 import { ESTABLISHED_YEAR } from '@/lib/constants';
+import { useLanguage } from '@/hooks/useLanguage';
 
-interface LogisticsSectionProps {
-  t: (key: TranslationKey) => string;
-  currentYear: number;
-}
+export const LogisticsSection = () => {
+  const { t } = useLanguage();
+  const currentYear = new Date().getFullYear();
 
-export const LogisticsSection = ({ t, currentYear }: LogisticsSectionProps) => {
   return (
     <section id="logistics" className="section-padding" style={{ backgroundColor: '#f5f5f7' }}>
       <div className="max-container" style={{ flexDirection: 'column' }}>
