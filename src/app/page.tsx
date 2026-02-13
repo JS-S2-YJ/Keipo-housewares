@@ -59,7 +59,7 @@ export default function Home() {
           <span style={{ fontSize: '11px', fontWeight: '800', color: '#0066cc', letterSpacing: '0.15em' }}>NAVIGATE</span>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', fontSize: '22px', fontWeight: '700' }}>
             <a href="#history" onClick={toggleDrawer} style={{ textDecoration: 'none', color: '#1d1d1f' }}>{t('navHistory')}</a>
-            <a href="#logistics" onClick={toggleDrawer} style={{ textDecoration: 'none', color: '#1d1d1f' }}>{t('navLogistics')}</a>
+            <a href="#logistics" onClick={toggleDrawer} style={{ textDecoration: 'none', color: '#1d1d1f' }}>Logistics</a>
             <a href="#categories" onClick={toggleDrawer} style={{ textDecoration: 'none', color: '#1d1d1f' }}>{t('navProducts')}</a>
           </div>
         </div>
@@ -98,35 +98,40 @@ export default function Home() {
             <span style={{ fontSize: 'clamp(18px, 5vw, 22px)', fontWeight: '800', letterSpacing: '-0.04em', color: '#1d1d1f' }}>KEIPO</span>
           </div>
           
-          {/* Right: Menu List (Desktop) & Menu Button (All) */}
-          <div style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
-            {/* Desktop Only Menu */}
-            <div className="hidden md:flex" style={{ display: 'flex', gap: '28px', fontSize: '13px', fontWeight: '600', color: '#86868b' }}>
+          {/* Right Group */}
+          <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+            {/* Desktop Only: History, Logistics, Products (Hidden on narrow screens) */}
+            <div className="hidden md:flex" style={{ display: 'flex', gap: '28px', fontSize: '13px', fontWeight: '600', color: '#86868b', marginRight: '20px' }}>
               <a href="#history" style={{ textDecoration: 'none', color: 'inherit' }}>{t('navHistory')}</a>
-              <a href="#logistics" style={{ textDecoration: 'none', color: 'inherit' }}>{t('navLogistics')}</a>
+              <a href="#logistics" style={{ textDecoration: 'none', color: 'inherit' }}>Logistics</a>
               <a href="#categories" style={{ textDecoration: 'none', color: 'inherit' }}>{t('navProducts')}</a>
             </div>
 
-            {/* Styled Language/Menu Trigger Button (Unified) */}
-            <div 
-              className="menu-button-3d" 
+            {/* Single Styled Language Button (Pill Style) */}
+            <button 
               onClick={toggleDrawer}
-              style={{ 
-                backgroundColor: '#f5faff', 
-                borderColor: '#0066cc20',
+              style={{
+                backgroundColor: '#f5faff',
+                color: '#0066cc',
+                border: '1px solid #0066cc15',
+                padding: '6px 12px',
+                borderRadius: '10px',
+                fontSize: '11px',
+                fontWeight: '800',
                 display: 'flex',
-                flexDirection: 'row',
-                gap: '8px',
-                width: 'auto',
-                padding: '0 12px'
+                alignItems: 'center',
+                gap: '6px',
+                cursor: 'pointer'
               }}
             >
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
-                <div className="menu-bar" style={{ width: '12px', height: '1.5px' }} />
-                <div className="menu-bar" style={{ width: '8px', height: '1.5px' }} />
-                <div className="menu-bar" style={{ width: '12px', height: '1.5px' }} />
-              </div>
-              <span style={{ fontSize: '11px', fontWeight: '800', color: '#0066cc' }}>{lang.toUpperCase()}</span>
+              <Globe2 size={14} /> {lang.toUpperCase()}
+            </button>
+
+            {/* 3D Menu Button (Unified for all devices, far right) */}
+            <div className="menu-button-3d" onClick={toggleDrawer}>
+              <div className="menu-bar" style={{ width: '18px' }} />
+              <div className="menu-bar" style={{ width: '12px' }} />
+              <div className="menu-bar" style={{ width: '18px' }} />
             </div>
           </div>
         </div>
