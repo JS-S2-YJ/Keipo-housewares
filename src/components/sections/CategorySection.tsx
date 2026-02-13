@@ -40,7 +40,7 @@ export const CategorySection = ({ t }: CategorySectionProps) => {
                   borderRadius: '50%', 
                   display: 'flex', 
                   alignItems: 'center', 
-                  justify-content: 'center', 
+                  justifyContent: 'center', 
                   marginTop: '24px',
                   border: '1px solid rgba(0,0,0,0.03)',
                   transition: 'all 0.3s ease'
