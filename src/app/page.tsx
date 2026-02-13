@@ -12,7 +12,6 @@ export default function Home() {
   const [mounted, setMounted] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-  // 업력 자동 계산
   const currentYear = new Date().getFullYear();
   const yearsActiveCount = currentYear - ESTABLISHED_YEAR;
 
@@ -34,53 +33,47 @@ export default function Home() {
 
   const toggleDrawer = () => setIsDrawerOpen(!isDrawerOpen);
 
-  // 언어별 업력 텍스트 조립
   const getHistoryText = () => {
-    if (lang === 'ko') return `${yearsActiveCount}${t('history')}`;
-    if (lang === 'cn') return `${yearsActiveCount}${t('history')}`;
-    if (lang === 'jp') return `${yearsActiveCount}${t('history')}`;
+    if (lang === 'ko' || lang === 'cn' || lang === 'jp') return `${yearsActiveCount}${t('history')}`;
     return `${yearsActiveCount} ${t('history')}`;
   };
 
   const getSinceText = () => {
-    if (lang === 'ko') return `${ESTABLISHED_YEAR}${t('since')}`;
-    if (lang === 'jp') return `${ESTABLISHED_YEAR}${t('since')}`;
+    if (lang === 'ko' || lang === 'jp') return `${ESTABLISHED_YEAR}${t('since')}`;
     if (lang === 'cn') return `${t('since')}${ESTABLISHED_YEAR} 年`;
     return `${t('since')} ${ESTABLISHED_YEAR}`;
   };
 
   return (
     <main style={{ opacity: 1, transition: 'opacity 0.5s ease' }}>
-      {/* Side Drawer Overlay */}
       <div className={`drawer-overlay ${isDrawerOpen ? 'active' : ''}`} onClick={toggleDrawer} />
 
-      {/* Side Drawer */}
       <div className={`side-drawer ${isDrawerOpen ? 'active' : ''}`}>
-        <button onClick={toggleDrawer} style={{ position: 'absolute', top: '24px', right: '24px', border: 'none', background: 'none', cursor: 'pointer', color: '#86868b' }}>
-          <X size={32} />
+        <button onClick={toggleDrawer} style={{ position: 'absolute', top: '16px', right: '16px', border: 'none', background: 'none', cursor: 'pointer', color: '#86868b' }}>
+          <X size={28} />
         </button>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
-          <span style={{ fontSize: '12px', fontWeight: 'bold', color: '#0066cc', letterSpacing: '0.1em' }}>MENU</span>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', fontSize: '24px', fontWeight: '700' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+          <span style={{ fontSize: '11px', fontWeight: '800', color: '#0066cc', letterSpacing: '0.15em' }}>NAVIGATE</span>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', fontSize: '22px', fontWeight: '700' }}>
             <a href="#history" onClick={toggleDrawer} style={{ textDecoration: 'none', color: '#1d1d1f' }}>{t('navHistory')}</a>
-            <a href="#logistics" onClick={toggleDrawer} style={{ textDecoration: 'none', color: '#1d1d1f' }}>Logistics</a>
+            <a href="#logistics" onClick={toggleDrawer} style={{ textDecoration: 'none', color: '#1d1d1f' }}>{t('navLogistics')}</a>
             <a href="#categories" onClick={toggleDrawer} style={{ textDecoration: 'none', color: '#1d1d1f' }}>{t('navProducts')}</a>
           </div>
         </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', marginTop: '40px' }}>
-          <span style={{ fontSize: '12px', fontWeight: 'bold', color: '#0066cc', letterSpacing: '0.1em' }}>LANGUAGE</span>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', marginTop: '32px' }}>
+          <span style={{ fontSize: '11px', fontWeight: '800', color: '#0066cc', letterSpacing: '0.15em' }}>REGIONAL SETTINGS</span>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
             {languages.map((l) => (
               <button
                 key={l.code}
                 onClick={() => { setLang(l.code); toggleDrawer(); }}
                 style={{
-                  border: lang === l.code ? '2px solid #0066cc' : '1px solid #e5e5e7',
-                  padding: '12px',
-                  borderRadius: '12px',
-                  fontSize: '14px',
+                  border: lang === l.code ? '2px solid #0066cc' : '1px solid #f2f2f2',
+                  padding: '10px',
+                  borderRadius: '10px',
+                  fontSize: '13px',
                   fontWeight: '600',
                   cursor: 'pointer',
                   backgroundColor: lang === l.code ? '#f5faff' : 'white',
@@ -95,74 +88,73 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Navigation */}
       <nav className="nav-glass">
-        <div className="max-container" style={{ justifyContent: 'space-between', alignItems: 'center', gap: '10px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+        <div className="max-container" style={{ justifyContent: 'space-between', alignItems: 'center' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             <div className="menu-button-3d" onClick={toggleDrawer}>
-              <div className="menu-bar" />
-              <div className="menu-bar" style={{ width: '14px' }} />
-              <div className="menu-bar" />
+              <div className="menu-bar" style={{ width: '16px' }} />
+              <div className="menu-bar" style={{ width: '10px' }} />
+              <div className="menu-bar" style={{ width: '16px' }} />
             </div>
-            <span style={{ fontSize: '20px', fontWeight: 'bold', letterSpacing: '-0.03em' }}>KEIPO</span>
+            <span style={{ fontSize: 'clamp(17px, 5vw, 22px)', fontWeight: '800', letterSpacing: '-0.04em', color: '#1d1d1f' }}>KEIPO</span>
           </div>
           
-          <div className="hidden md:flex" style={{ display: 'flex', gap: '32px', fontSize: '14px', fontWeight: '500', color: '#86868b' }}>
+          <div className="hidden md:flex" style={{ display: 'flex', gap: '28px', fontSize: '13px', fontWeight: '600', color: '#86868b' }}>
             <a href="#history" style={{ textDecoration: 'none', color: 'inherit' }}>{t('navHistory')}</a>
-            <a href="#logistics" style={{ textDecoration: 'none', color: 'inherit' }}>Logistics</a>
+            <a href="#logistics" style={{ textDecoration: 'none', color: 'inherit' }}>{t('navLogistics')}</a>
             <a href="#categories" style={{ textDecoration: 'none', color: 'inherit' }}>{t('navProducts')}</a>
-            <div style={{ width: '1px', height: '16px', backgroundColor: '#e5e5e7', alignSelf: 'center' }} />
-            <button onClick={toggleDrawer} style={{ border: 'none', background: 'none', color: '#0066cc', fontWeight: 'bold', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <Globe2 size={16} /> {lang.toUpperCase()}
+            <div style={{ width: '1px', height: '14px', backgroundColor: '#e5e5e7', alignSelf: 'center' }} />
+            <button onClick={toggleDrawer} style={{ border: 'none', background: 'none', color: '#0066cc', fontWeight: '800', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <Globe2 size={14} /> {lang.toUpperCase()}
             </button>
           </div>
 
           <div className="md:hidden">
-            <button onClick={toggleDrawer} style={{ border: 'none', background: '#f5f5f7', padding: '6px 12px', borderRadius: '12px', fontSize: '12px', fontWeight: 'bold', color: '#1d1d1f', display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <Globe2 size={14} /> {lang.toUpperCase()}
+            <button onClick={toggleDrawer} style={{ border: 'none', background: '#f5f5f7', padding: '5px 10px', borderRadius: '10px', fontSize: '11px', fontWeight: '800', color: '#1d1d1f', display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <Globe2 size={12} /> {lang.toUpperCase()}
             </button>
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="section-padding" style={{ textAlign: 'center', paddingTop: '160px' }}>
+      <section className="section-padding" style={{ textAlign: 'center', paddingTop: '150px' }}>
         <SectionReveal>
           <h1 className="hero-title">{t('title')}</h1>
-          <p style={{ fontSize: 'clamp(18px, 4vw, 28px)', color: '#86868b', fontWeight: '500', marginBottom: '40px', maxWidth: '800px', margin: '0 auto 40px', lineHeight: '1.3' }}>
+          <p style={{ fontSize: 'clamp(18px, 4.5vw, 26px)', color: '#86868b', fontWeight: '500', marginBottom: '40px', maxWidth: '800px', margin: '0 auto 40px', lineHeight: '1.3', padding: '0 10px' }}>
             {t('slogan')}
           </p>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
-            <button className="apple-button-primary">{t('experience')}</button>
-            <button className="apple-button-secondary" style={{ color: '#0066cc', fontWeight: 'bold', cursor: 'pointer', border: 'none', background: 'none' }}>{t('explore')} <ChevronRight size={20} /></button>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', flexWrap: 'wrap' }}>
+            <button className="apple-button-primary" style={{ padding: '12px 30px' }}>{t('experience')}</button>
+            <button className="apple-button-secondary" style={{ color: '#0066cc', fontWeight: '700', cursor: 'pointer', border: 'none', background: 'none' }}>{t('explore')} <ChevronRight size={18} /></button>
           </div>
         </SectionReveal>
       </section>
 
       {/* History Section */}
       <section id="history" className="section-padding" style={{ backgroundColor: '#f5f5f7' }}>
-        <div className="max-container" style={{ display: 'flex', flexDirection: 'column', gap: '60px' }}>
+        <div className="max-container" style={{ flexDirection: 'column', gap: '48px' }}>
           <div className="grid-stack" style={{ alignItems: 'center' }}>
             <SectionReveal>
-              <span style={{ color: '#0066cc', fontWeight: '700', fontSize: '12px', letterSpacing: '0.12em', display: 'block', marginBottom: '16px' }}>{getSinceText().toUpperCase()}</span>
-              <h2 className="section-title" style={{ marginBottom: '24px' }}>{getHistoryText()}</h2>
-              <p style={{ fontSize: '19px', lineHeight: '1.5', color: '#86868b', marginBottom: '32px', fontWeight: '500' }}>
+              <span style={{ color: '#0066cc', fontWeight: '800', fontSize: '11px', letterSpacing: '0.15em', display: 'block', marginBottom: '12px' }}>{getSinceText().toUpperCase()}</span>
+              <h2 className="section-title" style={{ marginBottom: '20px' }}>{getHistoryText()}</h2>
+              <p style={{ fontSize: '18px', lineHeight: '1.5', color: '#86868b', marginBottom: '28px', fontWeight: '500' }}>
                 {t('historyDesc')}
               </p>
-              <div style={{ display: 'flex', gap: '40px' }}>
+              <div style={{ display: 'flex', gap: '32px' }}>
                 <div>
-                  <div style={{ fontSize: '40px', fontWeight: 'bold' }}>24+</div>
-                  <div style={{ fontSize: '10px', color: '#86868b', fontWeight: '800', marginTop: '4px', letterSpacing: '0.05em' }}>{t('verifiedShipments')}</div>
+                  <div style={{ fontSize: '36px', fontWeight: 'bold' }}>24+</div>
+                  <div style={{ fontSize: '9px', color: '#86868b', fontWeight: '800', marginTop: '4px', letterSpacing: '0.05em' }}>{t('verifiedShipments')}</div>
                 </div>
                 <div>
-                  <div style={{ fontSize: '40px', fontWeight: 'bold' }}>{yearsActiveCount}+</div>
-                  <div style={{ fontSize: '10px', color: '#86868b', fontWeight: '800', marginTop: '4px', letterSpacing: '0.05em' }}>{t('yearsActive')}</div>
+                  <div style={{ fontSize: '36px', fontWeight: 'bold' }}>{yearsActiveCount}+</div>
+                  <div style={{ fontSize: '9px', color: '#86868b', fontWeight: '800', marginTop: '4px', letterSpacing: '0.05em' }}>{t('yearsActive')}</div>
                 </div>
               </div>
             </SectionReveal>
             <SectionReveal delay={0.2}>
-              <div style={{ backgroundColor: 'white', borderRadius: '40px', padding: '15% 10%', textAlign: 'center', boxShadow: '0 20px 60px rgba(0,0,0,0.03)' }}>
-                <Globe2 size={120} color="#f5f5f7" />
+              <div style={{ backgroundColor: 'white', borderRadius: '32px', padding: '12% 8%', textAlign: 'center', boxShadow: '0 15px 45px rgba(0,0,0,0.03)' }}>
+                <Globe2 size={100} color="#f5f5f7" />
               </div>
             </SectionReveal>
           </div>
@@ -172,26 +164,26 @@ export default function Home() {
       {/* Global Reach Section */}
       <section id="logistics" className="section-padding" style={{ backgroundColor: '#fbfbfd' }}>
         <div className="max-container" style={{ flexDirection: 'column' }}>
-          <SectionReveal style={{ marginBottom: '64px', textAlign: 'center' }}>
-            <span style={{ color: '#0066cc', fontWeight: '700', fontSize: '12px', letterSpacing: '0.12em', display: 'block', marginBottom: '16px' }}>{t('tradeInsights')}</span>
-            <h2 style={{ fontSize: 'clamp(32px, 8vw, 56px)', fontWeight: '700', letterSpacing: '-0.02em' }}>{t('mainRoutes')}</h2>
+          <SectionReveal style={{ marginBottom: '48px', textAlign: 'center' }}>
+            <span style={{ color: '#0066cc', fontWeight: '800', fontSize: '11px', letterSpacing: '0.15em', display: 'block', marginBottom: '12px' }}>{t('tradeInsights')}</span>
+            <h2 className="section-title">{t('mainRoutes')}</h2>
           </SectionReveal>
 
           <div className="perspective-container">
             <div className="grid-3">
               <SectionReveal delay={0.1}>
-                <div className="three-d-card" style={{ padding: '48px', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                <div className="three-d-card" style={{ padding: '40px', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                   <div>
-                    <Anchor size={32} color="#0066cc" style={{ marginBottom: '24px' }} />
-                    <h3 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '24px' }}>{t('primaryHubs')}</h3>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #f2f2f2', paddingBottom: '12px' }}>
-                        <span style={{ color: '#86868b', fontSize: '15px' }}>{t('origin')}</span>
-                        <span style={{ fontWeight: '600', fontSize: '15px' }}>KR / CN</span>
+                    <Anchor size={28} color="#0066cc" style={{ marginBottom: '20px' }} />
+                    <h3 style={{ fontSize: '22px', fontWeight: 'bold', marginBottom: '20px' }}>{t('primaryHubs')}</h3>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #f8f8f8', paddingBottom: '10px' }}>
+                        <span style={{ color: '#86868b', fontSize: '14px' }}>{t('origin')}</span>
+                        <span style={{ fontWeight: '600', fontSize: '14px' }}>KR / CN</span>
                       </div>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #f2f2f2', paddingBottom: '12px' }}>
-                        <span style={{ color: '#86868b', fontSize: '15px' }}>{t('destination')}</span>
-                        <span style={{ fontWeight: '600', fontSize: '15px' }}>USA (CT, CA)</span>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #f8f8f8', paddingBottom: '10px' }}>
+                        <span style={{ color: '#86868b', fontSize: '14px' }}>{t('destination')}</span>
+                        <span style={{ fontWeight: '600', fontSize: '14px' }}>USA (CT, CA)</span>
                       </div>
                     </div>
                   </div>
@@ -199,30 +191,30 @@ export default function Home() {
               </SectionReveal>
 
               <SectionReveal delay={0.2}>
-                <div className="three-d-card" style={{ padding: '48px', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                <div className="three-d-card" style={{ padding: '40px', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                   <div>
-                    <TrendingUp size={32} color="#0066cc" style={{ marginBottom: '24px' }} />
-                    <h3 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '16px' }}>{t('tradeVelocity')}</h3>
-                    <div style={{ display: 'flex', alignItems: 'flex-end', gap: '8px', height: '100px', marginTop: '24px' }}>
+                    <TrendingUp size={28} color="#0066cc" style={{ marginBottom: '20px' }} />
+                    <h3 style={{ fontSize: '22px', fontWeight: 'bold', marginBottom: '16px' }}>{t('tradeVelocity')}</h3>
+                    <div style={{ display: 'flex', alignItems: 'flex-end', gap: '7px', height: '80px', marginTop: '20px' }}>
                       {[40, 70, 45, 90, 65, 80, 100].map((h, i) => (
-                        <div key={i} style={{ flex: 1, backgroundColor: i === 6 ? '#0066cc' : '#f2f2f2', height: `${h}%`, borderRadius: '4px' }} />
+                        <div key={i} style={{ flex: 1, backgroundColor: i === 6 ? '#0066cc' : '#f2f2f2', height: `${h}%`, borderRadius: '3px' }} />
                       ))}
                     </div>
-                    <p style={{ fontSize: '11px', color: '#86868b', marginTop: '20px', fontWeight: '700', letterSpacing: '0.05em' }}>{t('verifiedBy')} // {ESTABLISHED_YEAR}-{currentYear}</p>
+                    <p style={{ fontSize: '10px', color: '#86868b', marginTop: '16px', fontWeight: '800', letterSpacing: '0.05em' }}>{t('verifiedBy')} // {ESTABLISHED_YEAR}-{currentYear}</p>
                   </div>
                 </div>
               </SectionReveal>
 
               <SectionReveal delay={0.3}>
-                <div className="three-d-card" style={{ padding: '48px', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                <div className="three-d-card" style={{ padding: '40px', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                   <div>
-                    <BarChart3 size={32} color="#0066cc" style={{ marginBottom: '24px' }} />
-                    <h3 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '16px' }}>{t('topPartners')}</h3>
-                    <p style={{ fontSize: '17px', color: '#86868b', lineHeight: '1.6', fontWeight: '500' }}>
+                    <BarChart3 size={28} color="#0066cc" style={{ marginBottom: '20px' }} />
+                    <h3 style={{ fontSize: '22px', fontWeight: 'bold', marginBottom: '16px' }}>{t('topPartners')}</h3>
+                    <p style={{ fontSize: '15px', color: '#86868b', lineHeight: '1.6', fontWeight: '500' }}>
                       {t('partnerDesc')}
                     </p>
                   </div>
-                  <div style={{ marginTop: '32px', display: 'flex', alignItems: 'center', gap: '8px', color: '#0066cc', fontSize: '14px', fontWeight: '600' }}>
+                  <div style={{ marginTop: '28px', display: 'flex', alignItems: 'center', gap: '8px', color: '#0066cc', fontSize: '13px', fontWeight: '700' }}>
                     {t('viewNetwork')} <ArrowRight size={16} />
                   </div>
                 </div>
@@ -235,9 +227,9 @@ export default function Home() {
       {/* Categories Section */}
       <section id="categories" className="section-padding">
         <div className="max-container" style={{ flexDirection: 'column', alignItems: 'center' }}>
-          <SectionReveal style={{ textAlign: 'center', marginBottom: '64px' }}>
-            <h2 style={{ fontSize: 'clamp(32px, 8vw, 56px)', fontWeight: '700', marginBottom: '12px' }}>{t('categories')}</h2>
-            <p style={{ fontSize: '18px', color: '#86868b', fontWeight: '500' }}>{t('highVolume')}</p>
+          <SectionReveal style={{ textAlign: 'center', marginBottom: '48px' }}>
+            <h2 className="section-title" style={{ marginBottom: '10px' }}>{t('categories')}</h2>
+            <p style={{ fontSize: '16px', color: '#86868b', fontWeight: '500' }}>{t('highVolume')}</p>
           </SectionReveal>
           
           <div className="grid-3" style={{ width: '100%' }}>
@@ -247,14 +239,14 @@ export default function Home() {
               { title: t('culinaryTitle'), desc: t('culinaryDesc') }
             ].map((cat, idx) => (
               <SectionReveal key={cat.title} delay={idx * 0.1}>
-                <div className="apple-card" style={{ backgroundColor: '#f5f5f7', minHeight: '350px' }}>
+                <div className="apple-card" style={{ backgroundColor: '#f5f5f7', minHeight: '320px' }}>
                   <div>
-                    <Package size={32} style={{ marginBottom: '24px' }} />
-                    <h3 style={{ fontSize: '28px', fontWeight: 'bold', marginBottom: '16px' }}>{cat.title}</h3>
-                    <p style={{ fontSize: '17px', color: '#86868b', lineHeight: '1.5' }}>{cat.desc}</p>
+                    <Package size={28} style={{ marginBottom: '20px' }} />
+                    <h3 style={{ fontSize: '26px', fontWeight: 'bold', marginBottom: '12px', letterSpacing: '-0.02em' }}>{cat.title}</h3>
+                    <p style={{ fontSize: '16px', color: '#86868b', lineHeight: '1.5' }}>{cat.desc}</p>
                   </div>
-                  <div style={{ width: '48px', height: '48px', backgroundColor: 'white', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '32px' }}>
-                    <ArrowRight size={20} />
+                  <div style={{ width: '44px', height: '44px', backgroundColor: 'white', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '28px' }}>
+                    <ArrowRight size={18} />
                   </div>
                 </div>
               </SectionReveal>
@@ -267,16 +259,15 @@ export default function Home() {
       <section id="contact" className="section-padding" style={{ backgroundColor: '#1d1d1f', color: 'white', textAlign: 'center' }}>
         <div className="max-container" style={{ flexDirection: 'column', alignItems: 'center' }}>
           <SectionReveal>
-            <h2 style={{ fontSize: 'clamp(48px, 10vw, 80px)', fontWeight: 'bold', letterSpacing: '-0.04em', marginBottom: '32px', lineHeight: '1' }}>{t('letsConnect')}</h2>
-            <p style={{ fontSize: 'clamp(18px, 4vw, 24px)', color: '#86868b', marginBottom: '48px', fontWeight: '500' }}>{t('connectDesc')}</p>
+            <h2 style={{ fontSize: 'clamp(44px, 10vw, 80px)', fontWeight: 'bold', letterSpacing: '-0.04em', marginBottom: '28px', lineHeight: '1' }}>{t('letsConnect')}</h2>
             <button 
               className="apple-button-primary" 
-              style={{ backgroundColor: 'white', color: 'black', padding: '20px 48px', fontSize: '20px' }}
+              style={{ backgroundColor: 'white', color: 'black', padding: '18px 40px', fontSize: '18px' }}
               onClick={() => window.location.href = 'mailto:contact@keipo.com'}
             >
               {t('contact')}
             </button>
-            <div style={{ marginTop: '64px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '32px', color: '#86868b', fontSize: '13px', fontWeight: '600' }}>
+            <div style={{ marginTop: '56px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '28px', color: '#86868b', fontSize: '12px', fontWeight: '700' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><Mail size={16} /> CONTACT@KEIPO.COM</div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><Globe2 size={16} /> {t('location').toUpperCase()}</div>
             </div>
@@ -284,8 +275,8 @@ export default function Home() {
         </div>
       </section>
 
-      <footer style={{ padding: '48px 20px', borderTop: '1px solid #f2f2f2' }}>
-        <div className="max-container" style={{ fontSize: '11px', color: '#86868b', fontWeight: '700', flexDirection: 'column', gap: '16px', textAlign: 'center' }}>
+      <footer style={{ padding: '40px 16px', borderTop: '1px solid #f2f2f2' }}>
+        <div className="max-container" style={{ fontSize: '10px', color: '#86868b', fontWeight: '800', flexDirection: 'column', gap: '12px', textAlign: 'center' }}>
           <div>© {currentYear} KEIPO HOUSEWARES. {t('allRights')}</div>
         </div>
       </footer>
