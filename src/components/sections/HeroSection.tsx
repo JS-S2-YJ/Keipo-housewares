@@ -23,9 +23,11 @@ export const HeroSection = ({ t }: HeroSectionProps) => {
         <p style={{ fontSize: 'clamp(16px, 4vw, 24px)', color: '#86868b', fontWeight: '500', marginTop: '32px', marginBottom: '32px', maxWidth: '800px', margin: '32px auto', lineHeight: '1.4', padding: '0 20px' }}>
           {t('slogan')}
         </p>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', flexWrap: 'wrap' }}>
-          <button className="apple-button-primary" style={{ padding: '12px 24px' }}>{t('experience')}</button>
-          <button className="apple-button-secondary" style={{ color: '#0066cc', fontWeight: '700', cursor: 'pointer', border: 'none', background: 'none' }}>{t('explore')} <ChevronRight size={18} /></button>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
+          <button className="apple-button-primary">{t('experience')}</button>
+          <button className="apple-button-secondary">
+            {t('explore')} <ChevronRight size={20} strokeWidth={2.5} />
+          </button>
         </div>
       </SectionReveal>
     </section>

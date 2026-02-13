@@ -153,25 +153,129 @@ body {
 /* 3D 카드 스타일 */
 .perspective-container { perspective: 2000px; width: 100%; }
 .three-d-card {
-  transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s ease;
-  background: white; border-radius: 28px; border: 1px solid rgba(0, 0, 0, 0.05); position: relative; z-index: 1;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.2, 1, 0.2, 1), box-shadow 0.8s ease, border-color 0.8s ease;
+  background: white;
+  border-radius: 32px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  position: relative;
+  z-index: 1;
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.01),
+    0 2px 4px -1px rgba(0, 0, 0, 0.01),
+    0 10px 30px -5px rgba(0, 0, 0, 0.03);
 }
-.three-d-card:hover { transform: translateZ(20px) translateY(-5px) rotateX(2deg); box-shadow: 0 25px 50px rgba(0,0,0,0.08); z-index: 10; }
 
-.section-padding { padding: 40px 16px !important; }
-@media (min-width: 768px) { .section-padding { padding: 140px 40px !important; } }
+.three-d-card:hover {
+  transform: translateZ(30px) translateY(-10px) rotateX(4deg) rotateY(-2deg);
+  box-shadow: 
+    0 20px 40px -10px rgba(0, 0, 0, 0.08),
+    0 10px 20px -5px rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 102, 204, 0.15);
+  z-index: 10;
+}
+
+.premium-gradient-text {
+  background: linear-gradient(135deg, #1d1d1f 0%, #434344 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+}
+
+.stat-value {
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  background: linear-gradient(180deg, #1d1d1f 0%, #434344 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+}
+
+.section-padding { padding: 60px 20px !important; }
+@media (min-width: 768px) { .section-padding { padding: 160px 40px !important; } }
+
+.section-title {
+  font-size: clamp(28px, 6vw, 48px) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.03em !important;
+  color: var(--apple-black) !important;
+  line-height: 1.1 !important;
+}
 
 .apple-card {
-  background-color: var(--apple-bg) !important; border-radius: 24px !important; padding: 28px !important;
-  display: flex !important; flex-direction: column !important; justify-content: space-between !important;
-  height: 100% !important; min-height: 250px !important;
+  background: white !important;
+  border-radius: 24px !important;
+  padding: 32px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  height: 100% !important;
+  min-height: 250px !important;
+  border: 1px solid rgba(0, 0, 0, 0.05) !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02) !important;
+}
+
+.apple-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06) !important;
+  border-color: rgba(0, 102, 204, 0.1) !important;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: 28px !important;
 }
 
 .apple-button-primary {
-  background-color: var(--apple-blue) !important; color: white !important; border: none !important;
-  border-radius: 980px !important; padding: 12px 24px !important; font-size: 16px !important;
-  font-weight: 600 !important; cursor: pointer !important; transition: all 0.2s ease !important;
-  display: inline-flex !important; align-items: center;
+  background: linear-gradient(180deg, #0077ff 0%, #0066cc 100%) !important;
+  color: white !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 980px !important;
+  padding: 12px 28px !important;
+  font-size: 17px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+.apple-button-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 102, 204, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  filter: brightness(1.1);
+}
+
+.apple-button-secondary {
+  background: rgba(0, 102, 204, 0.05) !important;
+  color: var(--apple-blue) !important;
+  border: 1px solid rgba(0, 102, 204, 0.1) !important;
+  border-radius: 980px !important;
+  padding: 12px 28px !important;
+  font-size: 17px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 4px !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.apple-button-secondary:hover {
+  background: rgba(0, 102, 204, 0.1) !important;
+  border-color: rgba(0, 102, 204, 0.2) !important;
+  transform: translateX(2px);
 }
 
 .no-scrollbar::-webkit-scrollbar { display: none; }
