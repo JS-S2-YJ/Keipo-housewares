@@ -50,11 +50,6 @@ jobs:
           cache: ${{ steps.detect-package-manager.outputs.manager }}
       - name: Setup Pages
         uses: actions/configure-pages@v5
-        with:
-          # Automatically inject basePath in your Next.js config file and disable
-          # server side image optimization (WebP) to support deployment to GitHub Pages.
-          # But we already configured this in next.config.mjs
-          static_site_generator: next
       - name: Restore cache
         uses: actions/cache@v4
         with:
@@ -66,9 +61,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
       - name: Install dependencies
-        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+        run: npm install
       - name: Build with Next.js
-        run: ${{ steps.detect-package-manager.outputs.runner }} next build
+        run: npx next build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
