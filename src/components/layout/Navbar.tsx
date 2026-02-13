@@ -19,7 +19,11 @@ export const Navbar = ({ onMenuClick }: NavbarProps) => {
   };
 
   return (
-    <nav className="nav-glass">
+    <nav className="nav-glass" style={{
+      backgroundColor: 'rgba(255, 255, 255, 0.3)',
+      backdropFilter: 'blur(80px)',
+      WebkitBackdropFilter: 'blur(80px)',
+    }}>
       <div className="max-container" style={{ 
         justifyContent: 'space-between', 
         width: '100%',
