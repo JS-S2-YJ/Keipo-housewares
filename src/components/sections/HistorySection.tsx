@@ -1,9 +1,10 @@
 'use client';
 
 import { SectionReveal } from '@/components/common/SectionReveal';
+import { TranslationKey } from '@/translations';
 
 interface HistorySectionProps {
-  t: (key: string) => string;
+  t: (key: TranslationKey) => string;
   yearsActiveCount: number;
   historyText: string;
   sinceText: string;
@@ -34,47 +35,44 @@ export const HistorySection = ({ t, yearsActiveCount, historyText, sinceText }: 
             </div>
           </SectionReveal>
           
-                    <SectionReveal delay={0.2} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
-                      <div className="image-card-wrapper" style={{ 
-                        backgroundColor: 'white', 
-                        borderRadius: '32px', 
-                        width: '100%', 
-                        height: '400px', 
-                        overflow: 'hidden', 
-                        boxShadow: '0 20px 40px rgba(0,0,0,0.06)', 
-                        position: 'relative',
-                        cursor: 'pointer'
-                      }}>
-                        <img 
-                          src="/images/knife.jpeg" 
-                          alt="KEIPO Premium Hardware" 
-                          className="hover-zoom-image"
-                          style={{ 
-                            width: '100%', 
-                            height: '100%', 
-                            objectFit: 'cover', 
-                            display: 'block',
-                            transition: 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)'
-                          }}
-                          onError={(e) => {
-                            console.error('Image load failed:', e);
-                            (e.target as HTMLImageElement).style.display = 'none';
-                          }}
-                        />
-                        <div style={{
-                          position: 'absolute',
-                          bottom: '0',
-                          left: '0',
-                          right: '0',
-                          padding: '24px',
-                          background: 'linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 100%)',
-                          color: 'white',
-                          pointerEvents: 'none'
-                        }}>
-                          <span style={{ fontSize: '12px', fontWeight: '700', letterSpacing: '0.1em' }}>PREMIUM QUALITY</span>
-                        </div>
-                      </div>
-                    </SectionReveal>        </div>
+          <SectionReveal delay={0.2} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
+            <div className="image-card-wrapper" style={{ 
+              backgroundColor: 'white', 
+              borderRadius: '32px', 
+              width: '100%', 
+              height: '400px', 
+              overflow: 'hidden', 
+              boxShadow: '0 20px 40px rgba(0,0,0,0.06)', 
+              position: 'relative',
+              cursor: 'pointer'
+            }}>
+              <img 
+                src="/images/knife.jpeg" 
+                alt="KEIPO Premium Hardware" 
+                className="hover-zoom-image"
+                style={{ 
+                  width: '100%', 
+                  height: '100%', 
+                  objectFit: 'cover', 
+                  display: 'block',
+                  transition: 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)'
+                }}
+              />
+              <div style={{
+                position: 'absolute',
+                bottom: '0',
+                left: '0',
+                right: '0',
+                padding: '24px',
+                background: 'linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 100%)',
+                color: 'white',
+                pointerEvents: 'none'
+              }}>
+                <span style={{ fontSize: '12px', fontWeight: '700', letterSpacing: '0.1em' }}>PREMIUM QUALITY</span>
+              </div>
+            </div>
+          </SectionReveal>
+        </div>
       </div>
     </section>
   );

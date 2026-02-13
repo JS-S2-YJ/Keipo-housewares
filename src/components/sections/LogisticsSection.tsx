@@ -2,10 +2,11 @@
 
 import { Anchor, TrendingUp, BarChart3, ArrowRight } from 'lucide-react';
 import { SectionReveal } from '@/components/common/SectionReveal';
+import { TranslationKey } from '@/translations';
 import { ESTABLISHED_YEAR } from '@/lib/constants';
 
 interface LogisticsSectionProps {
-  t: (key: string) => string;
+  t: (key: TranslationKey) => string;
   currentYear: number;
 }
 

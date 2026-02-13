@@ -3,8 +3,10 @@
 import { ChevronRight } from 'lucide-react';
 import { SectionReveal } from '@/components/common/SectionReveal';
 
+import { TranslationKey } from '@/translations';
+
 interface HeroSectionProps {
-  t: (key: string) => string;
+  t: (key: TranslationKey) => string;
 }
 
 export const HeroSection = ({ t }: HeroSectionProps) => {

@@ -1,8 +1,10 @@
 'use client';
 
+import { TranslationKey } from '@/translations';
+
 interface FooterProps {
   currentYear: number;
-  t: (key: string) => string;
+  t: (key: TranslationKey) => string;
 }
 
 export const Footer = ({ currentYear, t }: FooterProps) => {

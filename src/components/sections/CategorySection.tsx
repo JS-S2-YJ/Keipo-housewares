@@ -3,8 +3,10 @@
 import { Package, ArrowRight } from 'lucide-react';
 import { SectionReveal } from '@/components/common/SectionReveal';
 
+import { TranslationKey } from '@/translations';
+
 interface CategorySectionProps {
-  t: (key: string) => string;
+  t: (key: TranslationKey) => string;
 }
 
 export const CategorySection = ({ t }: CategorySectionProps) => {
