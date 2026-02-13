@@ -1,6 +1,6 @@
 'use client';
 
-import { Globe2, Package, Mail, ChevronRight, ArrowRight, BarChart3, TrendingUp, Anchor } from 'lucide-react';
+import { Globe2, Package, Mail, ChevronRight, ArrowRight, BarChart3, TrendingUp, Anchor, X } from 'lucide-react';
 import { SectionReveal } from '@/components/SectionReveal';
 import { useLanguage } from '@/hooks/useLanguage';
 import { Language } from '@/translations';
@@ -9,57 +9,99 @@ import { useEffect, useState } from 'react';
 export default function Home() {
   const { t, lang, setLang } = useLanguage();
   const [mounted, setMounted] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
   const languages: { code: Language; label: string }[] = [
-    { code: 'en', label: 'EN' },
-    { code: 'ko', label: 'KR' },
-    { code: 'tr', label: 'TR' },
-    { code: 'de', label: 'DE' },
-    { code: 'cn', label: 'CN' },
-    { code: 'jp', label: 'JP' },
-    { code: 'in', label: 'IN' },
+    { code: 'en', label: 'English' },
+    { code: 'ko', label: '한국어' },
+    { code: 'tr', label: 'Türkçe' },
+    { code: 'de', label: 'Deutsch' },
+    { code: 'cn', label: '中文' },
+    { code: 'jp', label: '日本語' },
+    { code: 'in', label: 'हिन्दी' },
   ];
 
   if (!mounted) return <div style={{ background: 'white', minHeight: '100vh' }} />;
 
+  const toggleDrawer = () => setIsDrawerOpen(!isDrawerOpen);
+
   return (
     <main style={{ opacity: 1, transition: 'opacity 0.5s ease' }}>
-      {/* Navigation */}
-      <nav className="nav-glass">
-        <div className="max-container" style={{ justifyContent: 'space-between', alignItems: 'center', gap: '10px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <span style={{ fontSize: 'clamp(16px, 4vw, 20px)', fontWeight: 'bold', letterSpacing: '-0.03em', whiteSpace: 'nowrap' }}>KEIPO</span>
-            <div className="hidden md:flex" style={{ display: 'flex', gap: '20px', fontSize: '13px', fontWeight: '500', color: '#86868b' }}>
-              <a href="#history" style={{ textDecoration: 'none', color: 'inherit' }}>{t('navHistory')}</a>
-              <a href="#logistics" style={{ textDecoration: 'none', color: 'inherit' }}>{t('navLogistics')}</a>
-              <a href="#categories" style={{ textDecoration: 'none', color: 'inherit' }}>{t('navProducts')}</a>
-            </div>
+      {/* Side Drawer Overlay */}
+      <div className={`drawer-overlay ${isDrawerOpen ? 'active' : ''}`} onClick={toggleDrawer} />
+
+      {/* Side Drawer */}
+      <div className={`side-drawer ${isDrawerOpen ? 'active' : ''}`}>
+        <button onClick={toggleDrawer} style={{ position: 'absolute', top: '24px', right: '24px', border: 'none', background: 'none', cursor: 'pointer', color: '#86868b' }}>
+          <X size={32} />
+        </button>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+          <span style={{ fontSize: '12px', fontWeight: 'bold', color: '#0066cc', letterSpacing: '0.1em' }}>MENU</span>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', fontSize: '24px', fontWeight: '700' }}>
+            <a href="#history" onClick={toggleDrawer} style={{ textDecoration: 'none', color: '#1d1d1f' }}>{t('navHistory')}</a>
+            <a href="#logistics" onClick={toggleDrawer} style={{ textDecoration: 'none', color: '#1d1d1f' }}>Logistics</a>
+            <a href="#categories" onClick={toggleDrawer} style={{ textDecoration: 'none', color: '#1d1d1f' }}>{t('navProducts')}</a>
           </div>
-          
-          <div style={{ display: 'flex', gap: '1px', background: '#f5f5f7', padding: '2px', borderRadius: '20px', overflowX: 'auto', maxWidth: '60vw' }} className="no-scrollbar">
+        </div>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', marginTop: '40px' }}>
+          <span style={{ fontSize: '12px', fontWeight: 'bold', color: '#0066cc', letterSpacing: '0.1em' }}>LANGUAGE</span>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
             {languages.map((l) => (
               <button
                 key={l.code}
-                onClick={() => setLang(l.code)}
+                onClick={() => { setLang(l.code); toggleDrawer(); }}
                 style={{
-                  border: 'none',
-                  padding: '4px 6px',
-                  borderRadius: '16px',
-                  fontSize: '9px',
-                  fontWeight: 'bold',
+                  border: lang === l.code ? '2px solid #0066cc' : '1px solid #e5e5e7',
+                  padding: '12px',
+                  borderRadius: '12px',
+                  fontSize: '14px',
+                  fontWeight: '600',
                   cursor: 'pointer',
-                  backgroundColor: lang === l.code ? 'white' : 'transparent',
-                  color: lang === l.code ? '#1d1d1f' : '#86868b',
-                  whiteSpace: 'nowrap'
+                  backgroundColor: lang === l.code ? '#f5faff' : 'white',
+                  color: lang === l.code ? '#0066cc' : '#1d1d1f',
+                  textAlign: 'left'
                 }}
               >
                 {l.label}
               </button>
             ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Navigation */}
+      <nav className="nav-glass">
+        <div className="max-container" style={{ justifyContent: 'space-between', alignItems: 'center' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+            {/* 3D Menu Button */}
+            <div className="menu-button-3d" onClick={toggleDrawer}>
+              <div className="menu-bar" />
+              <div className="menu-bar" style={{ width: '14px' }} />
+              <div className="menu-bar" />
+            </div>
+            <span style={{ fontSize: '20px', fontWeight: 'bold', letterSpacing: '-0.03em' }}>KEIPO</span>
+          </div>
+          
+          <div className="hidden md:flex" style={{ display: 'flex', gap: '32px', fontSize: '14px', fontWeight: '500', color: '#86868b' }}>
+            <a href="#history" style={{ textDecoration: 'none', color: 'inherit' }}>{t('navHistory')}</a>
+            <a href="#logistics" style={{ textDecoration: 'none', color: 'inherit' }}>Logistics</a>
+            <a href="#categories" style={{ textDecoration: 'none', color: 'inherit' }}>{t('navProducts')}</a>
+            <div style={{ width: '1px', height: '16px', backgroundColor: '#e5e5e7', alignSelf: 'center' }} />
+            <button onClick={toggleDrawer} style={{ border: 'none', background: 'none', color: '#0066cc', fontWeight: 'bold', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <Globe2 size={16} /> {lang.toUpperCase()}
+            </button>
+          </div>
+
+          <div className="md:hidden">
+            <button onClick={toggleDrawer} style={{ border: 'none', background: '#f5f5f7', padding: '6px 12px', borderRadius: '12px', fontSize: '12px', fontWeight: 'bold', color: '#1d1d1f', display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <Globe2 size={14} /> {lang.toUpperCase()}
+            </button>
           </div>
         </div>
       </nav>
