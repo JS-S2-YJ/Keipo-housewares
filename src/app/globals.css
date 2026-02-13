@@ -1,7 +1,6 @@
 /* Tailwind v4 import */
 @import "tailwindcss";
 
-/* Tailwind가 작동하지 않을 경우를 대비한 강제 스타일 정의 */
 :root {
   --apple-black: #1d1d1f;
   --apple-gray: #86868b;
@@ -16,19 +15,26 @@ body {
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden; /* 모바일 가로 스크롤 방지 */
 }
 
-/* 네비게이션 강제 스타일 */
+/* 네비게이션 반응형 */
 .nav-glass {
   position: fixed !important;
   top: 0 !important;
   width: 100% !important;
-  z-index: 50 !important;
+  z-index: 100 !important;
   background: rgba(255, 255, 255, 0.8) !important;
   backdrop-filter: saturate(180%) blur(20px) !important;
   -webkit-backdrop-filter: saturate(180%) blur(20px) !important;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
-  padding: 12px 24px !important;
+  padding: 8px 16px !important;
+}
+
+@media (min-width: 768px) {
+  .nav-glass {
+    padding: 12px 24px !important;
+  }
 }
 
 .max-container {
@@ -37,15 +43,69 @@ body {
   display: flex !important;
   justify-content: space-between !important;
   align-items: center !important;
+  width: 100% !important;
 }
 
-/* 버튼 강제 스타일 (이게 기본 모양으로 안 나오게 핵심임) */
+/* 제목 반응형 - clamp(최소, 가변, 최대) */
+.hero-title {
+  font-size: clamp(48px, 12vw, 100px) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.04em !important;
+  line-height: 1.05 !important;
+  margin-bottom: 24px !important;
+  padding: 0 16px !important;
+}
+
+.section-title {
+  font-size: clamp(32px, 8vw, 56px) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.1 !important;
+}
+
+/* 섹션 패딩 반응형 */
+.section-padding {
+  padding: 80px 20px !important;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 140px 40px !important;
+  }
+}
+
+/* 카드 반응형 */
+.apple-card {
+  background-color: var(--apple-bg) !important;
+  border-radius: 24px !important;
+  padding: 32px !important;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  border: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  height: 100% !important;
+}
+
+@media (min-width: 768px) {
+  .apple-card {
+    border-radius: 36px !important;
+    padding: 56px !important;
+  }
+}
+
+.apple-card:hover {
+  transform: scale(1.02) !important;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.05) !important;
+}
+
+/* 버튼 반응형 */
 .apple-button-primary {
   background-color: var(--apple-blue) !important;
   color: white !important;
   border: none !important;
   border-radius: 980px !important;
-  padding: 12px 24px !important;
+  padding: 14px 28px !important;
   font-size: 17px !important;
   font-weight: 600 !important;
   cursor: pointer !important;
@@ -55,17 +115,12 @@ body {
   text-decoration: none !important;
 }
 
-.apple-button-primary:hover {
-  background-color: #0077ed !important;
-  transform: scale(1.02) !important;
-}
-
 .apple-button-secondary {
   background: none !important;
   color: var(--apple-blue) !important;
   border: none !important;
   font-size: 17px !important;
-  font-weight: 400 !important;
+  font-weight: 500 !important;
   cursor: pointer !important;
   display: inline-flex !important;
   align-items: center !important;
@@ -73,44 +128,25 @@ body {
   text-decoration: none !important;
 }
 
-.apple-button-secondary:hover {
-  text-decoration: underline !important;
-}
-
-/* 카드 스타일 */
-.apple-card {
-  background-color: var(--apple-bg) !important;
-  border-radius: 30px !important;
-  padding: 48px !important;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  border: none !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: space-between !important;
-  height: 100% !important;
-}
-
-.apple-card:hover {
-  transform: scale(1.02) !important;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.05) !important;
-}
-
-/* 그리드 강제 설정 */
-.grid-3 {
+/* 그리드 반응형 */
+.grid-stack {
   display: grid !important;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
-  gap: 32px !important;
+  grid-template-columns: 1fr !important;
+  gap: 20px !important;
   width: 100% !important;
 }
 
-.section-padding {
-  padding: 120px 24px !important;
+@media (min-width: 768px) {
+  .grid-stack {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 32px !important;
+  }
 }
 
-.hero-title {
-  font-size: clamp(40px, 8vw, 96px) !important;
-  font-weight: 700 !important;
-  letter-spacing: -0.02em !important;
-  line-height: 1.1 !important;
-  margin-bottom: 24px !important;
+@media (min-width: 1024px) {
+  .grid-3 {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 32px !important;
+  }
 }
