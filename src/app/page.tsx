@@ -30,30 +30,31 @@ export default function Home() {
     <main style={{ opacity: 1, transition: 'opacity 0.5s ease' }}>
       {/* Navigation */}
       <nav className="nav-glass">
-        <div className="max-container" style={{ justifyContent: 'space-between', alignItems: 'center' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-            <span style={{ fontSize: '20px', fontWeight: 'bold', letterSpacing: '-0.03em' }}>KEIPO</span>
-            <div className="hidden md:flex" style={{ display: 'flex', gap: '24px', fontSize: '13px', fontWeight: '500', color: '#86868b' }}>
-              <a href="#history" style={{ textDecoration: 'none', color: 'inherit' }}>{t('history').split(' ')[0]}</a>
-              <a href="#logistics" style={{ textDecoration: 'none', color: 'inherit' }}>Logistics</a>
-              <a href="#categories" style={{ textDecoration: 'none', color: 'inherit' }}>{t('categories').split(' ')[0]}</a>
+        <div className="max-container" style={{ justifyContent: 'space-between', alignItems: 'center', gap: '10px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <span style={{ fontSize: 'clamp(16px, 4vw, 20px)', fontWeight: 'bold', letterSpacing: '-0.03em', whiteSpace: 'nowrap' }}>KEIPO</span>
+            <div className="hidden md:flex" style={{ display: 'flex', gap: '20px', fontSize: '13px', fontWeight: '500', color: '#86868b' }}>
+              <a href="#history" style={{ textDecoration: 'none', color: 'inherit' }}>{t('navHistory')}</a>
+              <a href="#logistics" style={{ textDecoration: 'none', color: 'inherit' }}>{t('navLogistics')}</a>
+              <a href="#categories" style={{ textDecoration: 'none', color: 'inherit' }}>{t('navProducts')}</a>
             </div>
           </div>
           
-          <div style={{ display: 'flex', gap: '2px', background: '#f5f5f7', padding: '2px', borderRadius: '20px' }}>
+          <div style={{ display: 'flex', gap: '1px', background: '#f5f5f7', padding: '2px', borderRadius: '20px', overflowX: 'auto', maxWidth: '60vw' }} className="no-scrollbar">
             {languages.map((l) => (
               <button
                 key={l.code}
                 onClick={() => setLang(l.code)}
                 style={{
                   border: 'none',
-                  padding: '4px 8px',
+                  padding: '4px 6px',
                   borderRadius: '16px',
-                  fontSize: '10px',
+                  fontSize: '9px',
                   fontWeight: 'bold',
                   cursor: 'pointer',
                   backgroundColor: lang === l.code ? 'white' : 'transparent',
                   color: lang === l.code ? '#1d1d1f' : '#86868b',
+                  whiteSpace: 'nowrap'
                 }}
               >
                 {l.label}
