@@ -92,20 +92,49 @@ button:focus {
 
 /* 3D Glow Hero Title */
 .hero-title-3d-glow {
-  font-size: clamp(32px, 10vw, 120px) !important;
+  font-size: clamp(48px, 12vw, 140px) !important;
   font-weight: 900 !important;
-  letter-spacing: -0.05em !important;
-  line-height: 1.1 !important;
+  letter-spacing: -0.06em !important;
+  line-height: 0.95 !important;
   text-transform: uppercase;
-  color: var(--apple-black);
+  color: #1d1d1f;
   position: relative;
   display: block;
   width: 100%;
   word-break: keep-all;
   overflow-wrap: break-word;
   padding: 0 15px;
-  text-shadow: 0 1px 0 #e0e0e0, 0 2px 0 #d0d0d0, 0 3px 1px rgba(0,0,0,0.1);
-  filter: drop-shadow(0 8px 15px rgba(0,0,0,0.1));
+  
+  /* 다층 3D 그림자: Apple 스타일의 'Raised' 효과 */
+  text-shadow: 
+    0 1px 0 #cccccc, 
+    0 2px 0 #c5c5c5, 
+    0 3px 0 #bbbbbb, 
+    0 4px 0 #b0b0b0, 
+    0 5px 0 #aaaaaa,
+    0 8px 15px rgba(0,0,0,0.1),
+    0 15px 25px rgba(0,0,0,0.05);
+    
+  /* 미세한 그라데이션 및 입체감 */
+  background: linear-gradient(180deg, #1d1d1f 0%, #3a3a3c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  
+  transition: all 0.6s cubic-bezier(0.2, 1, 0.2, 1);
+  cursor: default;
+}
+
+.hero-title-3d-glow:hover {
+  transform: translateY(-5px) scale(1.02);
+  text-shadow: 
+    0 1px 0 #cccccc, 
+    0 2px 0 #c5c5c5, 
+    0 4px 0 #bbbbbb, 
+    0 6px 0 #b0b0b0, 
+    0 8px 0 #aaaaaa,
+    0 20px 40px rgba(0,0,0,0.15),
+    0 30px 60px rgba(0,0,0,0.1);
 }
 
 /* 네비게이션 */
