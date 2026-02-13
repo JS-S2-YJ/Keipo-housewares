@@ -10,6 +10,14 @@ interface NavbarProps {
 }
 
 export const Navbar = ({ lang, onMenuClick, t }: NavbarProps) => {
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <nav className="nav-glass">
       <div className="max-container" style={{ justifyContent: 'space-between', width: '100%' }}>
@@ -19,9 +27,9 @@ export const Navbar = ({ lang, onMenuClick, t }: NavbarProps) => {
         
         <div style={{ display: 'flex', gap: '6px', alignItems: 'center', flexShrink: 0 }}>
           <div className="nav-menu-desktop" style={{ gap: '20px', fontSize: '13px', fontWeight: '600', color: '#86868b', marginRight: '12px' }}>
-            <a href="#history" style={{ textDecoration: 'none', color: 'inherit' }}>{t('navHistory')}</a>
-            <a href="#logistics" style={{ textDecoration: 'none', color: 'inherit' }}>{t('navLogistics')}</a>
-            <a href="#categories" style={{ textDecoration: 'none', color: 'inherit' }}>{t('navProducts')}</a>
+            <a href="#history" onClick={(e) => scrollToSection(e, 'history')} style={{ textDecoration: 'none', color: 'inherit' }}>{t('navHistory')}</a>
+            <a href="#logistics" onClick={(e) => scrollToSection(e, 'logistics')} style={{ textDecoration: 'none', color: 'inherit' }}>{t('navLogistics')}</a>
+            <a href="#categories" onClick={(e) => scrollToSection(e, 'categories')} style={{ textDecoration: 'none', color: 'inherit' }}>{t('navProducts')}</a>
           </div>
 
           <button 

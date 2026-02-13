@@ -10,7 +10,7 @@
 
 * {
   box-sizing: border-box !important;
-  -webkit-tap-highlight-color: transparent; /* 모바일 리플/하이라이트 제거 */
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -24,22 +24,23 @@ body {
   width: 100%;
 }
 
-/* 프리미엄 클릭 피드백: 아주 미세한 수축 효과 */
+/* 프리미엄 클릭 피드백 */
 button:active, 
 .menu-button-3d:active, 
 .apple-card:active,
+.apple-button-primary:active,
+.apple-button-secondary:active,
 [role="button"]:active {
   transform: scale(0.97);
   opacity: 0.8;
   transition: transform 0.1s cubic-bezier(0, 0, 0.2, 1), opacity 0.1s ease;
 }
 
-/* 포커스 아웃라인 정돈 */
 button:focus {
   outline: none;
 }
 
-/* 로고 살아있는 효과 애니메이션 */
+/* --- Animations --- */
 @keyframes logo-breathing {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-2px); }
@@ -50,54 +51,35 @@ button:focus {
   100% { background-position: 200% center; }
 }
 
-/* KEIPO 3D 살아있는 로고 */
+/* --- Components --- */
+
+/* Logo */
 .logo-3d {
   display: inline-block;
   font-weight: 900;
   cursor: pointer;
   position: relative;
-  padding-right: 0.1em; /* 글자 잘림 방지 */
-  
-  /* 깨끗하고 반짝이는 그라데이션 효과 */
-  background: linear-gradient(
-    90deg, 
-    #1d1d1f 0%, 
-    #1d1d1f 40%, 
-    #ffffff 50%, 
-    #1d1d1f 60%, 
-    #1d1d1f 100%
-  );
+  background: linear-gradient(90deg, #1d1d1f 0%, #1d1d1f 40%, #ffffff 50%, #1d1d1f 60%, #1d1d1f 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent !important;
-  
-  /* 애니메이션 결합: 숨쉬기 + 반짝임 */
-  animation: 
-    logo-breathing 4s ease-in-out infinite, 
-    sparkle-sweep 3s linear infinite;
-  
+  animation: logo-breathing 4s ease-in-out infinite, sparkle-sweep 3s linear infinite;
   transition: all 0.3s ease;
 }
 
 .logo-3d:hover {
   transform: scale(1.05) rotateX(10deg);
-  /* 호버 시에는 투명도를 조절하여 배경 그라데이션이 더 잘 보이게 하거나 필터 적용 */
   filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
 }
 
-.image-card-wrapper:hover .hover-zoom-image {
-  transform: scale(1.08);
-}
-
-/* 3D Glow Hero Title */
+/* Hero Title - 더 선명하고 입체적으로 개선 */
 .hero-title-3d-glow {
   font-size: clamp(48px, 12vw, 140px) !important;
   font-weight: 900 !important;
   letter-spacing: -0.06em !important;
   line-height: 0.95 !important;
   text-transform: uppercase;
-  color: #1d1d1f;
   position: relative;
   display: block;
   width: 100%;
@@ -105,18 +87,15 @@ button:focus {
   overflow-wrap: break-word;
   padding: 0 15px;
   
-  /* 다층 3D 그림자: Apple 스타일의 'Raised' 효과 */
+  /* 다층 3D 그림자: 실버/메탈릭 느낌 추가 */
   text-shadow: 
-    0 1px 0 #cccccc, 
-    0 2px 0 #c5c5c5, 
-    0 3px 0 #bbbbbb, 
-    0 4px 0 #b0b0b0, 
-    0 5px 0 #aaaaaa,
-    0 8px 15px rgba(0,0,0,0.1),
-    0 15px 25px rgba(0,0,0,0.05);
+    0 1px 0 #d1d1d1, 
+    0 2px 0 #c8c8c8, 
+    0 3px 0 #b0b0b0, 
+    0 8px 15px rgba(0,0,0,0.1);
     
-  /* 미세한 그라데이션 및 입체감 */
-  background: linear-gradient(180deg, #1d1d1f 0%, #3a3a3c 100%);
+  /* 그라데이션: 회색빛을 줄이고 더 깊은 블랙/실버 조화 */
+  background: linear-gradient(180deg, #000000 0%, #1d1d1f 40%, #434344 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent !important;
@@ -128,130 +107,105 @@ button:focus {
 .hero-title-3d-glow:hover {
   transform: translateY(-5px) scale(1.02);
   text-shadow: 
-    0 1px 0 #cccccc, 
-    0 2px 0 #c5c5c5, 
-    0 4px 0 #bbbbbb, 
-    0 6px 0 #b0b0b0, 
-    0 8px 0 #aaaaaa,
-    0 20px 40px rgba(0,0,0,0.15),
-    0 30px 60px rgba(0,0,0,0.1);
+    0 1px 0 #d1d1d1, 
+    0 3px 0 #b0b0b0, 
+    0 15px 30px rgba(0,0,0,0.15);
 }
 
-/* 네비게이션 */
+/* --- Buttons (Missing Styles Restored) --- */
+.apple-button-primary {
+  background: var(--apple-black);
+  color: white;
+  padding: 14px 28px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.apple-button-primary:hover {
+  background: #3a3a3c;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.apple-button-secondary {
+  background: transparent;
+  color: var(--apple-blue);
+  padding: 14px 28px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.3s ease;
+}
+
+.apple-button-secondary:hover {
+  color: #0077ed;
+  transform: translateX(4px);
+}
+
+/* --- Layout Components --- */
+
+/* Navbar Glassmorphism */
 .nav-glass {
   position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; width: 100% !important; z-index: 100 !important;
-  background: rgba(255, 255, 255, 0.7) !important; 
-  backdrop-filter: saturate(180%) blur(20px) !important;
-  -webkit-backdrop-filter: saturate(180%) blur(20px) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5) !important; 
+  background: rgba(255, 255, 255, 0.88) !important; 
+  backdrop-filter: saturate(180%) blur(32px) !important;
+  -webkit-backdrop-filter: saturate(180%) blur(32px) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important; 
   padding: 8px 12px !important; 
-  overflow: visible !important;
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03) !important;
 }
 
 .max-container {
   max-width: 1200px !important; margin: 0 auto !important; display: flex !important; width: 100% !important; align-items: center !important;
 }
 
-/* 3D 메뉴 버튼 */
+/* 3D Menu Button */
 .menu-button-3d {
   width: 36px; height: 36px; 
-  background: rgba(255, 255, 255, 0.5); 
+  background: rgba(255, 255, 255, 0.6); 
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: 8px;
   display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 3.5px;
-  cursor: pointer; border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 3px 5px rgba(0,0,0,0.03); flex-shrink: 0;
+  cursor: pointer; border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 3px 5px rgba(0,0,0,0.02); flex-shrink: 0;
 }
 .menu-bar { width: 14px; height: 1.8px; background: var(--apple-black); border-radius: 2px; }
 
-/* 네비게이션 메뉴 반응형 */
-.nav-menu-desktop { display: none !important; }
-@media (min-width: 768px) { .nav-menu-desktop { display: flex !important; } }
-
-/* 드로어 관련 스타일 유지 */
+/* Side Drawer */
 .drawer-overlay {
   position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0,0,0,0.1); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  background: rgba(0,0,0,0.2); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
   z-index: 200; opacity: 0; visibility: hidden; transition: opacity 0.4s ease, visibility 0.4s ease;
 }
 .drawer-overlay.active { opacity: 1; visibility: visible; }
 
 .side-drawer {
   position: fixed; top: 12px; right: -320px; width: 280px; height: calc(100% - 24px);
-  background: rgba(255, 255, 255, 0.65); 
-  backdrop-filter: blur(40px) saturate(180%); 
-  -webkit-backdrop-filter: blur(40px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 24px 0 0 24px;
+  background: rgba(255, 255, 255, 0.92); 
+  backdrop-filter: blur(50px) saturate(180%); 
+  -webkit-backdrop-filter: blur(50px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 24px;
   z-index: 201; transition: right 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s ease;
   padding: 60px 24px; display: flex; flex-direction: column; gap: 32px; visibility: hidden;
-  overflow-y: auto;
-  scrollbar-width: none;
-  box-shadow: -20px 0 50px rgba(0,0,0,0.05);
+  box-shadow: -20px 0 60px rgba(0,0,0,0.1);
 }
-.side-drawer::-webkit-scrollbar { display: none; } /* Chrome/Safari 스크롤바 숨김 */
+.side-drawer.active { right: 12px; visibility: visible; }
 
-/* 세로 높이가 낮은 기기(가로모드 등) 대응 */
-@media (max-height: 500px) {
-  .side-drawer {
-    padding: 40px 20px;
-    gap: 20px;
-  }
-}
-
-.side-drawer.active { right: 0; visibility: visible; box-shadow: -10px 0 40px rgba(0,0,0,0.05); }
-
-/* Grid System */
-.grid-3 { display: flex !important; flex-direction: column !important; gap: 32px !important; width: 100% !important; }
-@media (min-width: 768px) { .grid-3 { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; } }
-@media (min-width: 1024px) { .grid-3 { grid-template-columns: repeat(3, 1fr) !important; } }
-
-/* 3D 카드 스타일 */
-.perspective-container { perspective: 2000px; width: 100%; }
-.three-d-card {
-  transform-style: preserve-3d;
-  transition: transform 0.8s cubic-bezier(0.2, 1, 0.2, 1), box-shadow 0.8s ease, border-color 0.8s ease;
-  background: white;
-  border-radius: 32px;
-  border: 1px solid rgba(0, 0, 0, 0.04);
-  position: relative;
-  z-index: 1;
-  box-shadow: 
-    0 4px 6px -1px rgba(0, 0, 0, 0.01),
-    0 2px 4px -1px rgba(0, 0, 0, 0.01),
-    0 10px 30px -5px rgba(0, 0, 0, 0.03);
-}
-
-.three-d-card:hover {
-  transform: translateZ(30px) translateY(-10px) rotateX(4deg) rotateY(-2deg);
-  box-shadow: 
-    0 20px 40px -10px rgba(0, 0, 0, 0.08),
-    0 10px 20px -5px rgba(0, 0, 0, 0.04);
-  border-color: rgba(0, 102, 204, 0.15);
-  z-index: 10;
-}
-
-.premium-gradient-text {
-  background: linear-gradient(135deg, #1d1d1f 0%, #434344 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent !important;
-}
-
-.stat-value {
-  font-size: clamp(32px, 5vw, 48px);
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  background: linear-gradient(180deg, #1d1d1f 0%, #434344 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent !important;
-}
-
-.section-padding { padding: 60px 20px !important; }
-@media (min-width: 768px) { .section-padding { padding: 160px 40px !important; } }
+/* --- Section Utilities --- */
+.section-padding { padding: 80px 20px !important; }
+@media (min-width: 768px) { .section-padding { padding: 140px 40px !important; } }
 
 .section-title {
   font-size: clamp(28px, 6vw, 48px) !important;
@@ -261,35 +215,7 @@ button:focus {
   line-height: 1.1 !important;
 }
 
-.apple-card {
-  background: white !important;
-  border-radius: 24px !important;
-  padding: 32px !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: space-between !important;
-  height: 100% !important;
-  min-height: 250px !important;
-  border: 1px solid rgba(0, 0, 0, 0.05) !important;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02) !important;
-}
-
-.apple-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06) !important;
-  border-color: rgba(0, 102, 204, 0.1) !important;
-}
-
-/* 글래스모피즘 코어 효과 */
-.glass-effect {
-  background: rgba(255, 255, 255, 0.6) !important;
-  backdrop-filter: blur(20px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.4) !important;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.04) !important;
-}
-
+/* Glassmorphism Cards */
 .glass-card {
   background: rgba(255, 255, 255, 0.7) !important;
   backdrop-filter: blur(24px) saturate(180%) !important;
@@ -297,13 +223,20 @@ button:focus {
   border: 1px solid rgba(255, 255, 255, 0.5) !important;
   border-radius: 28px !important;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03) !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* 3D 카드 스타일 - 유리 질감 추가 */
+.glass-card:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.85) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* 3D Glass Card */
 .perspective-container { perspective: 2000px; width: 100%; }
 .three-d-card {
   transform-style: preserve-3d;
-  transition: transform 0.8s cubic-bezier(0.2, 1, 0.2, 1), box-shadow 0.8s ease, border-color 0.8s ease;
+  transition: transform 0.8s cubic-bezier(0.2, 1, 0.2, 1), box-shadow 0.8s ease;
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -311,22 +244,15 @@ button:focus {
   border: 1px solid rgba(255, 255, 255, 0.6);
   position: relative;
   z-index: 1;
-  box-shadow: 
-    0 4px 6px -1px rgba(0, 0, 0, 0.01),
-    0 2px 4px -1px rgba(0, 0, 0, 0.01),
-    0 10px 30px -5px rgba(0, 0, 0, 0.03);
 }
 
 .three-d-card:hover {
   transform: translateZ(30px) translateY(-10px) rotateX(4deg) rotateY(-2deg);
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 
-    0 20px 40px -10px rgba(0, 0, 0, 0.08),
-    0 10px 20px -5px rgba(0, 0, 0, 0.04);
-  border-color: rgba(255, 255, 255, 0.8);
-  z-index: 10;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
 }
 
+/* Typography Utilities */
 .premium-gradient-text {
   background: linear-gradient(135deg, #1d1d1f 0%, #434344 100%);
   -webkit-background-clip: text;
@@ -344,36 +270,11 @@ button:focus {
   color: transparent !important;
 }
 
-.section-padding { padding: 60px 20px !important; }
-@media (min-width: 768px) { .section-padding { padding: 160px 40px !important; } }
+/* Grid System */
+.grid-3 { display: flex !important; flex-direction: column !important; gap: 32px !important; width: 100% !important; }
+@media (min-width: 768px) { .grid-3 { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; } }
+@media (min-width: 1024px) { .grid-3 { grid-template-columns: repeat(3, 1fr) !important; } }
 
-.section-title {
-  font-size: clamp(28px, 6vw, 48px) !important;
-  font-weight: 800 !important;
-  letter-spacing: -0.03em !important;
-  color: var(--apple-black) !important;
-  line-height: 1.1 !important;
-}
-
-.apple-card {
-  background: rgba(255, 255, 255, 0.7) !important;
-  backdrop-filter: blur(20px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
-  border-radius: 24px !important;
-  padding: 32px !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: space-between !important;
-  height: 100% !important;
-  min-height: 250px !important;
-  border: 1px solid rgba(255, 255, 255, 0.5) !important;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02) !important;
-}
-
-.apple-card:hover {
-  transform: translateY(-8px);
-  background: rgba(255, 255, 255, 0.85) !important;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06) !important;
-  border-color: rgba(255, 255, 255, 0.8) !important;
-}
+/* Utility for desktop menu visibility */
+.nav-menu-desktop { display: none !important; }
+@media (min-width: 768px) { .nav-menu-desktop { display: flex !important; } }
