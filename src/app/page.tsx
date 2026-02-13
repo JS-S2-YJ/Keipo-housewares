@@ -37,17 +37,21 @@ export default function Home() {
           </div>
           
           <div className="flex items-center gap-4 md:gap-8">
-            <div className="flex items-center gap-1.5 md:gap-2">
+            <div className="flex items-center space-x-2">
               {languages.map((l) => (
                 <button
                   key={l.code}
                   onClick={() => setLang(l.code)}
-                  className={`cursor-pointer text-[10px] md:text-[11px] px-2 py-1 transition-all duration-200 border uppercase tracking-tighter ${
-                    lang === l.code 
-                      ? 'bg-cyber-cyan border-cyber-cyan text-black font-bold shadow-[0_0_10px_rgba(0,243,255,0.5)]' 
-                      : 'text-white/40 border-white/10 hover:text-white hover:bg-white/10 hover:border-white/20'
-                  }`}
-                  style={{ minWidth: '32px' }}
+                  className="cursor-pointer text-[10px] md:text-[11px] px-2.5 py-1.5 transition-all duration-200 border uppercase tracking-tighter"
+                  style={{ 
+                    minWidth: '36px',
+                    appearance: 'none',
+                    backgroundColor: lang === l.code ? '#00f3ff' : 'transparent',
+                    color: lang === l.code ? '#000000' : 'rgba(255, 255, 255, 0.4)',
+                    borderColor: lang === l.code ? '#00f3ff' : 'rgba(255, 255, 255, 0.1)',
+                    fontWeight: lang === l.code ? '800' : '400',
+                    boxShadow: lang === l.code ? '0 0 12px rgba(0, 243, 255, 0.4)' : 'none'
+                  }}
                 >
                   {l.label}
                 </button>
