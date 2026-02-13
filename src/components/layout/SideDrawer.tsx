@@ -16,10 +16,10 @@ export const SideDrawer = ({ isOpen, onClose }: SideDrawerProps) => {
     e.preventDefault();
     const element = document.getElementById(id);
     if (element) {
-      // 1. Close drawer immediately to stabilize layout
+      // 1. Close drawer (triggers history.back() in page.tsx)
       onClose();
       
-      // 2. Wait for drawer animation to finish (approx 300-400ms) before scrolling
+      // 2. Start scroll almost immediately (50ms delay to win over browser's scroll restoration)
       setTimeout(() => {
         const headerOffset = 80;
         const elementPosition = element.getBoundingClientRect().top;
@@ -29,7 +29,7 @@ export const SideDrawer = ({ isOpen, onClose }: SideDrawerProps) => {
           top: offsetPosition,
           behavior: 'smooth'
         });
-      }, 350);
+      }, 50);
     }
   };
 
