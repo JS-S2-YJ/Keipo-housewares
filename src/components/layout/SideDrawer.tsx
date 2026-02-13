@@ -26,37 +26,35 @@ export const SideDrawer = ({ isOpen, onClose, lang, setLang, t }: SideDrawerProp
     <>
       <div className={`drawer-overlay ${isOpen ? 'active' : ''}`} onClick={onClose} />
       <div className={`side-drawer ${isOpen ? 'active' : ''}`}>
-        <button onClick={onClose} style={{ position: 'absolute', top: '16px', right: '16px', border: 'none', background: 'none', cursor: 'pointer', color: '#86868b' }}>
+        <button 
+          onClick={onClose} 
+          className="absolute top-4 right-4 border-none bg-transparent cursor-pointer text-[#86868b] hover:text-[#1d1d1f] transition-colors"
+        >
           <X size={28} />
         </button>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-          <span style={{ fontSize: '11px', fontWeight: '800', color: '#0066cc', letterSpacing: '0.15em' }}>NAVIGATE</span>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', fontSize: '22px', fontWeight: '700' }}>
-            <a href="#history" onClick={onClose} style={{ textDecoration: 'none', color: '#1d1d1f' }}>{t('navHistory')}</a>
-            <a href="#logistics" onClick={onClose} style={{ textDecoration: 'none', color: '#1d1d1f' }}>Logistics</a>
-            <a href="#categories" onClick={onClose} style={{ textDecoration: 'none', color: '#1d1d1f' }}>{t('navProducts')}</a>
+        <div className="flex flex-col gap-4 sm:gap-6">
+          <span className="text-[11px] font-extrabold text-[#0066cc] tracking-[0.15em]">NAVIGATE</span>
+          <div className="flex flex-col gap-3 sm:gap-4 text-xl sm:text-2xl font-bold">
+            <a href="#history" onClick={onClose} className="no-underline text-[#1d1d1f] hover:text-[#0066cc] transition-colors">{t('navHistory')}</a>
+            <a href="#logistics" onClick={onClose} className="no-underline text-[#1d1d1f] hover:text-[#0066cc] transition-colors">Logistics</a>
+            <a href="#categories" onClick={onClose} className="no-underline text-[#1d1d1f] hover:text-[#0066cc] transition-colors">{t('navProducts')}</a>
           </div>
         </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', marginTop: '32px' }}>
-          <span style={{ fontSize: '11px', fontWeight: '800', color: '#0066cc', letterSpacing: '0.15em' }}>REGIONAL SETTINGS</span>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+        <div className="flex flex-col gap-4 sm:gap-6 mt-2 sm:mt-8">
+          <span className="text-[11px] font-extrabold text-[#0066cc] tracking-[0.15em]">REGIONAL SETTINGS</span>
+          <div className="grid grid-cols-2 gap-2">
             {languages.map((l) => (
               <button
                 key={l.code}
                 onClick={() => { setLang(l.code); onClose(); }}
-                style={{
-                  border: lang === l.code ? '2px solid #0066cc' : '1px solid #f2f2f2',
-                  padding: '10px',
-                  borderRadius: '10px',
-                  fontSize: '13px',
-                  fontWeight: '600',
-                  cursor: 'pointer',
-                  backgroundColor: lang === l.code ? '#f5faff' : 'white',
-                  color: lang === l.code ? '#0066cc' : '#1d1d1f',
-                  textAlign: 'left'
-                }}
+                className={`
+                  border p-2.5 rounded-xl text-[13px] font-semibold cursor-pointer text-left transition-all
+                  ${lang === l.code 
+                    ? 'border-[#0066cc] bg-[#f5faff] text-[#0066cc] ring-1 ring-[#0066cc]' 
+                    : 'border-[#f2f2f2] bg-white text-[#1d1d1f] hover:border-gray-300'}
+                `}
               >
                 {l.label}
               </button>
