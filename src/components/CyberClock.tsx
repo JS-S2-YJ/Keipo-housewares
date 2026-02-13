@@ -1,8 +1,10 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useLanguage } from '@/hooks/useLanguage';
 
 export const CyberClock = () => {
+  const { t } = useLanguage();
   const [time, setTime] = useState<Date | null>(null);
 
   useEffect(() => {
@@ -11,7 +13,7 @@ export const CyberClock = () => {
     return () => clearInterval(timer);
   }, []);
 
-  if (!time) return <div className="w-32 h-6 bg-white/5 animate-pulse rounded" />;
+  if (!time) return <div style={{ width: '128px', height: '24px', backgroundColor: '#f5f5f7', borderRadius: '4px' }} />;
 
   const formatTime = (date: Date) => {
     return date.toLocaleTimeString('en-US', {
@@ -31,14 +33,14 @@ export const CyberClock = () => {
   };
 
   return (
-    <div className="flex flex-col items-end font-mono text-xs tracking-widest text-cyber-cyan opacity-80">
-      <div className="flex items-center gap-2">
-        <span className="text-[10px] text-white/40 uppercase">System Time:</span>
-        <span className="neon-text-cyan">{formatTime(time)}</span>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', fontFamily: 'monospace', fontSize: '12px', letterSpacing: '0.1em', color: '#86868b' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <span style={{ fontSize: '10px', textTransform: 'uppercase' }}>{t('systemTime')}:</span>
+        <span style={{ color: '#1d1d1f', fontWeight: 'bold' }}>{formatTime(time)}</span>
       </div>
-      <div className="flex items-center gap-2">
-        <span className="text-[10px] text-white/40 uppercase">System Date:</span>
-        <span>{formatDate(time)}</span>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <span style={{ fontSize: '10px', textTransform: 'uppercase' }}>{t('systemDate')}:</span>
+        <span style={{ color: '#1d1d1f' }}>{formatDate(time)}</span>
       </div>
     </div>
   );
