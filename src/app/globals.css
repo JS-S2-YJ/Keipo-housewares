@@ -232,9 +232,9 @@ button:focus {
 /* Side Drawer */
 .drawer-overlay {
   position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.85); 
-  backdrop-filter: blur(60px); 
-  -webkit-backdrop-filter: blur(60px);
+  background: rgba(0, 0, 0, 0.45); 
+  backdrop-filter: blur(30px); 
+  -webkit-backdrop-filter: blur(30px);
   z-index: 200; opacity: 0; visibility: hidden; transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.5s ease;
 }
 .drawer-overlay.active { opacity: 1; visibility: visible; }
