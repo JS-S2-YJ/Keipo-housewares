@@ -1,6 +1,7 @@
 'use client';
 
 import { Anchor, TrendingUp, BarChart3, ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { SectionReveal } from '@/components/common/SectionReveal';
 import { TranslationKey } from '@/translations';
 import { ESTABLISHED_YEAR } from '@/lib/constants';
@@ -47,7 +48,14 @@ export const LogisticsSection = ({ t, currentYear }: LogisticsSectionProps) => {
                   <h3 style={{ fontSize: '20px', fontWeight: 'bold', marginBottom: '16px' }}>{t('tradeVelocity')}</h3>
                   <div style={{ display: 'flex', alignItems: 'flex-end', gap: '6px', height: '60px', marginTop: '16px' }}>
                     {[40, 70, 45, 90, 65, 80, 100].map((h, i) => (
-                      <div key={i} style={{ flex: 1, backgroundColor: i === 6 ? '#0066cc' : '#f2f2f2', height: `${h}%`, borderRadius: '3px' }} />
+                      <motion.div 
+                        key={i} 
+                        initial={{ height: 0 }}
+                        whileInView={{ height: `${h}%` }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                        style={{ flex: 1, backgroundColor: i === 6 ? '#0066cc' : '#e5e5ea', borderRadius: '3px 3px 0 0' }} 
+                      />
                     ))}
                   </div>
                   <p style={{ fontSize: '10px', color: '#86868b', marginTop: '16px', fontWeight: '800', letterSpacing: '0.05em' }}>{t('verifiedBy')} // {ESTABLISHED_YEAR}-{currentYear}</p>
