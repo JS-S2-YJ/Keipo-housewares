@@ -2,7 +2,6 @@
 
 import { Globe2 } from 'lucide-react';
 import { useLanguage } from '@/hooks/useLanguage';
-import { Logo3D } from '../common/Logo3D';
 
 interface NavbarProps {
   onMenuClick: () => void;
@@ -31,7 +30,7 @@ export const Navbar = ({ onMenuClick }: NavbarProps) => {
         padding: '0 clamp(16px, 5vw, 40px)'
       }}>
         <div style={{ display: 'flex', alignItems: 'center', flexShrink: 1, minWidth: 0 }}>
-          <Logo3D />
+          <span className="logo-3d" style={{ fontSize: 'clamp(15px, 4vw, 22px)', whiteSpace: 'nowrap' }}>KEIPO</span>
         </div>
         
         <div style={{ display: 'flex', gap: '6px', alignItems: 'center', flexShrink: 0 }}>
