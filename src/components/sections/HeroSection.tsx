@@ -4,6 +4,7 @@ import { ChevronRight } from 'lucide-react';
 import { SectionReveal } from '@/components/common/SectionReveal';
 import { useLanguage } from '@/hooks/useLanguage';
 import { BASE_PATH } from '@/lib/constants';
+import { Logo3D } from '../common/Logo3D';
 
 export const HeroSection = () => {
   const { t } = useLanguage();
@@ -76,8 +77,15 @@ export const HeroSection = () => {
               position: 'relative',
               width: '100%',
               display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
               justifyContent: 'center'
             }}>
+              <Logo3D 
+                className="w-[300px] h-[150px] md:w-[600px] md:h-[300px]" 
+                scale={2.5} 
+                showGlow={false}
+              />
               <img 
                 src={`${BASE_PATH}/images/main_logo_v2.png`} 
                 alt="KEIPO Housewares" 
@@ -86,7 +94,8 @@ export const HeroSection = () => {
                   height: 'auto',
                   objectFit: 'contain',
                   borderRadius: '32px',
-                  filter: 'drop-shadow(0 30px 60px rgba(0, 102, 204, 0.2))'
+                  filter: 'drop-shadow(0 30px 60px rgba(0, 102, 204, 0.2))',
+                  marginTop: '-20px'
                 }} 
               />
             </div>
