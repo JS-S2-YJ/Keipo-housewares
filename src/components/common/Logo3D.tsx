@@ -42,28 +42,41 @@ export const Logo3D = ({ className = "h-[40px] w-[120px]", scale = 1.2, showGlow
     <div 
       className={`${className} cursor-pointer relative flex items-center justify-center overflow-hidden`} 
       style={{ 
-        backgroundColor: 'rgba(0, 0, 0, 0.025)', 
-        borderRadius: '32px',
-        border: '1px solid rgba(0, 0, 0, 0.05)',
-        filter: showGlow ? 'drop-shadow(0 10px 30px rgba(0,102,204,0.1))' : 'none' 
+        // 딥 다크 테마로 변경하여 유리 질감 강조 및 눈 보호
+        background: 'linear-gradient(135deg, #0f172a 0%, #020617 100%)',
+        borderRadius: '40px',
+        border: '1px solid rgba(255, 255, 255, 0.1)',
+        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
+        padding: '20px'
       }}
     >
+      {/* 배경에 은은한 블루 광원 효과 추가 */}
+      <div style={{
+        position: 'absolute',
+        width: '100%',
+        height: '100%',
+        background: 'radial-gradient(circle at center, rgba(0, 102, 204, 0.15) 0%, transparent 70%)',
+        pointerEvents: 'none'
+      }} />
+
       <Canvas
         gl={{ antialias: true, alpha: true }}
         dpr={[1, 2]}
-        camera={{ position: [0, 0, 7.5], fov: 35 }} // 약간 더 줌인하여 여백 최소화
+        camera={{ position: [0, 0, 7.5], fov: 35 }}
       >
         <Suspense fallback={null}>
-          <ambientLight intensity={1.0} />
-          <directionalLight position={[5, 5, 5]} intensity={1.5} />
-          <pointLight position={[-5, 5, 5]} intensity={1.0} color="#0066cc" />
+          {/* 어두운 배경에 맞춘 최적화된 부드러운 조명 */}
+          <ambientLight intensity={0.5} />
+          <pointLight position={[10, 10, 10]} intensity={1.5} color="#ffffff" />
+          <pointLight position={[-10, -10, -10]} intensity={0.5} color="#0066cc" />
+          <spotLight position={[0, 5, 10]} angle={0.15} penumbra={1} intensity={2} color="#b2e5ff" />
           
-          <Environment preset="studio" />
+          <Environment preset="night" /> {/* 부드러운 밤 조명으로 변경 */}
 
           <Float 
-            speed={2} 
-            rotationIntensity={0.4} 
-            floatIntensity={0.4}
+            speed={1.5} 
+            rotationIntensity={0.3} 
+            floatIntensity={0.3}
             floatingRange={[-0.1, 0.1]}
           >
             <Model scale={scale} />
