@@ -23,18 +23,30 @@ KEIPO Housewares의 글로벌 무역 포트폴리오 사이트를 구축했습�
 
 ### 4. 동적 로직 및 기술적 해결
 - **업력 자동 계산**: 설립 연도(1988년)를 기준으로 현재 연도와 비교하여 업력(현재 38년+)을 자동 계산하는 로직 구현.
-- **자산 경로 관리 (Critical)**: GitHub Pages 배포 시 하위 경로(`BASE_PATH`) 이슈로 인한 404 에러 방지를 위해, 모든 정적 자산(이미지 등) 참조 시 반드시 `src/lib/constants.ts`의 `BASE_PATH`를 사용해야 함. (예: `${BASE_PATH}/images/logo.png`)
+- **자산 경로 관리 (Critical)**: GitHub Pages 배포 시 하위 경로(`BASE_PATH`) 이슈로 인한 404 에러 방지를 위해, **모든 정적 자산(이미지, 3D 모델 등)** 참조 시 반드시 `src/lib/constants.ts`의 `BASE_PATH`를 사용해야 함. (예: `${BASE_PATH}/images/logo.png`, `${BASE_PATH}/model.glb`)
 - **글래스모피즘 최적화**: 내비바와 사이드 드로어에 **Blur 80px**과 낮은 불투명도(0.25~0.3)를 적용하여 형체가 완전히 뭉개지는 프리미엄 유리 효과 구현.
 - **렌더링 이슈 해결**: 특정 브라우저에서 블러가 무시되는 현상을 해결하기 위해 **인라인 스타일** 적용 및 **하드웨어 가속(translateZ)** 강제.
 - **모바일 UX (History API)**: 드로어 오픈 시 브라우저 히스토리를 제어하여, 사용자가 '뒤로가기' 버튼을 눌렀을 때 페이지 이탈 대신 드로어만 닫히도록 최적화.
 - **FOUC 방지**: Tailwind CSS v4 로딩 지연으로 인한 스타일 깨짐 현상을 해결하기 위해 표준 CSS와 인라인 스타일을 전략적으로 혼용.
 
+### 5. 인터랙티브 3D 글래스모피즘 로고 (2026-02-15 추가)
+- **3D 에셋 제작**: 블렌더(Blender)를 활용하여 'KEIPO' 텍스트를 탱글탱글한 입체 메쉬로 변환하고, 블루 틴트가 가미된 유리(Glass) 질감 적용.
+- **애니메이션**: 왼쪽 글자부터 순차적으로 통통 튀는(Staggered Bounce) 애니메이션을 GLB 파일에 내장.
+- **웹 실시간 렌더링**: `react-three-fiber` 및 `@react-three/drei`를 사용하여 웹사이트상에서 실시간 3D 렌더링 구현.
+- **경로 관리 주의**: 3D 모델 로드 시 반드시 `${BASE_PATH}`를 접두어로 사용하여 404 에러를 방지해야 함. (참고: `Logo3D.tsx`)
+- **인터랙티브 효과**: `<Float>` 컴포넌트를 적용해 유휴 상태에서 미세하게 회전/부유하며 빛을 반사하여 입체감을 극대화하고, `PerspectiveCamera`를 통해 정면에서도 깊이감을 표현.
+- **주요 파일**:
+    - 모델: `public/keipo_logo_animated.glb`
+    - 컴포넌트: `src/components/common/Logo3D.tsx`
+    - 종속성: `three`, `@react-three/fiber`, `@react-three/drei` (설치 필수)
+
 ## 기술 스택 및 설정 (Technical Stack)
 - **Framework**: Next.js 16 (App Router)
 - **Styling**: Tailwind CSS v4 + Standard CSS (for stability)
+- **3D Rendering**: Three.js + React Three Fiber
 - **Icons**: Lucide React
 - **Animation**: Framer Motion
 - **Constants**: `src/lib/constants.ts` (ESTABLISHED_YEAR = 1988)
 
 ---
-*Last Updated: 2026-02-14*
+*Last Updated: 2026-02-15*
