@@ -73,29 +73,29 @@ export const HeroSection = () => {
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             {/* Main Hero Logo */}
             <div style={{ 
-              marginBottom: 'clamp(32px, 5vh, 60px)',
+              marginBottom: 'clamp(40px, 8vh, 80px)',
               position: 'relative',
               width: '100%',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              justifyContent: 'center'
+              justifyContent: 'center',
+              gap: '40px' // 요소 간 간격 확보
             }}>
               <Logo3D 
-                className="w-[300px] h-[150px] md:w-[600px] md:h-[300px]" 
-                scale={2.5} 
+                className="w-[320px] h-[160px] md:w-[800px] md:h-[400px]" 
+                scale={2.0} // 스케일을 살짝 줄이고 카메라 거리를 조절하여 전체 노출 보장
                 showGlow={false}
               />
               <img 
                 src={`${BASE_PATH}/images/main_logo_v2.png`} 
                 alt="KEIPO Housewares" 
                 style={{ 
-                  width: 'clamp(280px, 75vw, 1000px)', 
+                  width: 'clamp(280px, 70vw, 900px)', 
                   height: 'auto',
                   objectFit: 'contain',
                   borderRadius: '32px',
-                  filter: 'drop-shadow(0 30px 60px rgba(0, 102, 204, 0.2))',
-                  marginTop: '-20px'
+                  filter: 'drop-shadow(0 30px 60px rgba(0, 102, 204, 0.15))'
                 }} 
               />
             </div>
