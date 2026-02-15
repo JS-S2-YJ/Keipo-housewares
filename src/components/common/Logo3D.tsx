@@ -4,10 +4,11 @@ import React, { Suspense, useEffect, useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useGLTF, useAnimations, Environment, Float, PerspectiveCamera } from '@react-three/drei';
 import * as THREE from 'three';
+import { BASE_PATH } from '@/lib/constants';
 
 const Model = ({ scale = 1.2 }: { scale?: number }) => {
   const group = useRef<THREE.Group>(null);
-  const { scene, animations } = useGLTF('/keipo_logo_animated.glb');
+  const { scene, animations } = useGLTF(`${BASE_PATH}/keipo_logo_animated.glb`);
   const { actions } = useAnimations(animations, group);
 
   useEffect(() => {
