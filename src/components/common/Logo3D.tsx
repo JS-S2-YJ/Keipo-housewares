@@ -12,9 +12,12 @@ const Model = ({ scale = 1.2 }: { scale?: number }) => {
   const { actions } = useAnimations(animations, group);
 
   useEffect(() => {
-    Object.values(actions).forEach((action) => {
+    // 액션 이름을 정렬하여 순차적으로 재생 (K-E-I-P-O)
+    const sortedActionNames = Object.keys(actions).sort();
+    sortedActionNames.forEach((name) => {
+      const action = actions[name];
       if (action) {
-        action.play();
+        action.reset().play();
         action.setLoop(THREE.LoopRepeat, Infinity);
       }
     });
@@ -25,7 +28,7 @@ const Model = ({ scale = 1.2 }: { scale?: number }) => {
       ref={group} 
       object={scene} 
       scale={scale} 
-      position={[0, -0.6, 0]} // 아래쪽 여백을 줄이기 위해 모델을 살짝 내림
+      position={[0, -0.1, 0]}
       rotation={[0, 0, 0]}
     />
   );
@@ -40,44 +43,39 @@ interface Logo3DProps {
 export const Logo3D = ({ className = "h-[40px] w-[120px]", scale = 1.2, showGlow = true }: Logo3DProps) => {
   return (
     <div 
-      className={`${className} cursor-pointer relative flex items-center justify-center overflow-hidden`} 
+      className={`${className} cursor-pointer relative flex items-center justify-center overflow-hidden group`} 
       style={{ 
-        // 딥 다크 테마로 변경하여 유리 질감 강조 및 눈 보호
-        background: 'linear-gradient(135deg, #0f172a 0%, #020617 100%)',
-        borderRadius: '40px',
-        border: '1px solid rgba(255, 255, 255, 0.1)',
-        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
-        padding: '20px'
+        // 럭셔리 다크 글래스 스타일
+        background: 'rgba(10, 10, 15, 0.85)',
+        borderRadius: '32px',
+        border: '1px solid rgba(255, 255, 255, 0.08)',
+        backdropFilter: 'blur(12px)',
+        boxShadow: '0 20px 40px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(0, 102, 204, 0.1)',
       }}
     >
-      {/* 배경에 은은한 블루 광원 효과 추가 */}
-      <div style={{
-        position: 'absolute',
-        width: '100%',
-        height: '100%',
-        background: 'radial-gradient(circle at center, rgba(0, 102, 204, 0.15) 0%, transparent 70%)',
-        pointerEvents: 'none'
+      {/* 배경 은은한 광원 */}
+      <div className="absolute inset-0 opacity-20 group-hover:opacity-40 transition-opacity duration-1000" style={{
+        background: 'radial-gradient(circle at 50% 50%, #0066cc 0%, transparent 60%)',
+        filter: 'blur(40px)',
       }} />
 
       <Canvas
         gl={{ antialias: true, alpha: true }}
         dpr={[1, 2]}
-        camera={{ position: [0, 0, 7.5], fov: 35 }}
+        camera={{ position: [0, 0, 10], fov: 28 }} // 멀리서 줌인하여 짤림 방지
       >
         <Suspense fallback={null}>
-          {/* 어두운 배경에 맞춘 최적화된 부드러운 조명 */}
           <ambientLight intensity={0.5} />
-          <pointLight position={[10, 10, 10]} intensity={1.5} color="#ffffff" />
-          <pointLight position={[-10, -10, -10]} intensity={0.5} color="#0066cc" />
-          <spotLight position={[0, 5, 10]} angle={0.15} penumbra={1} intensity={2} color="#b2e5ff" />
+          <spotLight position={[10, 15, 10]} angle={0.3} intensity={2} color="#ffffff" />
+          <pointLight position={[-10, 5, 5]} intensity={1.5} color="#0088ff" />
           
-          <Environment preset="night" /> {/* 부드러운 밤 조명으로 변경 */}
+          <Environment preset="city" />
 
           <Float 
-            speed={1.5} 
-            rotationIntensity={0.3} 
-            floatIntensity={0.3}
-            floatingRange={[-0.1, 0.1]}
+            speed={2.2} 
+            rotationIntensity={0.5} 
+            floatIntensity={0.4}
+            floatingRange={[-0.15, 0.15]}
           >
             <Model scale={scale} />
           </Float>
