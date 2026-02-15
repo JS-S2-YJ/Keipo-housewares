@@ -41,28 +41,35 @@ interface Logo3DProps {
 
 export const Logo3D = ({ className = "h-[40px] w-[120px]", scale = 1.2, showGlow = true }: Logo3DProps) => {
   return (
-    <div className={`${className} cursor-pointer`} style={{ filter: showGlow ? 'drop-shadow(0 0 8px rgba(0,102,204,0.1))' : 'none' }}>
+    <div 
+      className={`${className} cursor-pointer relative flex items-center justify-center`} 
+      style={{ 
+        // 테스트용 회색 배경 및 입체감 강화
+        backgroundColor: 'rgba(0, 0, 0, 0.03)', 
+        borderRadius: '24px',
+        border: '1px solid rgba(0, 0, 0, 0.05)',
+        filter: showGlow ? 'drop-shadow(0 10px 30px rgba(0,102,204,0.08))' : 'none' 
+      }}
+    >
       <Canvas
         gl={{ antialias: true, alpha: true }}
-        dpr={[1, 2]} // 성능과 화질 밸런스
+        dpr={[1, 2]}
+        camera={{ position: [0, 0, 4], fov: 30 }} // FOV를 좁혀서 모델을 더 크게 보이게 함
       >
         <Suspense fallback={null}>
-          <PerspectiveCamera makeDefault position={[0, 0, 4]} fov={35} />
+          {/* 조명 세기 대폭 강화 */}
+          <ambientLight intensity={1.5} />
+          <directionalLight position={[2, 5, 2]} intensity={2.5} />
+          <pointLight position={[-5, 2, -3]} intensity={1.5} color="#0066cc" />
+          <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={3} castShadow />
           
-          {/* 유리 질감을 살려줄 조명 설정 */}
-          <ambientLight intensity={0.8} />
-          <spotLight position={[5, 5, 5]} angle={0.25} penumbra={1} intensity={2} />
-          <pointLight position={[-5, -5, -5]} intensity={1} color="#0066cc" />
-          
-          {/* 환경 맵: 유리 반사에 필수적임 */}
-          <Environment preset="city" />
+          <Environment preset="studio" />
 
-          {/* 둥둥 떠있는 효과 + 미세한 회전으로 3D 입체감 강조 */}
           <Float 
-            speed={2.5} 
-            rotationIntensity={0.6} 
-            floatIntensity={0.4}
-            floatingRange={[-0.05, 0.05]}
+            speed={3} 
+            rotationIntensity={0.8} 
+            floatIntensity={0.6}
+            floatingRange={[-0.1, 0.1]}
           >
             <Model scale={scale} />
           </Float>
