@@ -8,7 +8,7 @@ export const HistorySection = () => {
   const { t, yearsActiveCount, historyText, sinceText } = useLanguage();
 
   return (
-    <section id="history" className="section-padding section-bg-tinted">
+    <section id="history" className="section-padding section-bg-tinted noise-overlay">
       <div className="max-container" style={{ flexDirection: 'column' }}>
         <div className="grid-2">
           <SectionReveal style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
