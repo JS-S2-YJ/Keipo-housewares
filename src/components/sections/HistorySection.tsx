@@ -8,9 +8,9 @@ export const HistorySection = () => {
   const { t, yearsActiveCount, historyText, sinceText } = useLanguage();
 
   return (
-    <section id="history" className="section-padding" style={{ backgroundColor: '#f5f5f7' }}>
+    <section id="history" className="section-padding section-bg-tinted">
       <div className="max-container" style={{ flexDirection: 'column' }}>
-        <div className="grid-3">
+        <div className="grid-2">
           <SectionReveal style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <div>
               <span style={{ color: '#0066cc', fontWeight: '800', fontSize: '11px', letterSpacing: '0.15em', display: 'block', marginBottom: '12px' }}>{sinceText.toUpperCase()}</span>
@@ -32,45 +32,65 @@ export const HistorySection = () => {
           </SectionReveal>
           
           <SectionReveal delay={0.2} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
-            <div className="image-card-wrapper" style={{ 
-              backgroundColor: 'white', 
-              borderRadius: '32px', 
-              width: '100%', 
-              height: '400px', 
-              overflow: 'hidden', 
-              boxShadow: '0 20px 40px rgba(0,0,0,0.06)', 
+            <div className="image-card-wrapper" style={{
+              borderRadius: '32px',
+              width: '100%',
+              height: '420px',
+              overflow: 'hidden',
+              boxShadow: `
+                0 0 0 1px rgba(255,255,255,0.8),
+                0 2px 4px rgba(0,0,0,0.03),
+                0 20px 48px rgba(0,0,0,0.08),
+                0 60px 100px rgba(0,0,0,0.05)
+              `,
               position: 'relative',
               cursor: 'pointer',
-              border: '1px solid rgba(0,0,0,0.03)'
+              border: '1px solid rgba(0,0,0,0.04)',
             }}>
-              <img 
-                src={`${BASE_PATH}/images/knife.jpeg`} 
-                alt={t('title')} 
+              <img
+                src={`${BASE_PATH}/images/knife.jpeg`}
+                alt={t('title')}
+                loading="lazy"
                 className="hover-zoom-image"
-                style={{ 
-                  width: '100%', 
-                  height: '100%', 
-                  objectFit: 'cover', 
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
                   display: 'block',
-                  transition: 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)'
                 }}
               />
+              {/* Double-bezel glass overlay */}
               <div style={{
                 position: 'absolute',
                 bottom: '16px',
                 left: '16px',
                 right: '16px',
-                padding: '16px 24px',
-                background: 'rgba(255, 255, 255, 0.2)',
-                backdropFilter: 'blur(20px) saturate(160%)',
-                WebkitBackdropFilter: 'blur(20px) saturate(160%)',
-                borderRadius: '20px',
-                border: '1px solid rgba(255, 255, 255, 0.3)',
-                color: 'white',
+                padding: '3px',
+                background: 'rgba(255,255,255,0.12)',
+                backdropFilter: 'blur(1px)',
+                WebkitBackdropFilter: 'blur(1px)',
+                borderRadius: '22px',
+                border: '1px solid rgba(255,255,255,0.2)',
                 pointerEvents: 'none',
-                boxShadow: '0 8px 32px rgba(0,0,0,0.1)'
               }}>
-                <span style={{ fontSize: '11px', fontWeight: '800', letterSpacing: '0.15em', textShadow: '0 2px 4px rgba(0,0,0,0.2)' }}>{t('premiumQuality').toUpperCase()}</span>
+                <div style={{
+                  padding: '14px 20px',
+                  background: 'rgba(0,0,0,0.35)',
+                  backdropFilter: 'blur(24px) saturate(180%)',
+                  WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+                  borderRadius: '19px',
+                  border: '1px solid rgba(255,255,255,0.12)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                }}>
+                  <span style={{ fontSize: '11px', fontWeight: '700', letterSpacing: '0.14em', color: 'rgba(255,255,255,0.9)' }}>
+                    {t('premiumQuality').toUpperCase()}
+                  </span>
+                  <span style={{ fontSize: '10px', fontWeight: '600', color: 'rgba(255,255,255,0.4)', letterSpacing: '0.05em' }}>
+                    Est. 1988
+                  </span>
+                </div>
               </div>
             </div>
           </SectionReveal>
