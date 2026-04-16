@@ -34,10 +34,36 @@ export const Navbar = ({ onMenuClick }: NavbarProps) => {
         </div>
         
         <div style={{ display: 'flex', gap: '6px', alignItems: 'center', flexShrink: 0 }}>
-          <div className="nav-menu-desktop" style={{ gap: '20px', fontSize: '13px', fontWeight: '600', color: '#86868b', marginRight: '12px' }}>
-            <a href="#history" onClick={(e) => scrollToSection(e, 'history')} style={{ textDecoration: 'none', color: 'inherit' }}>{t('navHistory')}</a>
-            <a href="#logistics" onClick={(e) => scrollToSection(e, 'logistics')} style={{ textDecoration: 'none', color: 'inherit' }}>{t('navLogistics')}</a>
-            <a href="#categories" onClick={(e) => scrollToSection(e, 'categories')} style={{ textDecoration: 'none', color: 'inherit' }}>{t('navProducts')}</a>
+          <div className="nav-menu-desktop" style={{ gap: '4px', fontSize: '13px', fontWeight: '600', color: '#86868b', marginRight: '12px' }}>
+            {[
+              { key: 'navHistory', id: 'history' },
+              { key: 'navLogistics', id: 'logistics' },
+              { key: 'navProducts', id: 'categories' },
+            ].map(({ key, id }) => (
+              <a
+                key={id}
+                href={`#${id}`}
+                onClick={(e) => scrollToSection(e, id)}
+                style={{
+                  textDecoration: 'none',
+                  color: 'inherit',
+                  padding: '6px 12px',
+                  borderRadius: '8px',
+                  transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
+                  display: 'inline-block',
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.color = '#1a1a1c';
+                  e.currentTarget.style.background = 'rgba(0,0,0,0.04)';
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.color = '#86868b';
+                  e.currentTarget.style.background = 'transparent';
+                }}
+              >
+                {t(key as Parameters<typeof t>[0])}
+              </a>
+            ))}
           </div>
 
           <button 

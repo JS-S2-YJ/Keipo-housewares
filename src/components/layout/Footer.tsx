@@ -7,9 +7,20 @@ export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer style={{ padding: '32px 16px', borderTop: '1px solid #f2f2f2' }}>
-      <div className="max-container" style={{ fontSize: '10px', color: '#86868b', fontWeight: '800', flexDirection: 'column', gap: '10px', textAlign: 'center' }}>
-        <div>© {currentYear} {t('brandLabel')}. {t('allRights')}</div>
+    <footer style={{ padding: '32px 24px', borderTop: '1px solid rgba(0,0,0,0.05)', backgroundColor: '#fafafa' }}>
+      <div className="max-container" style={{
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        flexWrap: 'wrap',
+        gap: '12px',
+      }}>
+        <span style={{ fontSize: '12px', fontWeight: '700', letterSpacing: '-0.01em', color: '#1a1a1c' }}>
+          KEIPO
+        </span>
+        <span style={{ fontSize: '10px', color: '#b0b0b5', fontWeight: '600', letterSpacing: '0.05em' }}>
+          © {currentYear} {t('brandLabel')} · {t('allRights')}
+        </span>
       </div>
     </footer>
   );

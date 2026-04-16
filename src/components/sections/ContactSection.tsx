@@ -45,20 +45,30 @@ export const ContactSection = () => {
           }}>
             {t('letsConnect')}
           </h2>
-          <button 
-            className="apple-button-primary" 
-            style={{ 
-              padding: '16px 36px', 
+          <button
+            className="apple-button-primary"
+            style={{
+              padding: '18px 48px',
               fontSize: '18px',
-              boxShadow: '0 8px 24px rgba(0, 102, 204, 0.3)' 
+              fontWeight: '700',
+              borderRadius: '16px',
+              boxShadow: '0 8px 32px rgba(0, 102, 204, 0.35)',
+              letterSpacing: '-0.01em'
             }}
             onClick={() => window.location.href = 'mailto:contact@keipo.com'}
           >
             {t('contact')}
           </button>
-          <div style={{ marginTop: '60px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '32px', color: 'rgba(255, 255, 255, 0.5)', fontSize: '11px', fontWeight: '700', letterSpacing: '0.05em' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><Mail size={16} /> CONTACT@KEIPO.COM</div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><Globe2 size={16} /> {t('location').toUpperCase()}</div>
+          <div style={{ marginTop: '56px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '28px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'rgba(255,255,255,0.45)', fontSize: '12px', fontWeight: '600', letterSpacing: '0.08em' }}>
+              <Mail size={14} strokeWidth={2} />
+              CONTACT@KEIPO.COM
+            </div>
+            <div style={{ width: '1px', height: '14px', background: 'rgba(255,255,255,0.15)', alignSelf: 'center' }} />
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'rgba(255,255,255,0.45)', fontSize: '12px', fontWeight: '600', letterSpacing: '0.08em' }}>
+              <Globe2 size={14} strokeWidth={2} />
+              {t('location').toUpperCase()}
+            </div>
           </div>
         </SectionReveal>
       </div>
