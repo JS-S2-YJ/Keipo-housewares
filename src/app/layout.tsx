@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { LanguageProvider } from "@/hooks/useLanguage";
 import { ThemeProvider } from "next-themes";
-/* globals.css를 다른 컴포넌트보다 먼저 임포트하여 스타일 우선순위 확보 */
 import "./globals.css";
+
+const PRETENDARD_VARIABLE_URL =
+  "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/PretendardVariable.woff2";
 
 export const metadata: Metadata = {
   title: "KEIPO Housewares",
@@ -37,10 +39,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="" />
+        <link rel="preload" as="font" type="font/woff2" href={PRETENDARD_VARIABLE_URL} crossOrigin="" />
+        <style dangerouslySetInnerHTML={{ __html: `
+          @font-face {
+            font-family: 'Pretendard';
+            font-weight: 45 920;
+            font-style: normal;
+            font-display: swap;
+            src: url('${PRETENDARD_VARIABLE_URL}') format('woff2-variations');
+          }
+        ` }} />
+      </head>
       <body className="antialiased">
-        <ThemeProvider 
-          attribute="class" 
-          defaultTheme="light" 
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
           enableSystem={false}
           disableTransitionOnChange
         >

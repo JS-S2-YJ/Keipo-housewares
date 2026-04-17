@@ -1,9 +1,6 @@
 /* Tailwind v4 import */
 @import "tailwindcss";
 
-/* Pretendard — Korean premium font */
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
-
 html {
   scroll-behavior: smooth;
 }
