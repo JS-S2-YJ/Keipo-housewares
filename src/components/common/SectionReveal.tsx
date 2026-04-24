@@ -8,21 +8,34 @@ interface SectionRevealProps {
   className?: string;
   delay?: number;
   style?: CSSProperties;
+  immediate?: boolean;
 }
 
-export const SectionReveal = ({ children, className, delay = 0, style }: SectionRevealProps) => {
+export const SectionReveal = ({ children, className, delay = 0, style, immediate = false }: SectionRevealProps) => {
+  const common = {
+    initial: { opacity: 0, y: 30 },
+    transition: {
+      duration: 0.8,
+      delay,
+      ease: [0.21, 0.47, 0.32, 0.98] as [number, number, number, number],
+    },
+    className,
+    style,
+  };
+
+  if (immediate) {
+    return (
+      <motion.div {...common} animate={{ opacity: 1, y: 0 }}>
+        {children}
+      </motion.div>
+    );
+  }
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      {...common}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{
-        duration: 0.8,
-        delay: delay,
-        ease: [0.21, 0.47, 0.32, 0.98] // Apple-like cubic bezier
-      }}
-      className={className}
-      style={style}
+      viewport={{ once: true, margin: '-50px' }}
     >
       {children}
     </motion.div>
