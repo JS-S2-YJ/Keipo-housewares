@@ -52,7 +52,7 @@ export default function Home() {
   };
 
   return (
-    <main style={{ opacity: 1, transition: 'opacity 0.5s ease', width: '100%', overflowX: 'hidden' }}>
+    <main style={{ opacity: 1, transition: 'opacity 0.5s ease', width: '100%', overflowX: 'clip' }}>
       <SideDrawer 
         isOpen={isDrawerOpen} 
         onClose={closeDrawer} 
