@@ -7,8 +7,9 @@ import { SectionReveal } from '@/components/common/SectionReveal';
 import { ScrollVideo } from '@/components/common/ScrollVideo';
 import { useLanguage } from '@/hooks/useLanguage';
 import { BASE_PATH } from '@/lib/constants';
+import type { TranslationKey } from '@/translations';
 
-type TranslateFn = (key: string) => string;
+type TranslateFn = (key: TranslationKey) => string;
 
 export const HeroSection = () => {
   const { t } = useLanguage();
