@@ -8,6 +8,7 @@ interface ScrollVideoProps {
   framePadDigits?: number;
   scrollMultiplier?: number;
   children?: ReactNode;
+  afterSticky?: ReactNode;
   overlayStyle?: CSSProperties;
   className?: string;
   mask?: string;
@@ -20,6 +21,7 @@ export function ScrollVideo({
   framePadDigits = 3,
   scrollMultiplier = 2,
   children,
+  afterSticky,
   overlayStyle,
   className,
   mask,
@@ -27,6 +29,7 @@ export function ScrollVideo({
 }: ScrollVideoProps) {
   const internalSectionRef = useRef<HTMLElement>(null);
   const sectionRef = externalSectionRef ?? internalSectionRef;
+  const stickyContainerRef = useRef<HTMLDivElement>(null);
   const stickyRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const framesRef = useRef<HTMLImageElement[]>([]);
@@ -167,12 +170,12 @@ export function ScrollVideo({
   }, []);
 
   useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
+    const tracker = stickyContainerRef.current ?? sectionRef.current;
+    if (!tracker) return;
 
     const update = () => {
       rafRef.current = null;
-      const rect = section.getBoundingClientRect();
+      const rect = tracker.getBoundingClientRect();
       const scrollable = rect.height - window.innerHeight;
       if (scrollable <= 0) {
         drawFrame(0);
@@ -209,47 +212,55 @@ export function ScrollVideo({
       className={className}
       style={{
         position: 'relative',
-        height: `${scrollMultiplier * 100}vh`,
       }}
     >
       <div
-        ref={stickyRef}
+        ref={stickyContainerRef}
         style={{
-          position: 'sticky',
-          top: 0,
-          height: '100vh',
-          width: '100%',
-          overflow: 'hidden',
-          backgroundColor: '#030712',
+          position: 'relative',
+          height: `${scrollMultiplier * 100}vh`,
         }}
       >
-        <canvas
-          ref={canvasRef}
-          aria-hidden
+        <div
+          ref={stickyRef}
           style={{
-            position: 'absolute',
-            inset: 0,
-            display: 'block',
-            opacity: initialReady ? 1 : 0,
-            transition: 'opacity 600ms ease-out',
-            willChange: 'opacity',
+            position: 'sticky',
+            top: 0,
+            height: '100vh',
+            width: '100%',
+            overflow: 'hidden',
+            backgroundColor: '#030712',
           }}
-        />
-        {mask && (
-          <div
+        >
+          <canvas
+            ref={canvasRef}
             aria-hidden
             style={{
               position: 'absolute',
               inset: 0,
-              background: mask,
-              pointerEvents: 'none',
+              display: 'block',
+              opacity: initialReady ? 1 : 0,
+              transition: 'opacity 600ms ease-out',
+              willChange: 'opacity',
             }}
           />
-        )}
-        <div style={{ position: 'relative', width: '100%', height: '100%', ...overlayStyle }}>
-          {children}
+          {mask && (
+            <div
+              aria-hidden
+              style={{
+                position: 'absolute',
+                inset: 0,
+                background: mask,
+                pointerEvents: 'none',
+              }}
+            />
+          )}
+          <div style={{ position: 'relative', width: '100%', height: '100%', ...overlayStyle }}>
+            {children}
+          </div>
         </div>
       </div>
+      {afterSticky}
     </section>
   );
 }

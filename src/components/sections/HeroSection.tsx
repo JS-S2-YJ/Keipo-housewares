@@ -43,6 +43,15 @@ const MobileHero = ({ t }: { t: TranslateFn }) => {
   const [ctaShown, setCtaShown] = useState(false);
   const [heritageShown, setHeritageShown] = useState(false);
   const [fullyRevealed, setFullyRevealed] = useState(false);
+  const [isShort, setIsShort] = useState(false);
+
+  useEffect(() => {
+    const mql = window.matchMedia('(max-height: 720px)');
+    setIsShort(mql.matches);
+    const onChange = (e: MediaQueryListEvent) => setIsShort(e.matches);
+    mql.addEventListener('change', onChange);
+    return () => mql.removeEventListener('change', onChange);
+  }, []);
 
   useMotionValueEvent(scrollYProgress, 'change', (v) => {
     if (fullyRevealed) return;
@@ -61,6 +70,189 @@ const MobileHero = ({ t }: { t: TranslateFn }) => {
   });
 
   const revealSpring = { type: 'spring' as const, stiffness: 140, damping: 22, mass: 0.6 };
+
+  const primaryButton = (
+    <button
+      className="apple-button-primary"
+      style={{
+        padding: '14px 28px',
+        fontSize: 15,
+        borderRadius: 14,
+        fontWeight: 700,
+      }}
+      onClick={() => {
+        const el = document.getElementById('contact');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }}
+    >
+      {t('experience')}
+    </button>
+  );
+
+  const secondaryButton = (
+    <button
+      style={{
+        padding: '14px 20px',
+        fontSize: 15,
+        borderRadius: 14,
+        fontWeight: 600,
+        background: 'rgba(255,255,255,0.1)',
+        border: '1px solid rgba(255,255,255,0.22)',
+        color: '#fff',
+        backdropFilter: 'blur(10px)',
+        WebkitBackdropFilter: 'blur(10px)',
+        display: 'flex',
+        alignItems: 'center',
+        gap: 4,
+        cursor: 'pointer',
+      }}
+      onClick={() => {
+        const el = document.getElementById('history');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }}
+    >
+      {t('explore')} <ChevronRight size={15} strokeWidth={2.5} />
+    </button>
+  );
+
+  if (isShort) {
+    const afterStickyText = (
+      <div
+        style={{
+          backgroundColor: '#030712',
+          color: '#fff',
+          padding: '64px 28px 72px',
+          position: 'relative',
+        }}
+      >
+        <SectionReveal>
+          <h1
+            style={{
+              fontSize: 'clamp(38px, 11vw, 60px)',
+              fontWeight: 800,
+              letterSpacing: '-0.04em',
+              lineHeight: 1.03,
+              color: '#fff',
+              textWrap: 'balance',
+              marginBottom: 16,
+            }}
+          >
+            KEIPO
+            <br />
+            Housewares
+          </h1>
+          <p
+            style={{
+              fontSize: 15,
+              color: 'rgba(255,255,255,0.78)',
+              fontWeight: 500,
+              lineHeight: 1.55,
+              letterSpacing: '-0.01em',
+              maxWidth: 360,
+              wordBreak: 'keep-all',
+              marginBottom: 24,
+            }}
+          >
+            {t('slogan')}
+          </p>
+          <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+            {primaryButton}
+            {secondaryButton}
+          </div>
+          <div
+            style={{
+              marginTop: 32,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 10,
+              fontSize: 10,
+              fontWeight: 700,
+              letterSpacing: '0.18em',
+              color: 'rgba(255,255,255,0.55)',
+              textTransform: 'uppercase',
+            }}
+          >
+            <span style={{ flex: '0 0 28px', height: 1, background: 'currentColor' }} />
+            Est. 1988 · Seoul, Korea
+            <span style={{ flex: '0 0 28px', height: 1, background: 'currentColor' }} />
+          </div>
+        </SectionReveal>
+      </div>
+    );
+
+    return (
+      <ScrollVideo
+        sectionRef={sectionRef}
+        framePathPrefix={`${BASE_PATH}/videos/mobile-hero-frames/frame_`}
+        frameCount={96}
+        scrollMultiplier={1.3}
+        mask="linear-gradient(180deg, rgba(3,7,18,0.5) 0%, rgba(3,7,18,0.1) 40%, rgba(3,7,18,0.25) 70%, rgba(3,7,18,0.95) 100%)"
+        afterSticky={afterStickyText}
+      >
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'flex-start',
+            padding: 'min(80px, 12vh) 28px 0',
+            color: '#fff',
+            userSelect: 'none',
+            WebkitUserSelect: 'none',
+            pointerEvents: 'none',
+          }}
+        >
+          <SectionReveal immediate style={{ display: 'flex', justifyContent: 'center' }}>
+            <img
+              src={`${BASE_PATH}/images/main_logo_v2.png`}
+              alt="KEIPO Housewares"
+              loading="eager"
+              style={{
+                width: 'clamp(72px, 18vh, 110px)',
+                height: 'auto',
+                display: 'block',
+                borderRadius: 18,
+                opacity: 0.95,
+                filter: 'drop-shadow(0 6px 20px rgba(0,0,0,0.5))',
+                pointerEvents: 'none',
+              }}
+            />
+          </SectionReveal>
+
+          <SectionReveal
+            immediate
+            style={{
+              position: 'absolute',
+              bottom: 20,
+              left: 0,
+              right: 0,
+              display: 'flex',
+              justifyContent: 'center',
+              pointerEvents: 'none',
+            }}
+          >
+            <div
+              style={{
+                fontSize: 10,
+                fontWeight: 700,
+                letterSpacing: '0.28em',
+                color: 'rgba(255,255,255,0.7)',
+                textTransform: 'uppercase',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 8,
+              }}
+            >
+              <span>Scroll</span>
+              <span style={{ width: 24, height: 1, background: 'currentColor' }} />
+            </div>
+          </SectionReveal>
+        </div>
+      </ScrollVideo>
+    );
+  }
 
   return (
     <ScrollVideo
@@ -152,44 +344,8 @@ const MobileHero = ({ t }: { t: TranslateFn }) => {
               flexWrap: 'wrap',
             }}
           >
-            <button
-              className="apple-button-primary"
-              style={{
-                padding: '14px 28px',
-                fontSize: 15,
-                borderRadius: 14,
-                fontWeight: 700,
-              }}
-              onClick={() => {
-                const el = document.getElementById('contact');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
-              {t('experience')}
-            </button>
-            <button
-              style={{
-                padding: '14px 20px',
-                fontSize: 15,
-                borderRadius: 14,
-                fontWeight: 600,
-                background: 'rgba(255,255,255,0.1)',
-                border: '1px solid rgba(255,255,255,0.22)',
-                color: '#fff',
-                backdropFilter: 'blur(10px)',
-                WebkitBackdropFilter: 'blur(10px)',
-                display: 'flex',
-                alignItems: 'center',
-                gap: 4,
-                cursor: 'pointer',
-              }}
-              onClick={() => {
-                const el = document.getElementById('history');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
-              {t('explore')} <ChevronRight size={15} strokeWidth={2.5} />
-            </button>
+            {primaryButton}
+            {secondaryButton}
           </motion.div>
 
           <motion.div
