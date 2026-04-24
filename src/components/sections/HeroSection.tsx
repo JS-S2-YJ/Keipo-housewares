@@ -46,11 +46,7 @@ const MobileHero = ({ t }: { t: TranslateFn }) => {
   const [isShort, setIsShort] = useState(false);
 
   useEffect(() => {
-    const mql = window.matchMedia('(max-height: 720px)');
-    setIsShort(mql.matches);
-    const onChange = (e: MediaQueryListEvent) => setIsShort(e.matches);
-    mql.addEventListener('change', onChange);
-    return () => mql.removeEventListener('change', onChange);
+    setIsShort(window.matchMedia('(max-height: 720px)').matches);
   }, []);
 
   useMotionValueEvent(scrollYProgress, 'change', (v) => {
