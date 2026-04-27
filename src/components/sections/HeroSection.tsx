@@ -416,7 +416,7 @@ const DesktopHero = ({ t }: { t: TranslateFn }) => {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          padding: '120px clamp(48px, 7vw, 96px) 72px',
+          padding: 'clamp(56px, 13vh, 120px) clamp(48px, 7vw, 96px) clamp(40px, 8vh, 72px)',
           color: '#fff',
           userSelect: 'none',
           WebkitUserSelect: 'none',
@@ -428,7 +428,7 @@ const DesktopHero = ({ t }: { t: TranslateFn }) => {
             alt="KEIPO Housewares"
             loading="eager"
             style={{
-              width: 'clamp(88px, 6vw, 120px)',
+              width: 'clamp(64px, min(6vw, 10vh), 120px)',
               height: 'auto',
               display: 'block',
               borderRadius: 20,
@@ -457,7 +457,7 @@ const DesktopHero = ({ t }: { t: TranslateFn }) => {
               letterSpacing: '0.12em',
               color: 'rgba(255,255,255,0.9)',
               textTransform: 'uppercase',
-              marginBottom: 28,
+              marginBottom: 'clamp(14px, 3vh, 28px)',
               backdropFilter: 'blur(10px)',
               WebkitBackdropFilter: 'blur(10px)',
             }}
@@ -471,13 +471,13 @@ const DesktopHero = ({ t }: { t: TranslateFn }) => {
             animate={headlineShown ? { opacity: 1, y: 0 } : { opacity: 0, y: 32 }}
             transition={revealSpring}
             style={{
-              fontSize: 'clamp(56px, 7.5vw, 96px)',
+              fontSize: 'clamp(40px, min(7vw, 11vh), 96px)',
               fontWeight: 800,
               letterSpacing: '-0.04em',
               lineHeight: 1.02,
               color: '#fff',
               textWrap: 'balance',
-              marginBottom: 24,
+              marginBottom: 'clamp(12px, 2.6vh, 24px)',
               textShadow: '0 4px 40px rgba(0,0,0,0.4)',
             }}
           >
@@ -489,14 +489,14 @@ const DesktopHero = ({ t }: { t: TranslateFn }) => {
             animate={sloganShown ? { opacity: 1, y: 0 } : { opacity: 0, y: 32 }}
             transition={revealSpring}
             style={{
-              fontSize: 'clamp(16px, 1.4vw, 19px)',
+              fontSize: 'clamp(14px, min(1.4vw, 2.2vh), 19px)',
               color: 'rgba(255,255,255,0.85)',
               fontWeight: 500,
               lineHeight: 1.55,
               letterSpacing: '-0.01em',
               maxWidth: 520,
               wordBreak: 'keep-all',
-              marginBottom: 36,
+              marginBottom: 'clamp(18px, 3.8vh, 36px)',
               textShadow: '0 2px 20px rgba(0,0,0,0.35)',
             }}
           >
@@ -511,14 +511,14 @@ const DesktopHero = ({ t }: { t: TranslateFn }) => {
               display: 'flex',
               gap: 12,
               flexWrap: 'wrap',
-              marginBottom: 40,
+              marginBottom: 'clamp(20px, 4.4vh, 40px)',
             }}
           >
             <button
               className="apple-button-primary"
               style={{
-                padding: '16px 36px',
-                fontSize: 16,
+                padding: 'clamp(11px, 1.8vh, 16px) clamp(24px, 3vw, 36px)',
+                fontSize: 'clamp(14px, 1.7vh, 16px)',
                 borderRadius: 14,
                 fontWeight: 700,
               }}
@@ -531,8 +531,8 @@ const DesktopHero = ({ t }: { t: TranslateFn }) => {
             </button>
             <button
               style={{
-                padding: '16px 24px',
-                fontSize: 16,
+                padding: 'clamp(11px, 1.8vh, 16px) clamp(18px, 2vw, 24px)',
+                fontSize: 'clamp(14px, 1.7vh, 16px)',
                 borderRadius: 14,
                 fontWeight: 600,
                 background: 'rgba(255,255,255,0.1)',
